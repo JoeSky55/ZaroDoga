@@ -75,8 +75,7 @@ app.get('/szakteruletek', (req, res) => {
       connection.end()
   })
 
-//Robi végpontjai____________________________________________________________________________________________________________________________________
-//___________________________________________________________________________________________________________________________________________________
+//Robi végpontjai________________________________________________
 
 app.get('/orvosAdatok2', (req, res) => {
   kapcsolat()
@@ -124,7 +123,7 @@ app.post('/szakteruletKeres', (req, res) => {
 
 app.post('/foglaltIdopontok', (req, res) => {
   kapcsolat()
-  connection.query(`SELECT * FROM idopont_foglalas INNER JOIN orvosok ON orvosok.orvos_id = idopont_foglalas.if_orvosid INNER JOIN szakteruletek ON szakteruletek.szak_id = idopont_foglalas.if_szakrendelesid WHERE orvosok.nev = "${req.body.bevitel2}"`, (err, rows, fields) => {
+  connection.query(`SELECT * FROM idopont_foglalas INNER JOIN orvosok ON orvosok.orvos_id = idopont_foglalas.if_orvosid INNER JOIN szakteruletek ON szakteruletek.szak_id = idopont_foglalas.if_szakrendelesid WHERE orvosok.nev = "${req.body.bevitel1}" AND if_datum = "${req.body.bevitel2}" `, (err, rows, fields) => {
       if (err) {
           console.log(err)
           res.status(500).send("Hiba")
