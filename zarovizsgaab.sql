@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Nov 28. 11:18
+-- Létrehozás ideje: 2024. Nov 28. 11:33
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -82,6 +82,7 @@ INSERT INTO `orvosok` (`orvos_id`, `nev`, `telefon`) VALUES
 --
 
 CREATE TABLE `orvos_szakterulet` (
+  `altalanos_id` int(11) NOT NULL,
   `orvos_id` int(11) NOT NULL,
   `szakterulet_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
@@ -90,26 +91,26 @@ CREATE TABLE `orvos_szakterulet` (
 -- A tábla adatainak kiíratása `orvos_szakterulet`
 --
 
-INSERT INTO `orvos_szakterulet` (`orvos_id`, `szakterulet_id`) VALUES
-(1, 1),
-(1, 2),
-(2, 3),
-(2, 4),
-(3, 5),
-(4, 3),
-(4, 6),
-(5, 1),
-(5, 7),
-(6, 2),
-(6, 8),
-(7, 4),
-(7, 10),
-(8, 5),
-(8, 8),
-(9, 1),
-(9, 9),
-(10, 7),
-(10, 10);
+INSERT INTO `orvos_szakterulet` (`altalanos_id`, `orvos_id`, `szakterulet_id`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 3),
+(4, 2, 4),
+(5, 3, 5),
+(6, 4, 3),
+(7, 4, 6),
+(8, 5, 1),
+(9, 5, 7),
+(10, 6, 2),
+(11, 6, 8),
+(12, 7, 4),
+(13, 7, 10),
+(14, 8, 5),
+(15, 8, 8),
+(16, 9, 1),
+(17, 9, 9),
+(18, 10, 7),
+(19, 10, 10);
 
 -- --------------------------------------------------------
 
@@ -160,8 +161,9 @@ ALTER TABLE `orvosok`
 -- A tábla indexei `orvos_szakterulet`
 --
 ALTER TABLE `orvos_szakterulet`
-  ADD PRIMARY KEY (`orvos_id`,`szakterulet_id`),
-  ADD KEY `fk_szakterulet` (`szakterulet_id`);
+  ADD PRIMARY KEY (`altalanos_id`),
+  ADD KEY `orvos_id` (`orvos_id`),
+  ADD KEY `szakterulet_id` (`szakterulet_id`);
 
 --
 -- A tábla indexei `szakteruletek`
@@ -186,6 +188,12 @@ ALTER TABLE `orvosok`
   MODIFY `orvos_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT a táblához `orvos_szakterulet`
+--
+ALTER TABLE `orvos_szakterulet`
+  MODIFY `altalanos_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
 -- AUTO_INCREMENT a táblához `szakteruletek`
 --
 ALTER TABLE `szakteruletek`
@@ -206,8 +214,8 @@ ALTER TABLE `idopont_foglalas`
 -- Megkötések a táblához `orvos_szakterulet`
 --
 ALTER TABLE `orvos_szakterulet`
-  ADD CONSTRAINT `fk_orvos` FOREIGN KEY (`orvos_id`) REFERENCES `orvosok` (`orvos_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_szakterulet` FOREIGN KEY (`szakterulet_id`) REFERENCES `szakteruletek` (`szak_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `orvos_szakterulet_ibfk_1` FOREIGN KEY (`orvos_id`) REFERENCES `orvosok` (`orvos_id`),
+  ADD CONSTRAINT `orvos_szakterulet_ibfk_2` FOREIGN KEY (`szakterulet_id`) REFERENCES `szakteruletek` (`szak_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
