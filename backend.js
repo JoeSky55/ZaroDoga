@@ -28,6 +28,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
   })
 
+  //Józsi végpontjai________________________________________________
   app.get('/orvosAdatok', (req, res) => {
     kapcsolat()
     connection.query('SELECT * FROM orvosok INNER JOIN orvos_szakterulet ON orvosok.orvos_id = orvos_szakterulet.orvos_id INNER JOIN szakteruletek ON orvos_szakterulet.szakterulet_id = szakteruletek.szak_id WHERE orvosok.orvos_id = 1 GROUP BY orvosok.orvos_id', (err, rows, fields) => {
@@ -73,6 +74,86 @@ app.get('/szakteruletek', (req, res) => {
       })
       connection.end()
   })
+
+//Robi végpontjai________________________________________________
+
+app.get('/orvosAdatok2', (req, res) => {
+  kapcsolat()
+  connection.query(`SELECT orvosok.orvos_id, orvosok.nev, orvosok.telefon, GROUP_CONCAT(szakteruletek.szak_nev ORDER BY szakteruletek.szak_nev SEPARATOR ' , ') AS szakteruletek FROM orvosok INNER JOIN orvos_szakterulet ON orvosok.orvos_id = orvos_szakterulet.orvos_id INNER JOIN szakteruletek ON orvos_szakterulet.szakterulet_id = szakteruletek.szak_id GROUP BY orvosok.orvos_id, orvosok.nev, orvosok.telefon;`, (err, rows, fields) => {
+      if (err) {
+          console.log(err)
+          res.status(500).send("Hiba")
+      }
+      else{
+          console.log(rows)
+          res.status(200).send(rows)
+      }
+    })
+    connection.end()
+})
+app.get('/szakteruletAdatok', (req, res) => {
+  kapcsolat()
+  connection.query(`SELECT szakteruletek.szak_id, szakteruletek.szak_nev, GROUP_CONCAT(orvosok.nev ORDER BY orvosok.nev SEPARATOR ' , ') AS orvosok FROM szakteruletek INNER JOIN orvos_szakterulet ON orvos_szakterulet.szakterulet_id = szakteruletek.szak_id INNER JOIN orvosok ON orvos_szakterulet.orvos_id = orvosok.orvos_id GROUP BY szakteruletek.szak_id, szakteruletek.szak_nev;`, (err, rows, fields) => {
+      if (err) {
+          console.log(err)
+          res.status(500).send("Hiba")
+      }
+      else{
+          console.log(rows)
+          res.status(200).send(rows)
+      }
+    })
+    connection.end()
+})
+
+app.post('/szakteruletKeres', (req, res) => {
+  kapcsolat()
+  connection.query(`SELECT szakteruletek.szak_id, szakteruletek.szak_nev, GROUP_CONCAT(orvosok.nev ORDER BY orvosok.nev SEPARATOR ' , ') AS orvosok FROM szakteruletek INNER JOIN orvos_szakterulet ON orvos_szakterulet.szakterulet_id = szakteruletek.szak_id INNER JOIN orvosok ON orvos_szakterulet.orvos_id = orvosok.orvos_id WHERE szakteruletek.szak_nev = "${req.body.bevitel1}" GROUP BY szakteruletek.szak_id, szakteruletek.szak_nev;`, (err, rows, fields) => {
+      if (err) {
+          console.log(err)
+          res.status(500).send("Hiba")
+      }
+      else{
+          console.log(rows)
+          res.status(200).send(rows)
+      }
+    })
+    connection.end()
+})
+
+app.post('/foglaltIdopontok', (req, res) => {
+  kapcsolat()
+  connection.query(`SELECT * FROM idopont_foglalas INNER JOIN orvosok ON orvosok.orvos_id = idopont_foglalas.if_orvosid INNER JOIN szakteruletek ON szakteruletek.szak_id = idopont_foglalas.if_szakrendelesid WHERE orvosok.nev = "${req.body.bevitel2}" AND if_datum = "2024-11-25" `, (err, rows, fields) => {
+      if (err) {
+          console.log(err)
+          res.status(500).send("Hiba")
+      }
+      else{
+          console.log(rows)
+          res.status(200).send(rows)
+      }
+    })
+    connection.end()
+})
+
+
+
+
+app.get('/idopontok', (req, res) => {
+  kapcsolat()
+  connection.query('SELECT * FROM idopont_foglalas INNER JOIN orvosok ON orvosok.orvos_id = idopont_foglalas.if_orvosid INNER JOIN szakteruletek ON szakteruletek.szak_id = idopont_foglalas.if_szakrendelesid;', (err, rows, fields) => {
+      if (err) {
+          console.log(err)
+          res.status(500).send("Hiba")
+      }
+      else{
+          console.log(rows)
+          res.status(200).send(rows)
+      }
+    })
+    connection.end()
+})
+
 
 
   
