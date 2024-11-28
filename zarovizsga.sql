@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Nov 28. 09:46
+-- Létrehozás ideje: 2024. Nov 28. 11:18
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -26,6 +26,30 @@ USE `fogorvos_vizsga`;
 -- --------------------------------------------------------
 
 --
+-- Tábla szerkezet ehhez a táblához `idopont_foglalas`
+--
+
+CREATE TABLE `idopont_foglalas` (
+  `if_id` int(11) NOT NULL,
+  `if_szakrendelesid` int(11) NOT NULL,
+  `if_orvosid` int(11) NOT NULL,
+  `if_datum` date NOT NULL,
+  `if_idopont` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `idopont_foglalas`
+--
+
+INSERT INTO `idopont_foglalas` (`if_id`, `if_szakrendelesid`, `if_orvosid`, `if_datum`, `if_idopont`) VALUES
+(1, 1, 1, '2024-11-25', '17:30'),
+(2, 6, 4, '2024-11-26', '18:00'),
+(3, 3, 4, '2024-11-25', '18:30'),
+(4, 6, 4, '2024-11-26', '18:30');
+
+-- --------------------------------------------------------
+
+--
 -- Tábla szerkezet ehhez a táblához `orvosok`
 --
 
@@ -44,7 +68,12 @@ INSERT INTO `orvosok` (`orvos_id`, `nev`, `telefon`) VALUES
 (2, 'Dr. Szabó Anna', '202345678'),
 (3, 'Dr. Nagy Tamás', '703456789'),
 (4, 'Dr. Tóth Éva', '304567890'),
-(5, 'Dr. Horváth Gábor', '205678901');
+(5, 'Dr. Horváth Gábor', '205678901'),
+(6, 'Dr. Balogh Katalin', '706789012'),
+(7, 'Dr. Farkas Zoltán', '307890123'),
+(8, 'Dr. Varga Júlia', '208901234'),
+(9, 'Dr. Kiss Attila', '709012345'),
+(10, 'Dr. Molnár Ágnes', '300123456');
 
 -- --------------------------------------------------------
 
@@ -54,25 +83,33 @@ INSERT INTO `orvosok` (`orvos_id`, `nev`, `telefon`) VALUES
 
 CREATE TABLE `orvos_szakterulet` (
   `orvos_id` int(11) NOT NULL,
-  `szakterulet_id` int(11) NOT NULL,
-  `altalanos_id` int(11) NOT NULL
+  `szakterulet_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `orvos_szakterulet`
 --
 
-INSERT INTO `orvos_szakterulet` (`orvos_id`, `szakterulet_id`, `altalanos_id`) VALUES
-(1, 1, 0),
-(1, 2, 0),
-(2, 3, 0),
-(2, 4, 0),
-(3, 5, 0),
-(3, 6, 0),
-(4, 1, 0),
-(4, 3, 0),
-(5, 2, 0),
-(5, 6, 0);
+INSERT INTO `orvos_szakterulet` (`orvos_id`, `szakterulet_id`) VALUES
+(1, 1),
+(1, 2),
+(2, 3),
+(2, 4),
+(3, 5),
+(4, 3),
+(4, 6),
+(5, 1),
+(5, 7),
+(6, 2),
+(6, 8),
+(7, 4),
+(7, 10),
+(8, 5),
+(8, 8),
+(9, 1),
+(9, 9),
+(10, 7),
+(10, 10);
 
 -- --------------------------------------------------------
 
@@ -94,12 +131,24 @@ INSERT INTO `szakteruletek` (`szak_id`, `szak_nev`) VALUES
 (2, 'Szájsebészet'),
 (3, 'Fogszabályozás'),
 (4, 'Esztétikai fogászat'),
-(5, 'Gyermekfogászat'),
-(6, 'Általános fogászat');
+(5, 'Konzerváló fogászat és endodoncia'),
+(6, 'Gyermekfogászat'),
+(7, 'Parodontológia'),
+(8, 'Protetika'),
+(9, 'Digitális fogászat'),
+(10, 'Általános fogászat');
 
 --
 -- Indexek a kiírt táblákhoz
 --
+
+--
+-- A tábla indexei `idopont_foglalas`
+--
+ALTER TABLE `idopont_foglalas`
+  ADD PRIMARY KEY (`if_id`),
+  ADD KEY `if_szakrendelesid` (`if_szakrendelesid`),
+  ADD KEY `if_orvosid` (`if_orvosid`);
 
 --
 -- A tábla indexei `orvosok`
@@ -125,6 +174,12 @@ ALTER TABLE `szakteruletek`
 --
 
 --
+-- AUTO_INCREMENT a táblához `idopont_foglalas`
+--
+ALTER TABLE `idopont_foglalas`
+  MODIFY `if_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT a táblához `orvosok`
 --
 ALTER TABLE `orvosok`
@@ -139,6 +194,13 @@ ALTER TABLE `szakteruletek`
 --
 -- Megkötések a kiírt táblákhoz
 --
+
+--
+-- Megkötések a táblához `idopont_foglalas`
+--
+ALTER TABLE `idopont_foglalas`
+  ADD CONSTRAINT `idopont_foglalas_ibfk_1` FOREIGN KEY (`if_szakrendelesid`) REFERENCES `szakteruletek` (`szak_id`),
+  ADD CONSTRAINT `idopont_foglalas_ibfk_2` FOREIGN KEY (`if_orvosid`) REFERENCES `orvosok` (`orvos_id`);
 
 --
 -- Megkötések a táblához `orvos_szakterulet`
