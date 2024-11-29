@@ -1,8 +1,7 @@
 import React from 'react';
-//import DateTimePicker from 'react-native-ui-datepicker';
-import DatePicker from 'react-native-neat-date-picker'
+import DateTimePicker from '@react-native-community/datetimepicker';
 import { useState, useEffect } from 'react';
-import { View, Text, Button, StyleSheet, FlatList, Touchable, TouchableOpacity } from 'react-native';
+import { View, Text, Button, StyleSheet, FlatList, TouchableOpacity, } from 'react-native';
 
 export default function Foglalas2Screen({ navigation, route }) {
 
@@ -20,6 +19,19 @@ export default function Foglalas2Screen({ navigation, route }) {
     const {id,nev}=route.params
     const [adatok,setAdatok]=useState([])
 
+    //DatePicker statek
+
+      const [date, setDate] = useState(new Date());
+      const [show, setShow] = useState(true);
+    
+      const onChange = (event, selectedDate) => {
+        const currentDate = selectedDate || date;
+       
+        setDate(currentDate);
+      }
+
+
+
     function orvosKiiras(adatok){
       if (adatok.szakterulet_id == id ){
         return <Text>{adatok.nev}</Text>
@@ -28,7 +40,8 @@ export default function Foglalas2Screen({ navigation, route }) {
     }
 
 
-
+      
+      
    
 
 
@@ -43,19 +56,26 @@ export default function Foglalas2Screen({ navigation, route }) {
 
       <View style={styles.cim}>
         {/*<Text>{id}</Text>*/}
-        <Text style={{fontSize:25}}>{nev}</Text>
+        <Text style={styles.szakCim}>{nev}</Text>
       </View>
+
+      <View
+          style={{
+            borderBottomColor: 'white',
+            borderBottomWidth: 2,
+          }}
+        />
 
 
       <View style={styles.orvosok}>
-        <Text>Orvosok:</Text>
+      
         <FlatList
           data={adatok}
           renderItem={({item}) => (
               <View>
                
-                  <TouchableOpacity >
-                    {orvosKiiras(item)}
+                  <TouchableOpacity>
+                    <Text style={styles.orvosnev}>{orvosKiiras(item)}</Text>
                   </TouchableOpacity>
                   
               </View>
@@ -65,27 +85,48 @@ export default function Foglalas2Screen({ navigation, route }) {
         />   
       </View>
 
-     
+        <View
+          style={{
+            borderBottomColor: 'white',
+            borderBottomWidth: 2,
+          }}
+        />
 
 
 
 
 
       <View style={styles.datum}>
-        <Text>Dátum kiválasztása</Text>
-            
+        
+          <Text style={styles.datumvalaszto}>Dátum kiválasztása</Text>
+        
+        
+        {/*    {show && (     */}
+        <DateTimePicker
+          value={date}
+          mode="date" // Choose 'time' or 'datetime' for other modes
+          display="default" // 'spinner', 'calendar', or 'default'
+          onChange={onChange}
+          
+        />
+        {/*    })}    */}
+        
       </View>
 
       <View style={styles.container2}>
 
-        <View style={styles.visszagomb}>
-          <Button  title="Vissza" onPress={() => navigation.goBack()} />
-        </View>
+        
+          <TouchableOpacity style={styles.gombok} onPress={() => navigation.goBack()}>
+            <Text style={styles.gombszoveg}>Vissza</Text>
+          </TouchableOpacity>
+        
         
 
-        <View style={styles.tovabbgomb}>
-          <Button title="Tovább" />
-        </View>
+        
+          <TouchableOpacity style={styles.gombok}>
+            <Text style={styles.gombszoveg}>Tovább</Text>
+          </TouchableOpacity>
+        
 
       </View>
       
@@ -96,38 +137,83 @@ export default function Foglalas2Screen({ navigation, route }) {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center', alignItems: 'center',
+    justifyContent: 'center',
     flex: 1,
     padding: 20,
+    backgroundColor:'#113F67'
+    
   },
   cim:{
-    flex:1,
-    backgroundColor:'blue'
+    flex:0.7,
+    //backgroundColor:'blue',
+    margin: 2,
+    paddingBottom:15
+    
+    
+
+  },
+  szakCim:{
+    color:'white',
+    fontSize:26,
+    fontFamily:'inter',
+    fontWeight:'600',
+
   },
   
   orvosok:{
-    flex:1,
-    backgroundColor:'green'
+    flex:3,
+    backgroundColor:'#113F67'
   },
+  orvosnev:{
+    color:'white',
+    fontSize:20,
+    fontFamily:'inter',
+    fontWeight:'400',
+    padding:10,
+    backgroundColor:'#113F67'
+  },
+
   datum:{
-    flex:4,
+    flex:10,
     backgroundColor:'orange',
     width:200
+    
   },
   datumvalaszto:{
-    
+    color:'white',
+    fontSize:20,
+    fontFamily:'inter',
+    fontWeight:'400',
     
   },
-  visszagomb:{
-    flex:1,
-    backgroundColor:'red'
+  gombszoveg:{
+    color:'#113F67',
+    fontSize:20,
+    fontFamily:'inter'
+    
+    
+    
+    
+    
+   
   },
-  tovabbgomb:{
+  gombok:{
     flex:1,
-    backgroundColor:'red'
+    alignItems:'center',
+    justifyContent:'center',
+    padding:10,
+    backgroundColor:'white',
+    borderRadius:50,
+    margin: 10,
+    padding:20,
+    width:150,
   },
   container2:{
-    flex:1,
-    flexDirection:'row'
+    flex:2,
+    flexDirection:'row',
+    width: 350,
+    justifyContent:'center',
+    alignItems:'center'
+
   }
 });

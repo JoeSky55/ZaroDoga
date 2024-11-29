@@ -18,11 +18,11 @@ export default function FoglalasScreen({navigation}) {
 
   const reszletekFv=(id,nev)=>{
     //alert(id)
-    navigation.navigate("Foglalas2",{id:id,nev:nev})
+    navigation.navigate(" ",{id:id,nev:nev})
 
   }
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'white' }}>
       <Text style={styles.cim}>Szakrendeléseink</Text>
 
       <FlatList

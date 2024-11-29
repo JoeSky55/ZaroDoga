@@ -27,7 +27,7 @@ export default function App() {
         <Stack.Screen name="Kapcsolat" component={KapcsolatScreen} />
         
         <Stack.Screen name="Időpontfoglalás" component={FoglalasScreen} />
-        <Stack.Screen name="Foglalas2" component={Foglalas2Screen} />
+        <Stack.Screen name=" " component={Foglalas2Screen} />
         
         
       </Stack.Navigator>
