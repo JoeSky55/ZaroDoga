@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, Image, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, Button, Image, StyleSheet, SafeAreaView, Touchable, TouchableOpacity } from 'react-native';
 
 export default function HomeScreen({navigation}) {
   return (
@@ -14,13 +14,31 @@ export default function HomeScreen({navigation}) {
       <View style={{flex: 1, alignItems: "center"}} >
       <Image source={require('../kepek/logo.jpg')} style={styles.logo} />
       </View>
-      <View style={{flex: 6}}>
-      
-          <Button style={styles.gombok} title="Időpontfoglalás" onPress={() => navigation.navigate("Időpontfoglalás")} /> 
-          <Button style={styles.gombok}title="Rendelőnk" onPress={() => navigation.navigate("Rendelőnk")}/> 
-          <Button style={styles.gombok}title="Orvosaink" onPress={() => navigation.navigate("Orvosaink")}/> 
-          <Button style={styles.gombok}title="Kapcsolat" onPress={() => navigation.navigate("Kapcsolat")}/> 
-        
+      <View style={{flex: 4}}>
+        <View >
+
+          
+            <TouchableOpacity style={styles.gombok} onPress={() => navigation.navigate("Időpontfoglalás")}>
+              <Text style={styles.gombokSzoveg}>Időpontfoglalás</Text>
+            </TouchableOpacity >
+
+            <TouchableOpacity style={styles.gombok} onPress={() => navigation.navigate("Rendelőnk")}>
+              <Text style={styles.gombokSzoveg}>Rendelőnk</Text>
+            </TouchableOpacity >
+
+            <TouchableOpacity style={styles.gombok} onPress={() => navigation.navigate("Orvosaink")}>
+              <Text style={styles.gombokSzoveg}>Orvosaink</Text>
+            </TouchableOpacity >
+
+            <TouchableOpacity style={styles.gombok} onPress={() => navigation.navigate("Kapcsolat")}>
+              <Text style={styles.gombokSzoveg}>Kapcsolat</Text>
+            </TouchableOpacity >
+            
+          
+           
+          
+           
+        </View>
      </View>
       
     </View>
@@ -46,6 +64,20 @@ const styles = StyleSheet.create({
     backgroundColor: 'red'
   },
   gombok:{
-    backgroundColor: 'blue'
+    padding:20,
+    margin:20,
+    width:300,
+    backgroundColor: '#113F67',
+    borderRadius:50,
+    color:'white',
+    alignSelf:'center'
+    
+  },
+  gombokSzoveg:{
+    alignSelf:'center',
+    color:'white',
+    fontFamily:'inter',
+    fontWeight:'400',
+    fontSize:24
   }
 });

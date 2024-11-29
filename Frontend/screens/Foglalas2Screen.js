@@ -29,36 +29,7 @@ export default function Foglalas2Screen({ navigation, route }) {
 
 
 
-    const [showDatePickerSingle, setShowDatePickerSingle] = useState(false)
-
-
-  const [date, setDate] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-
-  const openDatePickerSingle = () => setShowDatePickerSingle(true)
- 
-
-  const onCancelSingle = () => {
-    // You should close the modal in here
-    setShowDatePickerSingle(false)
-  }
-
-  const onConfirmSingle = (output) => {
-    // You should close the modal in here
-    setShowDatePickerSingle(false)
-
-    // The parameter 'output' is an object containing date and dateString (for single mode).
-    // For range mode, the output contains startDate, startDateString, endDate, and EndDateString
-    console.log(output)
-    setDate(output.dateString)
-  }
-
-  const [mentettId,setMentettId] = useState();
-  const orvosKivalasztas = () =>{
-   // setMentettId(orvos_id)
-  }
-  
+   
 
 
 
@@ -83,7 +54,7 @@ export default function Foglalas2Screen({ navigation, route }) {
           renderItem={({item}) => (
               <View>
                
-                  <TouchableOpacity onPress={orvosKivalasztas()}>
+                  <TouchableOpacity >
                     {orvosKiiras(item)}
                   </TouchableOpacity>
                   
@@ -94,9 +65,7 @@ export default function Foglalas2Screen({ navigation, route }) {
         />   
       </View>
 
-      <View>
-        <Text>{mentettId}</Text>
-      </View>
+     
 
 
 
@@ -104,32 +73,13 @@ export default function Foglalas2Screen({ navigation, route }) {
 
       <View style={styles.datum}>
         <Text>Dátum kiválasztása</Text>
-            <View style={styles.datumvalaszto}>
-                  {/* Single Date */}
-              <Button title={'Dátum kiválasztása'} onPress={openDatePickerSingle} />
-              <DatePicker
-                isVisible={showDatePickerSingle}
-                mode={'single'}
-                onCancel={onCancelSingle}
-
-                onConfirm={onConfirmSingle}
-                modalStyles={{
-                  height:400,
-                  width:200,
-                  margin:0,
-                  alignSelf: 'center',
-                  justifyContent: 'center',
-                  backgroundColor:'transparent'
-                }}
-              />
-              <Text style={{fontSize:20}}>{date}</Text>
-              </View>
+            
       </View>
 
       <View style={styles.container2}>
 
         <View style={styles.visszagomb}>
-          <Button  title="Go back" onPress={() => navigation.goBack()} />
+          <Button  title="Vissza" onPress={() => navigation.goBack()} />
         </View>
         
 
