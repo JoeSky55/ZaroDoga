@@ -2,7 +2,7 @@ import React from 'react';
 //import DateTimePicker from 'react-native-ui-datepicker';
 import DatePicker from 'react-native-neat-date-picker'
 import { useState, useEffect } from 'react';
-import { View, Text, Button, StyleSheet, FlatList } from 'react-native';
+import { View, Text, Button, StyleSheet, FlatList, Touchable, TouchableOpacity } from 'react-native';
 
 export default function Foglalas2Screen({ navigation, route }) {
 
@@ -54,8 +54,10 @@ export default function Foglalas2Screen({ navigation, route }) {
     setDate(output.dateString)
   }
 
-  
-
+  const [mentettId,setMentettId] = useState();
+  const orvosKivalasztas = () =>{
+   // setMentettId(orvos_id)
+  }
   
 
 
@@ -81,14 +83,24 @@ export default function Foglalas2Screen({ navigation, route }) {
           renderItem={({item}) => (
               <View>
                
-                  {orvosKiiras(item)}
-                
+                  <TouchableOpacity onPress={orvosKivalasztas()}>
+                    {orvosKiiras(item)}
+                  </TouchableOpacity>
+                  
               </View>
             )}
-          keyExtractor={item => item.orvos_id}
+          keyExtractor={item => item.altalanos_id}
           scrollEnabled={false}
         />   
       </View>
+
+      <View>
+        <Text>{mentettId}</Text>
+      </View>
+
+
+
+
 
       <View style={styles.datum}>
         <Text>Dátum kiválasztása</Text>
@@ -114,13 +126,21 @@ export default function Foglalas2Screen({ navigation, route }) {
               </View>
       </View>
 
+      <View style={styles.container2}>
 
-      <View style={styles.visszagomb}>
-        <Button  title="Go back" onPress={() => navigation.goBack()} />
+        <View style={styles.visszagomb}>
+          <Button  title="Go back" onPress={() => navigation.goBack()} />
+        </View>
+        
+
+        <View style={styles.tovabbgomb}>
+          <Button title="Tovább" />
+        </View>
+
       </View>
       
-      
     </View>
+    
   );
 }
 
@@ -134,10 +154,7 @@ const styles = StyleSheet.create({
     flex:1,
     backgroundColor:'blue'
   },
-  visszagomb:{
-    flex:1,
-    backgroundColor:'red'
-  },
+  
   orvosok:{
     flex:1,
     backgroundColor:'green'
@@ -150,5 +167,17 @@ const styles = StyleSheet.create({
   datumvalaszto:{
     
     
+  },
+  visszagomb:{
+    flex:1,
+    backgroundColor:'red'
+  },
+  tovabbgomb:{
+    flex:1,
+    backgroundColor:'red'
+  },
+  container2:{
+    flex:1,
+    flexDirection:'row'
   }
 });

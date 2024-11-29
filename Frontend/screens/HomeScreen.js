@@ -17,7 +17,9 @@ export default function HomeScreen({navigation}) {
       <View style={{flex: 6}}>
       
           <Button style={styles.gombok} title="Időpontfoglalás" onPress={() => navigation.navigate("Időpontfoglalás")} /> 
-          <Button style={styles.gombok}title="Go to details" onPress={() => navigation.navigate("Details")}/> 
+          <Button style={styles.gombok}title="Rendelőnk" onPress={() => navigation.navigate("Rendelőnk")}/> 
+          <Button style={styles.gombok}title="Orvosaink" onPress={() => navigation.navigate("Orvosaink")}/> 
+          <Button style={styles.gombok}title="Kapcsolat" onPress={() => navigation.navigate("Kapcsolat")}/> 
         
      </View>
       
@@ -28,6 +30,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    backgroundColor: '#fff'
   },
   logo:{
     width:'80%',

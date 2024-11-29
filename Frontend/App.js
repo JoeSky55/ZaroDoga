@@ -2,10 +2,13 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
-import DetailsScreen from './screens/DetailsScreen';
 import FoglalasScreen from './screens/FoglalasScreen';
 import Foglalas2Screen from './screens/Foglalas2Screen';
+import RendelonkScreen from './screens/RendelonkScreen';
+import OrvosainkScreen from './screens/OrvosainkScreen';
+import KapcsolatScreen from './screens/KapcsolatScreen';
 import { StyleSheet, Text, View, FlatList, Image} from 'react-native';
+
 
 
 
@@ -19,7 +22,9 @@ export default function App() {
       <Stack.Navigator initialRouteName="Főoldal">
         
         <Stack.Screen name="Főoldal" component={HomeScreen} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="Orvosaink" component={OrvosainkScreen} />
+        <Stack.Screen name="Rendelőnk" component={RendelonkScreen} />
+        <Stack.Screen name="Kapcsolat" component={KapcsolatScreen} />
         
         <Stack.Screen name="Időpontfoglalás" component={FoglalasScreen} />
         <Stack.Screen name="Foglalas2" component={Foglalas2Screen} />
