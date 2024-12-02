@@ -16,33 +16,55 @@ export default function Foglalas2Screen({ navigation, route }) {
         letoltes()
     },[])
 
+    
+
+
+
+
     const {id,nev}=route.params
     const [adatok,setAdatok]=useState([])
-
+  
+    //----------------------------------------------------
     //DatePicker statek
 
       const [date, setDate] = useState(new Date());
-      const [show, setShow] = useState(true);
-    
-      const onChange = (event, selectedDate) => {
+      //const [show, setShow] = useState(true);
+
+      const datumok = (event, selectedDate ) => {
         const currentDate = selectedDate || date;
        
-        setDate(currentDate);
       }
 
 
+      
 
+      
+
+
+
+
+      //---------------------------------------------------
     function orvosKiiras(item){
       return item.szakterulet_id === id;
     }
 
+  
+    const [orvosId, SetOrvosId] = useState(null)
+    
 
+
+
+    const szinValtoztat = (orvosid) =>{
+      
+      //alert(orvosid)
+      SetOrvosId(orvosid)
       
       
+    }
    
-
-
-
+    
+    
+   
 
 
 
@@ -69,11 +91,21 @@ export default function Foglalas2Screen({ navigation, route }) {
         <FlatList
           data={adatok.filter(orvos => orvos.szakterulet_id === id)}
           renderItem={({ item }) => (
-            <TouchableOpacity>
-              <Text style={styles.orvosnev}>{item.nev}</Text>
-            </TouchableOpacity>
+            <View>
+            {item.orvos_id == orvosId ? <TouchableOpacity onPress={()=>szinValtoztat(item.orvos_id)}>
+            <Text style={styles.orvosnevvaltoztatva}>{item.nev}</Text>
+          </TouchableOpacity> 
+          :
+
+          <TouchableOpacity onPress={()=>szinValtoztat(item.orvos_id)}>
+          <Text style={styles.orvosnev}>{item.nev}</Text>
+        </TouchableOpacity>
+        }
+          </View>  
           )}
           keyExtractor={(item) => item.altalanos_id.toString()}
+          scrollEnabled={false}
+          
         />   
       </View>
 
@@ -86,24 +118,46 @@ export default function Foglalas2Screen({ navigation, route }) {
 
 
 
-
+      <Text style={styles.orvosnev}>Dátum kiválasztása</Text>
 
       <View style={styles.datum}>
-        
-          <Text style={styles.datumvalaszto}>Dátum kiválasztása</Text>
-        
-        
-        {/*    {show && (     */}
-        <DateTimePicker
-          value={date}
-          mode="date" // Choose 'time' or 'datetime' for other modes
-          display="default" // 'spinner', 'calendar', or 'default'
-          onChange={onChange}
+
+        <View style={styles.kivalasztottDatum}>
+          <Text style={styles.kivalasztottDatumSzoveg}>Kiválasztott dátum:</Text>
+        </View>
+
+        <View style={styles.datepicker}>
+          <DateTimePicker
+            value={date}
+            mode="date" // Choose 'time' or 'datetime' for other modes
+            display="default" // 'spinner', 'calendar', or 'default'
+            onChange={datumok}
+            minimumDate={new Date()}
+            
+          />
           
-        />
-        {/*    })}    */}
+        </View>
+        
+        
         
       </View>
+
+
+
+
+
+
+
+      <View style={styles.idopontok}>
+          
+      </View>
+
+
+
+
+
+
+
 
       <View style={styles.container2}>
 
@@ -153,8 +207,9 @@ const styles = StyleSheet.create({
   },
   
   orvosok:{
-    flex:3,
-    backgroundColor:'#113F67'
+    flex:2,
+    backgroundColor:'orvosSzin',
+    margin:3
   },
   orvosnev:{
     color:'white',
@@ -162,20 +217,55 @@ const styles = StyleSheet.create({
     fontFamily:'inter',
     fontWeight:'400',
     padding:10,
-    backgroundColor:'#113F67'
+    backgroundColor: '#113F67'
   },
-
-  datum:{
-    flex:10,
-    backgroundColor:'orange',
-    width:200
-    
-  },
-  datumvalaszto:{
-    color:'white',
+  orvosnevvaltoztatva:{
+    backgroundColor: 'white',
+    color: '#113F67',
     fontSize:20,
     fontFamily:'inter',
     fontWeight:'400',
+    padding:10,
+    backgroundColor: 'white',
+    borderRadius:50
+  },
+
+  datum:{
+    flex:1,
+    backgroundColor:'#113F67',
+    width:350,
+    
+    flexDirection:'row'
+    
+  },
+  kivalasztottDatum:{
+    flex:1,
+    backgroundColor:'white',
+    alignContent:'center',
+    justifyContent:'center',
+    //borderRadius:50,
+    
+  },
+  kivalasztottDatumSzoveg:{
+    color:'#113F67',
+    fontSize:18,
+    fontFamily:'inter',
+    fontWeight:'400',
+    padding:5,
+    
+    
+    
+  },
+  datepicker:{
+    flex:1,
+    backgroundColor:'white',
+    alignContent:'center',
+    justifyContent:'center',
+    //borderRadius:50,
+  },
+  idopontok:{
+    flex:3,
+    backgroundColor:'blue'
     
   },
   gombszoveg:{
