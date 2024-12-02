@@ -32,11 +32,8 @@ export default function Foglalas2Screen({ navigation, route }) {
 
 
 
-    function orvosKiiras(adatok){
-      if (adatok.szakterulet_id == id ){
-        return <Text>{adatok.nev}</Text>
-      }
-      else return null
+    function orvosKiiras(item){
+      return item.szakterulet_id === id;
     }
 
 
@@ -70,18 +67,13 @@ export default function Foglalas2Screen({ navigation, route }) {
       <View style={styles.orvosok}>
       
         <FlatList
-          data={adatok}
-          renderItem={({item}) => (
-              <View>
-               
-                  <TouchableOpacity>
-                    <Text style={styles.orvosnev}>{orvosKiiras(item)}</Text>
-                  </TouchableOpacity>
-                  
-              </View>
-            )}
-          keyExtractor={item => item.altalanos_id}
-          scrollEnabled={false}
+          data={adatok.filter(orvos => orvos.szakterulet_id === id)}
+          renderItem={({ item }) => (
+            <TouchableOpacity>
+              <Text style={styles.orvosnev}>{item.nev}</Text>
+            </TouchableOpacity>
+          )}
+          keyExtractor={(item) => item.altalanos_id.toString()}
         />   
       </View>
 
