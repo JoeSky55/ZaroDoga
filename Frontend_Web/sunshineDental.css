@@ -1,0 +1,410 @@
+/*footer_______________________________*/
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    color:  #113F67;
+    border-top: 1px solid #ddd; 
+}
+
+/*Fooldal______________________*/
+.FooldalLogo{
+    width: 600px;
+    margin-top: 280px;
+}
+#FooldalKeret{
+    
+    margin-top: 15px;
+}
+#FooldalSzlogen{
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+    color: #113F67;
+    margin-top: 10px;
+    font-size: 15px;
+}
+.FooldalGomb{
+
+    background-color: #113F67;
+    color: white;
+    border-radius: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: smaller;
+    border: 0px;
+    padding: 5px;
+    margin-top: 10px;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+.FooldalGomb:hover {
+    background-color: lightskyblue; 
+    border: 0px;
+    color: black;
+}
+/* Telefonos méret*/
+@media (max-width: 768px) {
+    .FooldalLogo {
+        width: 80%;
+        margin-top: 200px;
+        
+    }
+
+    #FooldalSzlogen {
+        font-size: 12px;
+        margin-top: 5px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .FooldalGomb {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+
+    footer {
+        font-size: 12px;
+        padding: 8px 0;
+    }
+}
+
+/*Menu______________________________*/
+.sunshineLogo{
+    width: 250px;
+    margin-top: 15px;
+}
+#kezdolapMenu{
+    font-weight: bold;
+    color: #113F67;
+}
+#kezdolapMenu:hover{
+    color: lightskyblue;
+}
+.menuk{
+    color: #113F67;
+}
+.menuk:hover{
+    color: lightskyblue;
+}
+#menu-indicator {
+    position: relative;
+    height: 3px;
+    background-color: #113F67;
+    width: 0;
+    transition: all 0.3s ease;
+    top: 3px;
+    margin-top: -3px;
+}
+
+/*Orvosok.html_______________*/
+.containerOrvosok {
+    justify-content: center;
+}
+.contentOrvosok {
+    max-width: 1200px;
+    padding-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.orvosokMunka{
+    width: 200px;
+    margin-left: 20px;
+    height: 140px;
+}
+.orvosKep{
+    width: 250px;
+    border-radius: 150px;
+    border: 1px solid black;
+    margin-top: 12px;
+}
+.orvosNev{
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 12px;
+    font-weight: bold;
+}
+.orvosSzakterulet{
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.adatok{
+    background-color: lightcyan;
+    padding: 25px;
+    margin: 20px;
+}
+/*Idopntok.html_______________*/
+.containerIdopontok {
+    justify-content: center;
+}
+.contentIdopontok {
+    max-width: 900px;
+    padding-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#idopontSzabalyzat{
+    background-color: lightgray;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+#szakrendelesek{
+    width: 350px;
+    margin-right: 20px;
+    background-color: lightcyan;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-left: 40px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.szakteruletValasztas{
+    display: flex;
+    align-items: center; /* Függőleges középre igazítás */
+    gap: 10px; /* Térköz az elemek között (opcionális) */
+    margin-bottom: 40px;
+}
+.divider {
+    flex-grow: 1;
+    border-top: 1px solid #000; /* Vízszintes vonal megjelenítése */
+    margin: 0 10px; /* Térköz a select és a button között */
+    margin-top: 15px;
+}
+.foglalasGomb{
+    background-color: #113F67;
+    color: white;
+    border-radius: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 0px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 15px;
+    margin-right: 40px;
+    transition: background-color 0.3s;
+}
+.foglalasGomb:hover{
+    background-color: lightskyblue; 
+    border: 0px;
+    color: #000;
+}
+.orvosGomb
+{
+    background-color: #113F67;
+    color: white;
+    border-radius: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 0px;
+    padding: 5px;
+    padding-left: 23px;
+    padding-right: 23px;
+    margin-right: 40px;
+    transition: background-color 0.3s;
+}
+.orvosGomb:hover
+{
+    background-color: lightskyblue; 
+    border: 0px;
+    color: #000;
+}
+#datumValasztas{
+    margin-left: 40px;
+    border: 2px solid black;
+    background-color: lightcyan;
+    border-radius: 5px;
+    width: 250px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    margin-top: 15px;
+}
+.szabad-gombElso
+{
+    margin: 5px;
+    padding: 10px;
+    background-color: #113F67;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    margin-top: 20px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 40px;
+    font-weight: bold;
+}
+.szabad-gombElso:hover {
+    background-color: lightskyblue;
+    color: black; 
+    font-weight: bold;
+}
+.szabad-gomb
+{
+    margin: 5px;
+    padding: 10px;
+    background-color: #113F67;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: bold;
+}
+.szabad-gomb:hover {
+    background-color: lightskyblue;
+    color: black; 
+    font-weight: bold;
+}
+.foglalt-gombElso
+{
+    margin: 5px;
+    padding: 10px;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    margin-top: 20px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 40px;
+}
+.foglalt-gomb
+{
+    margin: 5px;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    margin-top: 20px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: bold;
+}
+#fNev
+{
+    color: gray;
+    border-radius: 3px;
+    border: 1px solid #113F67;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 40px;
+    width: 260px;
+}
+#fEmail{
+    color: gray;
+    border-radius: 3px;
+    border: 1px solid #113F67;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 40px;
+    width: 260px;
+}
+#fTelefonKezdete{
+    color: black;
+    border-radius: 3px;
+    border: 1px solid #113F67;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 40px;
+    width: 60px;
+    padding-bottom: 2px;
+}
+#fTelefon{
+    color: gray;
+    border-radius: 3px;
+    border: 1px solid #113F67;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 40px;
+    margin-left: 7px;
+}
+#fDatum{
+    color: black;
+    border-radius: 3px;
+    border: 1px solid #113F67;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 10px;
+    font-weight: bold; 
+    width: 170px;
+}
+#fIdopont{
+    color: black;
+    border-radius: 3px;
+    border: 1px solid #113F67;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 7px;
+    font-weight: bold;
+    width: 75px; 
+}
+#fOrvos{
+    color: black;
+    border-radius: 3px;
+    border: 1px solid #113F67;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    width: 255px;
+    margin-left: 10px; 
+}
+#fSzakrendeles{
+    color: black;
+    border-radius: 3px;
+    border: 1px solid #113F67;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    width: 255px;
+    margin-left: 10px; 
+}
+.FoglalasGomb
+{
+    margin: 5px;
+    padding: 10px;
+    background-color: #113F67;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 4px;
+    padding-left: 70px;
+    padding-right: 70px;
+    margin-left: 40px;
+    transition: background-color 0.3s;
+    font-size: 15px;
+}
+.FoglalasGomb:hover
+{
+    background-color: lightskyblue;
+    color: black;
+}
+.visszaGomb
+{
+    margin: 5px;
+    padding: 10px;
+    background-color: #113F67;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 4px;
+    padding-left: 57px;
+    padding-right: 57px;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+    font-size: 15px;
+}
+.visszaGomb:hover
+{
+    background-color: red;
+    color: black;
+}
+
