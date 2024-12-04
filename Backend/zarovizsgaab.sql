@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Nov 28. 11:33
+-- Létrehozás ideje: 2024. Dec 04. 12:39
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -34,18 +34,22 @@ CREATE TABLE `idopont_foglalas` (
   `if_szakrendelesid` int(11) NOT NULL,
   `if_orvosid` int(11) NOT NULL,
   `if_datum` date NOT NULL,
-  `if_idopont` varchar(255) NOT NULL
+  `if_idopont` varchar(255) NOT NULL,
+  `if_nev` varchar(255) NOT NULL,
+  `if_email` varchar(255) NOT NULL,
+  `if_telefon` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `idopont_foglalas`
 --
 
-INSERT INTO `idopont_foglalas` (`if_id`, `if_szakrendelesid`, `if_orvosid`, `if_datum`, `if_idopont`) VALUES
-(1, 1, 1, '2024-11-25', '17:30'),
-(2, 6, 4, '2024-11-26', '18:00'),
-(3, 3, 4, '2024-11-25', '18:30'),
-(4, 6, 4, '2024-11-26', '18:30');
+INSERT INTO `idopont_foglalas` (`if_id`, `if_szakrendelesid`, `if_orvosid`, `if_datum`, `if_idopont`, `if_nev`, `if_email`, `if_telefon`) VALUES
+(1, 1, 1, '2024-11-25', '17:30', 'Gál József', 'galjozsika01@gmail.com', 301602801),
+(2, 6, 4, '2024-11-26', '18:00', 'Körtvélyesi Bálint', 'kortvelyesi2015@gmail.com', 707458911),
+(3, 3, 4, '2024-11-25', '18:30', 'Gábori Levente', 'levente.gabori@gmail.com', 304567890),
+(5, 3, 4, '2024-11-25', '19:30', 'Kovács Alíz', 'aliz.kovacs@freemail.com', 209876543),
+(7, 2, 6, '2024-11-29', '19:00', 'Lakatos Botond', 'botiOSU07@gmail.com', 307913451);
 
 -- --------------------------------------------------------
 
@@ -179,7 +183,7 @@ ALTER TABLE `szakteruletek`
 -- AUTO_INCREMENT a táblához `idopont_foglalas`
 --
 ALTER TABLE `idopont_foglalas`
-  MODIFY `if_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `if_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT a táblához `orvosok`

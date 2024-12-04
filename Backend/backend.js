@@ -108,7 +108,7 @@ app.get('/szakteruletAdatok', (req, res) => {
 
 app.post('/szakteruletKeres', (req, res) => {
   kapcsolat()
-  connection.query(`SELECT szakteruletek.szak_id, szakteruletek.szak_nev, GROUP_CONCAT(orvosok.nev ORDER BY orvosok.nev SEPARATOR ' , ') AS orvosok FROM szakteruletek INNER JOIN orvos_szakterulet ON orvos_szakterulet.szakterulet_id = szakteruletek.szak_id INNER JOIN orvosok ON orvos_szakterulet.orvos_id = orvosok.orvos_id WHERE szakteruletek.szak_nev = "${req.body.bevitel1}" GROUP BY szakteruletek.szak_id, szakteruletek.szak_nev;`, (err, rows, fields) => {
+  connection.query(`SELECT orvosok.orvos_id AS orvosId, szakteruletek.szak_id AS szakTeruletId, szakteruletek.szak_nev, orvosok.nev AS orvos FROM szakteruletek INNER JOIN orvos_szakterulet ON orvos_szakterulet.szakterulet_id = szakteruletek.szak_id INNER JOIN orvosok ON orvos_szakterulet.orvos_id = orvosok.orvos_id WHERE szakteruletek.szak_nev = "${req.body.bevitel1}"`, (err, rows, fields) => {
       if (err) {
           console.log(err)
           res.status(500).send("Hiba")
@@ -136,6 +136,26 @@ app.post('/foglaltIdopontok', (req, res) => {
     connection.end()
 })
 
+app.post('/betegFelvitel', (req, res) => {
+    kapcsolat()
+    connection.query(`INSERT INTO idopont_foglalas VALUES (NULL,?,?,?,?,?,?,?);
+    `, [req.body.bevitel1, req.body.bevitel2, req.body.bevitel3, req.body.bevitel4, req.body.bevitel5, req.body.bevitel6, req.body.bevitel7],
+    (err, rows, fields) => {
+       if (err)    
+       {
+            console.log("Hiba")
+            console.log(err)
+            res.status(500).send("Hiba")
+       }
+       else
+       {
+            console.log("Sikeres felvitel!")
+            res.status(200).send("Sikeres felvitel")
+       }
+      })
+      
+      connection.end()
+  })
 
 app.get('/idopontok', (req, res) => {
   kapcsolat()

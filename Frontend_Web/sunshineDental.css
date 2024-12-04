@@ -238,6 +238,7 @@ footer{
     padding-right: 20px;
     margin-left: 40px;
     font-weight: bold;
+    transition: background-color 0.3s;
 }
 .szabad-gombElso:hover {
     background-color: lightskyblue;

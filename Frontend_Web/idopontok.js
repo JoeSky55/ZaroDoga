@@ -27,7 +27,7 @@ function myDisplay(y)
        `
        <option value="${elem.szak_nev}">${elem.szak_nev}</option>
        `
-    }n 
+    }
 }
 function Kivalasztas() {
     document.getElementById("orvosokCim").innerHTML = 
@@ -49,35 +49,32 @@ function Kivalasztas() {
         keresettOrvos.innerHTML = ''; 
 
         y.forEach(elem => {
-            var orvosok = elem.orvosok.split(' , '); // Szétválasztjuk az orvosok neveit
-            orvosok.forEach(orvos => {
                 keresettOrvos.innerHTML += 
                 `
                 <span style="display: flex; align-items: center;">
-                    <span style="margin-top: 10px;">${orvos}</span>
+                    <span style="margin-top: 10px;">${elem.orvos}</span>
                     <hr style="flex-grow: 1; border: none; border-top: 1px solid #000; margin: 0 10px; margin-top: 10px;">
-                    <button style="margin-top: 10px;" class="orvosGomb" onclick="orvosKivalaszt('${elem.szakTerulet}', '${orvos}')">Tovább</button>
+                    <button style="margin-top: 10px;" class="orvosGomb" onclick="orvosKivalaszt('${elem.szakTeruletId}', '${elem.orvos}', '${elem.orvosId}')">Tovább</button>
                 </span>
                 <br>
                 `;
                 //<button onclick="orvosKivalaszt(${JSON.stringify(elem)}, '${orvos}')" 
-            });
         });
     })
     .catch(error => console.error('Error:', error));
 }
 
 
-function orvosKivalaszt(szakTerulet, orvos) {
+function orvosKivalaszt(szakTeruletId, orvos, orvosId) {
     document.getElementById("idopontokCim").innerHTML = 
     `
     <h3 style="margin-top: 15px; margin-left: 40px; margin-right: 40px; background-color: lightcyan; padding: 10px; border-radius: 10px;"><span style="font-size: 23px;">❸ </span>Időpontfoglalás</h3>
-    <input type="date" id="datumValasztas" min="2024-11-25" max="2024-11-30" name="datumValasztas" onchange="dátumKiválasztása('${szakTerulet}', '${orvos}')">
+    <input type="date" id="datumValasztas" min="2024-11-25" max="2024-11-30" name="datumValasztas" onchange="dátumKiválasztása('${szakTeruletId}', '${orvos}', '${orvosId}')">
     `;
     document.getElementById("idopontok").innerHTML = '';
 }
 
-function dátumKiválasztása(szakTerulet, orvos) {
+function dátumKiválasztása(szakTeruletId, orvos, orvosId) {
         var datum = document.getElementById("datumValasztas").value;
 
         var adat = {
@@ -109,7 +106,7 @@ function dátumKiválasztása(szakTerulet, orvos) {
         else{
             idopontok.innerHTML += 
             `
-            <button class="szabad-gombElso" onclick="idopontKivalaszt('17:00','${orvos}')">17:00</button>
+            <button class="szabad-gombElso" onclick="idopontKivalaszt('17:00','${orvos}', '${orvosId}', '${szakTeruletId}')">17:00</button>
             `
         }
         //17:30____________________________
@@ -122,7 +119,7 @@ function dátumKiválasztása(szakTerulet, orvos) {
         else{
             idopontok.innerHTML += 
             `
-            <button class="szabad-gomb" onclick="idopontKivalaszt('17:30','${orvos}')">17:30</button>
+            <button class="szabad-gomb" onclick="idopontKivalaszt('17:30','${orvos}', '${orvosId}', '${szakTeruletId}')">17:30</button>
             `
         }
         //18:00____________________________
@@ -135,7 +132,7 @@ function dátumKiválasztása(szakTerulet, orvos) {
         else{
             idopontok.innerHTML += 
             `
-            <button class="szabad-gomb" onclick="idopontKivalaszt('18:00','${orvos}')">18:00</button>
+            <button class="szabad-gomb" onclick="idopontKivalaszt('18:00','${orvos}', '${orvosId}', '${szakTeruletId}')">18:00</button>
             `
         }
         //18:30____________________________
@@ -148,7 +145,7 @@ function dátumKiválasztása(szakTerulet, orvos) {
         else{
             idopontok.innerHTML += 
             `
-            <button class="szabad-gomb" onclick="idopontKivalaszt('18:30','${orvos}')">18:30</button>
+            <button class="szabad-gomb" onclick="idopontKivalaszt('18:30','${orvos}', '${orvosId}', '${szakTeruletId}')">18:30</button>
             `
         }
         //19:00____________________________
@@ -161,14 +158,27 @@ function dátumKiválasztása(szakTerulet, orvos) {
         else{
             idopontok.innerHTML += 
             `
-            <button class="szabad-gomb" onclick="idopontKivalaszt('19:00','${orvos}')">19:00</button>
+            <button class="szabad-gomb" onclick="idopontKivalaszt('19:00','${orvos}', '${orvosId}', '${szakTeruletId}')">19:00</button>
+            `
+        }
+        //19:30____________________________
+        if (idopontokTomb.includes("19:30") ) {
+            idopontok.innerHTML += 
+            `
+            <button class="foglalt-gomb" onclick="alert('Az időpont már foglalt')">19:30</button>
+            `
+        }
+        else{
+            idopontok.innerHTML += 
+            `
+            <button class="szabad-gomb" onclick="idopontKivalaszt('19:30','${orvos}', '${orvosId}', '${szakTeruletId}')">19:30</button>
             `
         }
     })
     .catch(error => console.error('Error:', error));
 }
 
-function idopontKivalaszt(idopont, orvos) {
+function idopontKivalaszt(idopont, orvos, orvosId, szakTeruletId) {
 
     var szakrendeles = document.getElementById("szakrendelesek").value;
     var datum = document.getElementById("datumValasztas").value;
@@ -183,6 +193,7 @@ function idopontKivalaszt(idopont, orvos) {
     <br>
     <input type="text" id="fEmail" value="E-mail cím *" >
     <input type="text" id="fOrvos" value="${orvos}" readonly >
+    <input type="text" id="fOrvos" value="${orvosId}" readonly >
     <br>
     <br>
     <select name="" id="fTelefonKezdete">
@@ -196,16 +207,34 @@ function idopontKivalaszt(idopont, orvos) {
     </select>
     <input type="text" id="fTelefon" value="Telefonszám *" >
     <input type="text" id="fSzakrendeles" value="${szakrendeles}" readonly >
+    <input type="text" id="fOrvos" value="${szakTeruletId}" readonly >
     <br>
     <br>
-    <button class="FoglalasGomb" onclick="Felvitel()">Foglalás véglegesítése</button>
+    <button class="FoglalasGomb" onclick="Felvitel('${szakTeruletId}', '${orvosId}', '${datum}', '${idopont}')">Foglalás véglegesítése</button>
     <button class="visszaGomb" onclick="visszaAzElejere()">Foglalás újrakezdése</button>
     `
     //alert(`Kiválasztott időpont: ${idopont}`);
 }
-function Felvitel()
-{
-    
+function Felvitel(szakTeruletId, orvosId, datum, idopont) {
+    var adatok = {
+        "bevitel1": szakTeruletId,
+        "bevitel2": orvosId,
+        "bevitel3": datum,
+        "bevitel4": idopont,
+        "bevitel5": document.getElementById("fNev").value,
+        "bevitel6": document.getElementById("fEmail").value,
+        "bevitel7": document.getElementById("fTelefon").value,
+    };
+    fetch("http://localhost:3000/betegFelvitel", {
+        method: "POST",
+        body: JSON.stringify(adatok),
+        headers: { "Content-type": "application/json; charset=UTF-8" }
+    })
+    .then(x => x.text())
+    .then(y => {
+        document.getElementById("visszajelzes").innerHTML = y;
+    })
+    .catch(error => console.error('Error:', error));
 }
 
 function visszaAzElejere() {
