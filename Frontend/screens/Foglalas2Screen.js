@@ -57,21 +57,27 @@ export default function Foglalas2Screen({ navigation, route }) {
       return item.szakterulet_id === id;
     }
 
-  
+
+
     const [orvosId, SetOrvosId] = useState(null)
-    
-
-
-
-    const szinValtoztat = (orvosid) =>{
+    const szinValtoztat = (orvosid, idopont) =>{
       
       //alert(orvosid)
       SetOrvosId(orvosid)
-      
+      SetIdopont(idopont)
       
     }
-   
+
+    const [idopont, SetIdopont] = useState(null)
     
+   
+    const szinValtoztatIdopont = (idopont) =>{
+      
+      //alert(idopont)
+      
+      SetIdopont(idopont)
+      
+    } 
     
    
 
@@ -162,30 +168,31 @@ export default function Foglalas2Screen({ navigation, route }) {
 
       <View style={styles.idopont_gombok}>
           
-          <TouchableOpacity style={styles.gombstilus}>
+          
+          <TouchableOpacity style={styles.gombstilus} onPress={()=> szinValtoztatIdopont('17:00')}>
             <Text style={styles.idopontgombszoveg}>17:00</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.gombstilus}>
+          <TouchableOpacity style={styles.gombstilus} onPress={()=> szinValtoztatIdopont('17:30')}>
             <Text style={styles.idopontgombszoveg}>17:30</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.gombstilus}>
+          <TouchableOpacity style={styles.gombstilus} onPress={()=> szinValtoztatIdopont('18:00')}>
             <Text  style={styles.idopontgombszoveg}>18:00</Text>
           </TouchableOpacity>
 
           
         </View>
         <View style={styles.idopont_gombok}>
-        <TouchableOpacity style={styles.gombstilus_2}>
+        <TouchableOpacity style={styles.gombstilus_2} onPress={()=> szinValtoztatIdopont('18:30')}>
             <Text  style={styles.idopontgombszoveg}>18:30</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.gombstilus_2}>
+          <TouchableOpacity style={styles.gombstilus_2} onPress={()=> szinValtoztatIdopont('19:00')}>
             <Text  style={styles.idopontgombszoveg}>19:00</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.gombstilus_2}>
+          <TouchableOpacity style={styles.gombstilus_2} onPress={()=> szinValtoztatIdopont('19:30')}>
             <Text  style={styles.idopontgombszoveg}>19:30</Text>
           </TouchableOpacity>
           </View>
@@ -216,7 +223,9 @@ export default function Foglalas2Screen({ navigation, route }) {
 
       </View>
 
-
+          <View>
+            <Text>{idopont}</Text>
+          </View>
 
 
 
