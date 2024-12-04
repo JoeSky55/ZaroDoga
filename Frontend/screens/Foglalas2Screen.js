@@ -158,39 +158,45 @@ export default function Foglalas2Screen({ navigation, route }) {
 
 
       <View style={styles.idopontok}>
-          {/*
-        <View>
+
+
+      <View style={styles.idopont_gombok}>
           
-          <TouchableOpacity style={styles.idopont_gombok} >
-            <Text>17:00</Text>
+          <TouchableOpacity style={styles.gombstilus}>
+            <Text style={styles.idopontgombszoveg}>17:00</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.idopont_gombok} >
-            <Text>17:30</Text>
+          <TouchableOpacity style={styles.gombstilus}>
+            <Text style={styles.idopontgombszoveg}>17:30</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.idopont_gombok} >
-            <Text>18:00</Text>
+          <TouchableOpacity style={styles.gombstilus}>
+            <Text  style={styles.idopontgombszoveg}>18:00</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.idopont_gombok} >
-            <Text>18:30</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.idopont_gombok} >
-            <Text>19:00</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.idopont_gombok} >
-            <Text>19:30</Text>
-          </TouchableOpacity>
-
+          
         </View>
+        <View style={styles.idopont_gombok}>
+        <TouchableOpacity style={styles.gombstilus_2}>
+            <Text  style={styles.idopontgombszoveg}>18:30</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.gombstilus_2}>
+            <Text  style={styles.idopontgombszoveg}>19:00</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.gombstilus_2}>
+            <Text  style={styles.idopontgombszoveg}>19:30</Text>
+          </TouchableOpacity>
+          </View>
+        
+          {/*
+        
           */}
+
+
+          {/* 
         <View >
-
-          
-
             <FlatList
             data={adatok_2}
             renderItem={({item}) => (
@@ -206,6 +212,8 @@ export default function Foglalas2Screen({ navigation, route }) {
             keyExtractor={item=> item.if_id}
             />
           </View>
+          */}
+
       </View>
 
 
@@ -288,9 +296,11 @@ const styles = StyleSheet.create({
 
   datum:{
     flex:1,
-    backgroundColor:'#113F67',
+    backgroundColor:'white',
     width:350,
-    
+    borderRadius:20,
+    alignContent:'center',
+    justifyContent:'center',
     flexDirection:'row'
     
   },
@@ -300,6 +310,7 @@ const styles = StyleSheet.create({
     alignContent:'center',
     justifyContent:'center',
     //borderRadius:50,
+    borderRadius:20,
     
   },
   kivalasztottDatumSzoveg:{
@@ -318,18 +329,49 @@ const styles = StyleSheet.create({
     alignContent:'center',
     justifyContent:'center',
     //borderRadius:50,
+    borderRadius:20,
   },
   idopontok:{
 
     flex:3,
-    backgroundColor:'green',
-    //flexDirection:'row'
+    backgroundColor:'#113F67',
+    
     
   },
   idopont_gombok:{
+    flexDirection:'row',
     flex:1,
-    backgroundColor:'white'
+    backgroundColor:'#113F67',
     
+    
+  },
+  gombstilus:{
+    
+    flex:1,
+    backgroundColor:'white',
+    justifyContent:'center',
+    alignItems:'center',
+    margin:10,
+    borderRadius:20,
+
+    
+    
+  },
+  gombstilus_2:{
+    
+    flex:1,
+    backgroundColor:'white',
+    justifyContent:'center',
+    alignItems:'center',
+    margin:10,
+    borderRadius:20,
+    
+    
+  },
+  idopontgombszoveg:{
+    color:'#113F67',
+    fontSize:15,
+    fontFamily:'inter'
   },
   gombszoveg:{
     color:'#113F67',
