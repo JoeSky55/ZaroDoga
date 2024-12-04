@@ -2,6 +2,7 @@ import React from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet, FlatList, TouchableOpacity, } from 'react-native';
+import { setStatusBarBackgroundColor } from 'expo-status-bar';
 
 export default function Foglalas2Screen({ navigation, route }) {
 
@@ -37,12 +38,15 @@ export default function Foglalas2Screen({ navigation, route }) {
     //DatePicker statek
 
       const [date, setDate] = useState(new Date());
+      const [datumMentese, setDatumMentese] = useState();
       //const [show, setShow] = useState(true);
 
       const datumok = (event, selectedDate ) => {
         const currentDate = selectedDate || date;
-       
+        setDate(currentDate)
+        setDatumMentese(currentDate.toLocaleDateString())
       }
+      
 
 
       
@@ -69,13 +73,25 @@ export default function Foglalas2Screen({ navigation, route }) {
     }
 
     const [idopont, SetIdopont] = useState(null)
-    
+    const [foglalt, setFoglalt] = useState('')
    
-    const szinValtoztatIdopont = (idopont) =>{
+    const szinValtoztatIdopont = (idopont, foglalt) =>{
       
       //alert(idopont)
-      
       SetIdopont(idopont)
+
+      const nemElerheto = adatok_2.some(
+        (adat) => adat.if_orvosid === orvosId && adat.if_idopont === idopont
+      );
+    
+      if (nemElerheto) {
+        alert('nem elérhető');
+        SetIdopont(null)
+        
+
+      } else {
+        SetIdopont(idopont)
+      }
       
     } 
     
@@ -147,7 +163,8 @@ export default function Foglalas2Screen({ navigation, route }) {
             mode="date" // Choose 'time' or 'datetime' for other modes
             display="default" // 'spinner', 'calendar', or 'default'
             onChange={datumok}
-            minimumDate={new Date()}
+            //minimumDate={new Date()}
+            //onTouchEnd={datumtarol()}
             
           />
           
@@ -224,7 +241,10 @@ export default function Foglalas2Screen({ navigation, route }) {
       </View>
 
           <View>
-            <Text>{idopont}</Text>
+            <Text>Időpont:  {idopont}</Text>
+            <Text>Szakrendelés id: {id}</Text>
+            <Text>Orvos Id: {orvosId}</Text>
+            <Text>Dátum:  {datumMentese}</Text>
           </View>
 
 
