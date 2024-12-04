@@ -73,7 +73,7 @@ export default function Foglalas2Screen({ navigation, route }) {
     }
 
     const [idopont, SetIdopont] = useState(null)
-    const [foglalt, setFoglalt] = useState('')
+    //const [foglalt, setFoglalt] = useState('')
    
     const szinValtoztatIdopont = (idopont, foglalt) =>{
       
@@ -81,7 +81,7 @@ export default function Foglalas2Screen({ navigation, route }) {
       SetIdopont(idopont)
 
       const nemElerheto = adatok_2.some(
-        (adat) => adat.if_orvosid === orvosId && adat.if_idopont === idopont || adat.if_idopont === adat.if_orvosid
+        (adat) => adat.if_orvosid === orvosId && adat.if_idopont === idopont 
       );
     
       if (nemElerheto) {
@@ -94,6 +94,8 @@ export default function Foglalas2Screen({ navigation, route }) {
       }
       
     } 
+    
+      
     
    
 
