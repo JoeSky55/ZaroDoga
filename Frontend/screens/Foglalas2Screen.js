@@ -81,7 +81,7 @@ export default function Foglalas2Screen({ navigation, route }) {
       SetIdopont(idopont)
 
       const nemElerheto = adatok_2.some(
-        (adat) => adat.if_orvosid === orvosId && adat.if_idopont === idopont
+        (adat) => adat.if_orvosid === orvosId && adat.if_idopont === idopont || adat.if_idopont === adat.if_orvosid
       );
     
       if (nemElerheto) {
