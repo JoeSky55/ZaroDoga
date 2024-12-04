@@ -12,8 +12,16 @@ export default function Foglalas2Screen({ navigation, route }) {
       //alert(JSON.stringify(y))
     }
 
+    const letoltes_2=async ()=>{
+      const x=await fetch("http://192.168.10.62:3000/idopontok")
+      const y=await x.json()
+      setAdatok_2(y)
+      //alert(JSON.stringify(y))
+    }
+
       useEffect(()=>{
         letoltes()
+        letoltes_2()
     },[])
 
     
@@ -23,6 +31,7 @@ export default function Foglalas2Screen({ navigation, route }) {
 
     const {id,nev}=route.params
     const [adatok,setAdatok]=useState([])
+    const [adatok_2,setAdatok_2]=useState([])
   
     //----------------------------------------------------
     //DatePicker statek
@@ -149,7 +158,54 @@ export default function Foglalas2Screen({ navigation, route }) {
 
 
       <View style={styles.idopontok}>
+          {/*
+        <View>
           
+          <TouchableOpacity style={styles.idopont_gombok} >
+            <Text>17:00</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.idopont_gombok} >
+            <Text>17:30</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.idopont_gombok} >
+            <Text>18:00</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.idopont_gombok} >
+            <Text>18:30</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.idopont_gombok} >
+            <Text>19:00</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.idopont_gombok} >
+            <Text>19:30</Text>
+          </TouchableOpacity>
+
+        </View>
+          */}
+        <View >
+
+          
+
+            <FlatList
+            data={adatok_2}
+            renderItem={({item}) => (
+              
+              <View>
+
+              <TouchableOpacity style={styles.idopont_gombok} >
+                <Text>{item.if_idopont}</Text>
+              </TouchableOpacity>
+
+              </View>
+            )}
+            keyExtractor={item=> item.if_id}
+            />
+          </View>
       </View>
 
 
@@ -264,8 +320,15 @@ const styles = StyleSheet.create({
     //borderRadius:50,
   },
   idopontok:{
+
     flex:3,
-    backgroundColor:'blue'
+    backgroundColor:'green',
+    //flexDirection:'row'
+    
+  },
+  idopont_gombok:{
+    flex:1,
+    backgroundColor:'white'
     
   },
   gombszoveg:{
