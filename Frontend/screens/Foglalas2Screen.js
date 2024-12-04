@@ -12,8 +12,16 @@ export default function Foglalas2Screen({ navigation, route }) {
       //alert(JSON.stringify(y))
     }
 
+    const letoltes_2=async ()=>{
+      const x=await fetch("http://192.168.10.62:3000/idopontok")
+      const y=await x.json()
+      setAdatok_2(y)
+      //alert(JSON.stringify(y))
+    }
+
       useEffect(()=>{
         letoltes()
+        letoltes_2()
     },[])
 
     
@@ -23,6 +31,7 @@ export default function Foglalas2Screen({ navigation, route }) {
 
     const {id,nev}=route.params
     const [adatok,setAdatok]=useState([])
+    const [adatok_2,setAdatok_2]=useState([])
   
     //----------------------------------------------------
     //DatePicker statek
@@ -48,21 +57,27 @@ export default function Foglalas2Screen({ navigation, route }) {
       return item.szakterulet_id === id;
     }
 
-  
+
+
     const [orvosId, SetOrvosId] = useState(null)
-    
-
-
-
-    const szinValtoztat = (orvosid) =>{
+    const szinValtoztat = (orvosid, idopont) =>{
       
       //alert(orvosid)
       SetOrvosId(orvosid)
-      
+      SetIdopont(idopont)
       
     }
-   
+
+    const [idopont, SetIdopont] = useState(null)
     
+   
+    const szinValtoztatIdopont = (idopont) =>{
+      
+      //alert(idopont)
+      
+      SetIdopont(idopont)
+      
+    } 
     
    
 
@@ -149,10 +164,68 @@ export default function Foglalas2Screen({ navigation, route }) {
 
 
       <View style={styles.idopontok}>
+
+
+      <View style={styles.idopont_gombok}>
           
+          
+          <TouchableOpacity style={styles.gombstilus} onPress={()=> szinValtoztatIdopont('17:00')}>
+            <Text style={styles.idopontgombszoveg}>17:00</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.gombstilus} onPress={()=> szinValtoztatIdopont('17:30')}>
+            <Text style={styles.idopontgombszoveg}>17:30</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.gombstilus} onPress={()=> szinValtoztatIdopont('18:00')}>
+            <Text  style={styles.idopontgombszoveg}>18:00</Text>
+          </TouchableOpacity>
+
+          
+        </View>
+        <View style={styles.idopont_gombok}>
+        <TouchableOpacity style={styles.gombstilus_2} onPress={()=> szinValtoztatIdopont('18:30')}>
+            <Text  style={styles.idopontgombszoveg}>18:30</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.gombstilus_2} onPress={()=> szinValtoztatIdopont('19:00')}>
+            <Text  style={styles.idopontgombszoveg}>19:00</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.gombstilus_2} onPress={()=> szinValtoztatIdopont('19:30')}>
+            <Text  style={styles.idopontgombszoveg}>19:30</Text>
+          </TouchableOpacity>
+          </View>
+        
+          {/*
+        
+          */}
+
+
+          {/* 
+        <View >
+            <FlatList
+            data={adatok_2}
+            renderItem={({item}) => (
+              
+              <View>
+
+              <TouchableOpacity style={styles.idopont_gombok} >
+                <Text>{item.if_idopont}</Text>
+              </TouchableOpacity>
+
+              </View>
+            )}
+            keyExtractor={item=> item.if_id}
+            />
+          </View>
+          */}
+
       </View>
 
-
+          <View>
+            <Text>{idopont}</Text>
+          </View>
 
 
 
@@ -232,9 +305,11 @@ const styles = StyleSheet.create({
 
   datum:{
     flex:1,
-    backgroundColor:'#113F67',
+    backgroundColor:'white',
     width:350,
-    
+    borderRadius:20,
+    alignContent:'center',
+    justifyContent:'center',
     flexDirection:'row'
     
   },
@@ -244,6 +319,7 @@ const styles = StyleSheet.create({
     alignContent:'center',
     justifyContent:'center',
     //borderRadius:50,
+    borderRadius:20,
     
   },
   kivalasztottDatumSzoveg:{
@@ -262,11 +338,49 @@ const styles = StyleSheet.create({
     alignContent:'center',
     justifyContent:'center',
     //borderRadius:50,
+    borderRadius:20,
   },
   idopontok:{
+
     flex:3,
-    backgroundColor:'blue'
+    backgroundColor:'#113F67',
     
+    
+  },
+  idopont_gombok:{
+    flexDirection:'row',
+    flex:1,
+    backgroundColor:'#113F67',
+    
+    
+  },
+  gombstilus:{
+    
+    flex:1,
+    backgroundColor:'white',
+    justifyContent:'center',
+    alignItems:'center',
+    margin:10,
+    borderRadius:20,
+
+    
+    
+  },
+  gombstilus_2:{
+    
+    flex:1,
+    backgroundColor:'white',
+    justifyContent:'center',
+    alignItems:'center',
+    margin:10,
+    borderRadius:20,
+    
+    
+  },
+  idopontgombszoveg:{
+    color:'#113F67',
+    fontSize:15,
+    fontFamily:'inter'
   },
   gombszoveg:{
     color:'#113F67',
