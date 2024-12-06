@@ -95,9 +95,17 @@ export default function Foglalas2Screen({ navigation, route }) {
       
     } 
     
+    function TovabbGomb(){
+      if (idopont != null && orvosId != null && datumMentese != null  && id != null) {
+        navigation.navigate("Foglalas3",{id:id,orvosId:orvosId,idopont:idopont,datumMentese:datumMentese})
+      }
+      else{
+        alert('Add meg az összes adatot')
+      }
+      
+    }
       
     
-   
 
 
 
@@ -264,7 +272,7 @@ export default function Foglalas2Screen({ navigation, route }) {
         
 
         
-          <TouchableOpacity style={styles.gombok}>
+          <TouchableOpacity style={styles.gombok} onPress={()=>TovabbGomb()}>
             <Text style={styles.gombszoveg}>Tovább</Text>
           </TouchableOpacity>
         

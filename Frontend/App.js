@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
 import FoglalasScreen from './screens/FoglalasScreen';
 import Foglalas2Screen from './screens/Foglalas2Screen';
+import Foglalas3Screen from './screens/Foglalas3Screen';
 import RendelonkScreen from './screens/RendelonkScreen';
 import OrvosainkScreen from './screens/OrvosainkScreen';
 import KapcsolatScreen from './screens/KapcsolatScreen';
@@ -28,6 +29,7 @@ export default function App() {
         
         <Stack.Screen name="Időpontfoglalás" component={FoglalasScreen} />
         <Stack.Screen name=" " component={Foglalas2Screen} />
+        <Stack.Screen name="Foglalas3" component={Foglalas3Screen} />
         
         
       </Stack.Navigator>
