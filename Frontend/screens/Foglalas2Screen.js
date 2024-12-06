@@ -17,7 +17,7 @@ export default function Foglalas2Screen({ navigation, route }) {
       const x=await fetch("http://192.168.10.62:3000/idopontok")
       const y=await x.json()
       setAdatok_2(y)
-      //alert(JSON.stringify(y))
+     // alert(JSON.stringify(y))
     }
 
       useEffect(()=>{
@@ -44,7 +44,8 @@ export default function Foglalas2Screen({ navigation, route }) {
       const datumok = (event, selectedDate ) => {
         const currentDate = selectedDate || date;
         setDate(currentDate)
-        setDatumMentese(currentDate.toLocaleDateString())
+        setDatumMentese(currentDate.toISOString().split('T')[0]);
+        
       }
       
 
@@ -64,26 +65,34 @@ export default function Foglalas2Screen({ navigation, route }) {
 
 
     const [orvosId, SetOrvosId] = useState(null)
-    const szinValtoztat = (orvosid, idopont) =>{
+    const [orvosNeve, SetOrvosNeve] = useState()
+
+
+    const szinValtoztat = (orvosid, orvosneve ) =>{
       
-      //alert(orvosid)
+      alert(orvosneve)
       SetOrvosId(orvosid)
-      SetIdopont(idopont)
+      SetOrvosNeve(orvosneve)
+      //SetIdopont(idopont)
       
     }
 
     const [idopont, SetIdopont] = useState(null)
     //const [foglalt, setFoglalt] = useState('')
    
-    const szinValtoztatIdopont = (idopont, foglalt) =>{
-      
-      //alert(idopont)
+    const szinValtoztatIdopont = (idopont) =>{
+      alert(orvosNeve)
+      alert(idopont)
       SetIdopont(idopont)
-
+/*
       const nemElerheto = adatok_2.some(
-        (adat) => adat.if_orvosid === orvosId && adat.if_idopont === idopont 
+        (adat) => adat.if_orvosid === orvosId && adat.if_idopont === idopont || adat.if_datum === datumMentese
       );
-    
+      
+      adatok_2.forEach(elem => {
+        
+      });
+   */ 
       if (nemElerheto) {
         alert('nem elérhető');
         SetIdopont(null)
@@ -133,12 +142,12 @@ export default function Foglalas2Screen({ navigation, route }) {
           data={adatok.filter(orvos => orvos.szakterulet_id === id)}
           renderItem={({ item }) => (
             <View>
-            {item.orvos_id == orvosId ? <TouchableOpacity onPress={()=>szinValtoztat(item.orvos_id)}>
+            {item.orvos_id == orvosId ? <TouchableOpacity onPress={()=>szinValtoztat(item.orvos_id, item.nev)}>
             <Text style={styles.orvosnevvaltoztatva}>{item.nev}</Text>
           </TouchableOpacity> 
           :
 
-          <TouchableOpacity onPress={()=>szinValtoztat(item.orvos_id)}>
+          <TouchableOpacity onPress={()=>szinValtoztat(item.orvos_id, item.nev)}>
           <Text style={styles.orvosnev}>{item.nev}</Text>
         </TouchableOpacity>
         }
@@ -255,6 +264,7 @@ export default function Foglalas2Screen({ navigation, route }) {
             <Text>Szakrendelés id: {id}</Text>
             <Text>Orvos Id: {orvosId}</Text>
             <Text>Dátum:  {datumMentese}</Text>
+            <Text>Dátum:  {orvosNeve}</Text>
           </View>
 
 
