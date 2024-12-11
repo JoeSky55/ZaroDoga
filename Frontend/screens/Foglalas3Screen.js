@@ -33,7 +33,7 @@ export default function Foglalas3Screen({navigation, route}) {
       
       const [adatok,setAdatok]=useState([])
       const [adatok_2,setAdatok_2]=useState([])
-    const {id,orvosId,idopont,datumMentese}=route.params
+    const {id,orvosId,idopont,datumMentese,orvosNeve}=route.params
 
       const [nev, onChangeNev] = useState('')
       const [email, onChangeEmail] = useState('')
@@ -49,11 +49,18 @@ export default function Foglalas3Screen({navigation, route}) {
 
         <View style={styles.adatbevitel}>
         <Text>Személyes adatok</Text>
-                {/*<Text>Időpont:  {idopont}</Text>
+                {/*
+                <Text>Időpont:  {idopont}</Text>
                 <Text>Szakrendelés id: {id}</Text>
                 <Text>Orvos Id: {orvosId}</Text>
                 <Text>Dátum:  {datumMentese}</Text>
+                <Text>Orvos neve:  {orvosNeve}</Text>
                 */}
+
+                
+
+
+
             <View style={styles.nev_input_view}>
                 <TextInput
                 style={styles.nev_input}
@@ -100,6 +107,7 @@ container:{
     flex:1,
     justifyContent: 'center',
     alignItems: 'center',
+    //backgroundColor:'red'
     
     
     

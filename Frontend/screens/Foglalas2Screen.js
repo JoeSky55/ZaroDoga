@@ -6,6 +6,20 @@ import { setStatusBarBackgroundColor } from 'expo-status-bar';
 
 export default function Foglalas2Screen({ navigation, route }) {
 
+    const {id,nev}=route.params
+    const [adatok,setAdatok]=useState([])
+    const [adatok_2,setAdatok_2]=useState([])
+    const [idopont, SetIdopont] = useState(null)
+    const [orvosId, SetOrvosId] = useState(null)
+    const [orvosNeve, SetOrvosNeve] = useState()
+    const [date, setDate] = useState(new Date());
+    const [datumMentese, setDatumMentese] = useState();
+    const [igaze,setIgaze] = useState(false)
+    //const [show, setShow] = useState(true);
+
+
+
+
     const letoltes=async ()=>{
       const x=await fetch("http://192.168.10.62:3000/orvosok")
       const y=await x.json()
@@ -14,15 +28,26 @@ export default function Foglalas2Screen({ navigation, route }) {
     }
 
     const letoltes_2=async ()=>{
-      const x=await fetch("http://192.168.10.62:3000/idopontok")
+      let adatok = {
+        "bevitel1":orvosNeve,
+        "bevitel2":datumMentese
+      }
+      const x=await fetch("http://192.168.10.62:3000/foglaltIdopontok",{
+        method: "POST",
+        body: JSON.stringify(adatok),
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+    })
       const y=await x.json()
       setAdatok_2(y)
-     // alert(JSON.stringify(y))
+  
+           
+      //alert(JSON.stringify(y))
+      setIgaze(true)
     }
 
       useEffect(()=>{
         letoltes()
-        letoltes_2()
+        
     },[])
 
     
@@ -30,61 +55,49 @@ export default function Foglalas2Screen({ navigation, route }) {
 
 
 
-    const {id,nev}=route.params
-    const [adatok,setAdatok]=useState([])
-    const [adatok_2,setAdatok_2]=useState([])
+   
   
     //----------------------------------------------------
     //DatePicker statek
 
-      const [date, setDate] = useState(new Date());
-      const [datumMentese, setDatumMentese] = useState();
-      //const [show, setShow] = useState(true);
+     
 
       const datumok = (event, selectedDate ) => {
         const currentDate = selectedDate || date;
         setDate(currentDate)
         setDatumMentese(currentDate.toISOString().split('T')[0]);
-        
+        //alert(orvosNeve) undefinednél hibauzenet kiirasa 
+        // ha dátum nincs meg arra is kell hibauzenet
+        //alert(datumMentese)
+        if (orvosNeve != undefined && datumMentese!= undefined) {
+          //alert('ok')
+          letoltes_2()
+          
+        }
+
       }
-      
-
-
-      
-
-      
-
-
-
-
       //---------------------------------------------------
     function orvosKiiras(item){
       return item.szakterulet_id === id;
     }
 
-
-
-    const [orvosId, SetOrvosId] = useState(null)
-    const [orvosNeve, SetOrvosNeve] = useState()
-
-
     const szinValtoztat = (orvosid, orvosneve ) =>{
       
-      alert(orvosneve)
+      //alert(orvosneve)
       SetOrvosId(orvosid)
       SetOrvosNeve(orvosneve)
       //SetIdopont(idopont)
-      
     }
 
-    const [idopont, SetIdopont] = useState(null)
-    //const [foglalt, setFoglalt] = useState('')
-   
+    const [kivalasztottId, setKivalasztottId] = useState(null);
+
     const szinValtoztatIdopont = (idopont) =>{
-      alert(orvosNeve)
-      alert(idopont)
+      //alert(orvosNeve)
+      //alert(idopont)
       SetIdopont(idopont)
-/*
+      setKivalasztottId(idopont)
+      
+      /*
       const nemElerheto = adatok_2.some(
         (adat) => adat.if_orvosid === orvosId && adat.if_idopont === idopont || adat.if_datum === datumMentese
       );
@@ -92,7 +105,7 @@ export default function Foglalas2Screen({ navigation, route }) {
       adatok_2.forEach(elem => {
         
       });
-   */ 
+   
       if (nemElerheto) {
         alert('nem elérhető');
         SetIdopont(null)
@@ -101,12 +114,15 @@ export default function Foglalas2Screen({ navigation, route }) {
       } else {
         SetIdopont(idopont)
       }
-      
+      */
     } 
+    const szinValtoztatIdopontNemElerheto = () =>{
+      alert("Az időpont nem elérhető")
+    }
     
     function TovabbGomb(){
       if (idopont != null && orvosId != null && datumMentese != null  && id != null) {
-        navigation.navigate("Foglalas3",{id:id,orvosId:orvosId,idopont:idopont,datumMentese:datumMentese})
+        navigation.navigate("Foglalas3",{id:id,orvosId:orvosId,idopont:idopont,datumMentese:datumMentese, orvosNeve:orvosNeve})
       }
       else{
         alert('Add meg az összes adatot')
@@ -114,7 +130,17 @@ export default function Foglalas2Screen({ navigation, route }) {
       
     }
       
+    const Elerheto=(ido)=>{
+      for (let index = 0; index < adatok_2.length; index++) {
+        const elem = adatok_2[index].if_idopont;
+        if(elem==ido){
+          return true
+        }
+      }
+      return false
     
+    
+    }
 
 
 
@@ -198,25 +224,47 @@ export default function Foglalas2Screen({ navigation, route }) {
 
 
 
-
+{igaze?
       <View style={styles.idopontok}>
-
-
+     
       <View style={styles.idopont_gombok}>
-          
-          
-          <TouchableOpacity style={styles.gombstilus} onPress={()=> szinValtoztatIdopont('17:00')}>
+          {Elerheto('17:00')?<TouchableOpacity style={styles.gombstilus_valtoztat} onPress={()=> szinValtoztatIdopontNemElerheto('17:00')}>
             <Text style={styles.idopontgombszoveg}>17:00</Text>
           </TouchableOpacity>
+          :
+          <TouchableOpacity style={[styles.gombstilus,kivalasztottId === '17:00' && styles.kivalasztottGomb]} onPress={()=> szinValtoztatIdopont('17:00')}>
+            <Text style={styles.idopontgombszoveg}>17:00</Text>
+          </TouchableOpacity>
+          }
+          
 
-          <TouchableOpacity style={styles.gombstilus} onPress={()=> szinValtoztatIdopont('17:30')}>
+          {Elerheto('17:30')?<TouchableOpacity style={styles.gombstilus_valtoztat} onPress={()=> szinValtoztatIdopontNemElerheto('17:30')}>
             <Text style={styles.idopontgombszoveg}>17:30</Text>
           </TouchableOpacity>
+          :
+          <TouchableOpacity style={[styles.gombstilus,kivalasztottId === '17:30' && styles.kivalasztottGomb]} onPress={()=> szinValtoztatIdopont('17:30')}>
+            <Text style={styles.idopontgombszoveg}>17:30</Text>
+          </TouchableOpacity>
+          }
 
+          {/*<TouchableOpacity style={styles.gombstilus} onPress={()=> szinValtoztatIdopont('17:30')}>
+            <Text style={styles.idopontgombszoveg}>17:30</Text>
+          </TouchableOpacity>
+          */}
+
+          {Elerheto('18:00')?<TouchableOpacity style={styles.gombstilus_valtoztat} onPress={()=> szinValtoztatIdopontNemElerheto('18:00')}>
+            <Text style={styles.idopontgombszoveg}>18:00</Text>
+          </TouchableOpacity>
+          :
+          <TouchableOpacity style={[styles.gombstilus,kivalasztottId === '18:00' && styles.kivalasztottGomb]} onPress={()=> szinValtoztatIdopont('18:00')}>
+            <Text style={styles.idopontgombszoveg}>18:00</Text>
+          </TouchableOpacity>
+          }
+{/*
           <TouchableOpacity style={styles.gombstilus} onPress={()=> szinValtoztatIdopont('18:00')}>
             <Text  style={styles.idopontgombszoveg}>18:00</Text>
           </TouchableOpacity>
-
+*/}
           
         </View>
         <View style={styles.idopont_gombok}>
@@ -232,6 +280,12 @@ export default function Foglalas2Screen({ navigation, route }) {
             <Text  style={styles.idopontgombszoveg}>19:30</Text>
           </TouchableOpacity>
           </View>
+          </View>
+          :<View></View>
+          }
+         
+          
+         
         
           {/*
         
@@ -257,14 +311,14 @@ export default function Foglalas2Screen({ navigation, route }) {
           </View>
           */}
 
-      </View>
+      
 
           <View>
             <Text>Időpont:  {idopont}</Text>
             <Text>Szakrendelés id: {id}</Text>
             <Text>Orvos Id: {orvosId}</Text>
             <Text>Dátum:  {datumMentese}</Text>
-            <Text>Dátum:  {orvosNeve}</Text>
+            <Text>Orvos neve:  {orvosNeve}</Text>
           </View>
 
 
@@ -295,6 +349,7 @@ export default function Foglalas2Screen({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
+  
   container: {
     justifyContent: 'center',
     flex: 1,
@@ -406,6 +461,18 @@ const styles = StyleSheet.create({
     
     
   },
+  gombstilus_valtoztat:{
+    
+    flex:1,
+    backgroundColor:'red',
+    justifyContent:'center',
+    alignItems:'center',
+    margin:10,
+    borderRadius:20,
+
+    
+    
+  },
   gombstilus_2:{
     
     flex:1,
@@ -416,6 +483,20 @@ const styles = StyleSheet.create({
     borderRadius:20,
     
     
+  },
+  gombstilus_2_valtoztat:{
+    
+    flex:1,
+    backgroundColor:'red',
+    justifyContent:'center',
+    alignItems:'center',
+    margin:10,
+    borderRadius:20,
+    
+    
+  },
+  kivalasztottGomb: {
+    backgroundColor: 'green', 
   },
   idopontgombszoveg:{
     color:'#113F67',
