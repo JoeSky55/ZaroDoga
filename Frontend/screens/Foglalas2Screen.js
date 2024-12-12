@@ -69,11 +69,14 @@ export default function Foglalas2Screen({ navigation, route }) {
         //alert(orvosNeve) undefinednél hibauzenet kiirasa 
         // ha dátum nincs meg arra is kell hibauzenet
         //alert(datumMentese)
+        
         if (orvosNeve != undefined && datumMentese!= undefined) {
           //alert('ok')
           letoltes_2()
           
         }
+       
+        
 
       }
       //---------------------------------------------------
@@ -126,7 +129,7 @@ export default function Foglalas2Screen({ navigation, route }) {
     
     function TovabbGomb(){
       if (idopont != null && orvosId != null && datumMentese != null  && id != null) {
-        navigation.navigate("Foglalas3",{id:id,orvosId:orvosId,idopont:idopont,datumMentese:datumMentese, orvosNeve:orvosNeve})
+        navigation.navigate("Foglalas3",{id:id,nev:nev,orvosId:orvosId,idopont:idopont,datumMentese:datumMentese, orvosNeve:orvosNeve})
       }
       else{
         alert('Add meg az összes adatot')
@@ -167,7 +170,7 @@ export default function Foglalas2Screen({ navigation, route }) {
 
 
       <View style={styles.orvosok}>
-      
+          <Text style={styles.orvosnev}>Válasszon orvost:</Text>
         <FlatList
           data={adatok.filter(orvos => orvos.szakterulet_id === id)}
           renderItem={({ item }) => (
@@ -346,6 +349,7 @@ export default function Foglalas2Screen({ navigation, route }) {
             <Text>Orvos Id: {orvosId}</Text>
             <Text>Dátum:  {datumMentese}</Text>
             <Text>Orvos neve:  {orvosNeve}</Text>
+          
           </View>
 
 
@@ -402,7 +406,7 @@ const styles = StyleSheet.create({
   },
   
   orvosok:{
-    flex:2.2,
+    flex:3.5,
     backgroundColor:'orvosSzin',
     margin:3
   },

@@ -33,16 +33,24 @@ export default function Foglalas3Screen({navigation, route}) {
       
       const [adatok,setAdatok]=useState([])
       const [adatok_2,setAdatok_2]=useState([])
-    const {id,orvosId,idopont,datumMentese,orvosNeve}=route.params
+    const {id,nev,orvosId,idopont,datumMentese,orvosNeve}=route.params
 
-      const [nev, onChangeNev] = useState('')
+      const [felhasznaloNev, onChangeFelhasznaloNev] = useState('')
       const [email, onChangeEmail] = useState('')
       const [telefon, onChangeTelefon] = useState()
 
+      //const formattedDate = currentDate.toISOString().split('T')[0].replace(/-/g, '.');
+    
 
   return (
     <View style={styles.container}>
 
+        <View sytle={styles.foglalasiAdatok}>
+            <Text>Szakrendelés: {nev}</Text>
+            <Text>Orvos: {orvosNeve}</Text>
+            <Text>Dátum: {datumMentese}{idopont}</Text>
+            
+        </View>
     
 
 
@@ -64,8 +72,8 @@ export default function Foglalas3Screen({navigation, route}) {
             <View style={styles.nev_input_view}>
                 <TextInput
                 style={styles.nev_input}
-                value={nev}
-                onChangeText={onChangeNev}
+                value={felhasznaloNev}
+                onChangeText={onChangeFelhasznaloNev}
                 placeholder='Teljes név'
                 />
             </View>
@@ -111,6 +119,9 @@ container:{
     
     
     
+},
+foglalasiAdatok:{
+    flex:3
 },
 adatbevitel:{
     flex:3,
