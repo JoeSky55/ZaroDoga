@@ -87,6 +87,10 @@ export default function Foglalas2Screen({ navigation, route }) {
       SetOrvosId(orvosid)
       SetOrvosNeve(orvosneve)
       //SetIdopont(idopont)
+      SetIdopont(null)
+      setDatumMentese(null)
+      setIgaze(false)
+      setKivalasztottId(null)
     }
 
     const [kivalasztottId, setKivalasztottId] = useState(null);
@@ -268,17 +272,40 @@ export default function Foglalas2Screen({ navigation, route }) {
           
         </View>
         <View style={styles.idopont_gombok}>
-        <TouchableOpacity style={styles.gombstilus_2} onPress={()=> szinValtoztatIdopont('18:30')}>
-            <Text  style={styles.idopontgombszoveg}>18:30</Text>
-          </TouchableOpacity>
 
-          <TouchableOpacity style={styles.gombstilus_2} onPress={()=> szinValtoztatIdopont('19:00')}>
-            <Text  style={styles.idopontgombszoveg}>19:00</Text>
-          </TouchableOpacity>
 
-          <TouchableOpacity style={styles.gombstilus_2} onPress={()=> szinValtoztatIdopont('19:30')}>
-            <Text  style={styles.idopontgombszoveg}>19:30</Text>
+
+
+          {Elerheto('18:30')?<TouchableOpacity style={styles.gombstilus_2_valtoztat} onPress={()=> szinValtoztatIdopontNemElerheto('18:30')}>
+            <Text style={styles.idopontgombszoveg}>18:30</Text>
           </TouchableOpacity>
+          :
+          <TouchableOpacity style={[styles.gombstilus_2,kivalasztottId === '18:30' && styles.kivalasztottGomb]} onPress={()=> szinValtoztatIdopont('18:30')}>
+            <Text style={styles.idopontgombszoveg}>18:30</Text>
+          </TouchableOpacity>
+          }
+
+          {Elerheto('19:00')?<TouchableOpacity style={styles.gombstilus_2_valtoztat} onPress={()=> szinValtoztatIdopontNemElerheto('19:00')}>
+            <Text style={styles.idopontgombszoveg}>19:00</Text>
+          </TouchableOpacity>
+          :
+          <TouchableOpacity style={[styles.gombstilus_2,kivalasztottId === '19:00' && styles.kivalasztottGomb]} onPress={()=> szinValtoztatIdopont('19:00')}>
+            <Text style={styles.idopontgombszoveg}>19:00</Text>
+          </TouchableOpacity>
+          }
+        
+          {Elerheto('19:30')?<TouchableOpacity style={styles.gombstilus_2_valtoztat} onPress={()=> szinValtoztatIdopontNemElerheto('19:30')}>
+            <Text style={styles.idopontgombszoveg}>19:30</Text>
+          </TouchableOpacity>
+          :
+          <TouchableOpacity style={[styles.gombstilus_2,kivalasztottId === '19:30' && styles.kivalasztottGomb]} onPress={()=> szinValtoztatIdopont('19:30')}>
+            <Text style={styles.idopontgombszoveg}>19:30</Text>
+          </TouchableOpacity>
+          }
+          
+
+          
+
           </View>
           </View>
           :<View></View>
@@ -375,7 +402,7 @@ const styles = StyleSheet.create({
   },
   
   orvosok:{
-    flex:2,
+    flex:2.2,
     backgroundColor:'orvosSzin',
     margin:3
   },
@@ -464,7 +491,7 @@ const styles = StyleSheet.create({
   gombstilus_valtoztat:{
     
     flex:1,
-    backgroundColor:'red',
+    backgroundColor:'gray',
     justifyContent:'center',
     alignItems:'center',
     margin:10,
@@ -487,7 +514,7 @@ const styles = StyleSheet.create({
   gombstilus_2_valtoztat:{
     
     flex:1,
-    backgroundColor:'red',
+    backgroundColor:'gray',
     justifyContent:'center',
     alignItems:'center',
     margin:10,
@@ -497,6 +524,7 @@ const styles = StyleSheet.create({
   },
   kivalasztottGomb: {
     backgroundColor: 'green', 
+    opacity:50
   },
   idopontgombszoveg:{
     color:'#113F67',
