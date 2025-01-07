@@ -5,7 +5,7 @@ import HomeScreen from './screens/HomeScreen';
 import FoglalasScreen from './screens/FoglalasScreen';
 import Foglalas2Screen from './screens/Foglalas2Screen';
 import Foglalas3Screen from './screens/Foglalas3Screen';
-import SikeresFoglalasScreen from './screens/Foglalas3Screen';
+import SikeresFoglalasScreen from './screens/SikeresFoglalasScreen';
 import RendelonkScreen from './screens/RendelonkScreen';
 import OrvosainkScreen from './screens/OrvosainkScreen';
 import KapcsolatScreen from './screens/KapcsolatScreen';

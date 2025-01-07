@@ -18,7 +18,12 @@ export default function SikeresFoglalasScreen({navigation,route}) {
       <View style={{flex: 4}}>
         <View >
 
-          
+        <View style={styles.foglalasiAdatok}>
+            <Text style={styles.foglalasiSzoveg}>Szakrendelés: {nev}</Text>
+            <Text style={styles.foglalasiSzoveg}>Orvos: {orvosNeve}</Text>
+            <Text style={styles.foglalasiSzoveg}>Dátum: {datumMentese.replaceAll('-','.')}  {idopont}</Text>
+            
+        </View>
             
 
             <TouchableOpacity style={styles.gombok} onPress={() => navigation.navigate("Főoldal")}>
@@ -70,5 +75,9 @@ const styles = StyleSheet.create({
     fontFamily:'inter',
     fontWeight:'400',
     fontSize:24
-  }
+  },
+  foglalasiAdatok:{
+    flex:1,
+
+},
 });

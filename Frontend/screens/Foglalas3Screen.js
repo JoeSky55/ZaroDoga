@@ -82,10 +82,11 @@ export default function Foglalas3Screen({navigation, route}) {
             alert("Kérlek töltsd ki az összes mezőt!")
             return
         }
+        
         else{
             feltoltes()
             navigation.navigate("SikeresFoglalas",{id:id,nev:nev,orvosId:orvosId,idopont:idopont,datumMentese:datumMentese, orvosNeve:orvosNeve})
-            alert("Navigáció megtörtént")
+            //alert("Navigáció megtörtént")
         }
         
         
@@ -95,7 +96,7 @@ export default function Foglalas3Screen({navigation, route}) {
   return (
     <View style={styles.container}>
 
-        <View sytle={styles.foglalasiAdatok}>
+        <View style={styles.foglalasiAdatok}>
             <Text style={styles.foglalasiSzoveg}>Szakrendelés: {nev}</Text>
             <Text style={styles.foglalasiSzoveg}>Orvos: {orvosNeve}</Text>
             <Text style={styles.foglalasiSzoveg}>Dátum: {datumMentese.replaceAll('-','.')}  {idopont}</Text>
@@ -190,7 +191,7 @@ container:{
     
 },
 foglalasiAdatok:{
-    flex:3,
+    flex:1,
 
 },
 foglalasiSzoveg:{
