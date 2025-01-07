@@ -128,8 +128,9 @@ export default function Foglalas2Screen({ navigation, route }) {
     }
     
     function TovabbGomb(){
+      
       if (idopont != null && orvosId != null && datumMentese != null  && id != null) {
-        navigation.navigate("Foglalas3",{id:id,nev:nev,orvosId:orvosId,idopont:idopont,datumMentese:datumMentese, orvosNeve:orvosNeve})
+        navigation.navigate("  ",{id:id,nev:nev,orvosId:orvosId,idopont:idopont,datumMentese:datumMentese, orvosNeve:orvosNeve})
       }
       else{
         alert('Add meg az összes adatot')
@@ -215,7 +216,7 @@ export default function Foglalas2Screen({ navigation, route }) {
             mode="date" // Choose 'time' or 'datetime' for other modes
             display="default" // 'spinner', 'calendar', or 'default'
             onChange={datumok}
-            //minimumDate={new Date()}
+            minimumDate={new Date()}
             //onTouchEnd={datumtarol()}
             
           />

@@ -145,12 +145,12 @@ app.post('/betegFelvitel', (req, res) => {
        {
             console.log("Hiba")
             console.log(err)
-            res.status(500).send("Hiba")
+            res.status(500).json("Hiba")
        }
        else
        {
             console.log("Sikeres felvitel!")
-            res.status(200).send("Sikeres felvitel")
+            res.status(200).json("Sikeres felvitel")
        }
       })
       
