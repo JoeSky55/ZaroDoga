@@ -5,6 +5,7 @@ const port = 3000
 var cors = require('cors')
 app.use(cors())
 app.use(express.json())
+app.use(express.static('kepek'))
 
 app.use(cors())
 app.use(express.json());
@@ -79,7 +80,7 @@ app.get('/szakteruletek', (req, res) => {
 
 app.get('/orvosAdatok2', (req, res) => {
   kapcsolat()
-  connection.query(`SELECT orvosok.orvos_id, orvosok.nev, orvosok.telefon, GROUP_CONCAT(szakteruletek.szak_nev ORDER BY szakteruletek.szak_nev SEPARATOR ' , ') AS szakteruletek FROM orvosok INNER JOIN orvos_szakterulet ON orvosok.orvos_id = orvos_szakterulet.orvos_id INNER JOIN szakteruletek ON orvos_szakterulet.szakterulet_id = szakteruletek.szak_id GROUP BY orvosok.orvos_id, orvosok.nev, orvosok.telefon;`, (err, rows, fields) => {
+  connection.query(`SELECT orvosok.orvos_id, orvosok.nev, orvosok.telefon, orvosok.kep, GROUP_CONCAT(szakteruletek.szak_nev ORDER BY szakteruletek.szak_nev SEPARATOR ' , ') AS szakteruletek FROM orvosok INNER JOIN orvos_szakterulet ON orvosok.orvos_id = orvos_szakterulet.orvos_id INNER JOIN szakteruletek ON orvos_szakterulet.szakterulet_id = szakteruletek.szak_id GROUP BY orvosok.orvos_id, orvosok.nev, orvosok.telefon;`, (err, rows, fields) => {
       if (err) {
           console.log(err)
           res.status(500).send("Hiba")
@@ -145,12 +146,12 @@ app.post('/betegFelvitel', (req, res) => {
        {
             console.log("Hiba")
             console.log(err)
-            res.status(500).json("Hiba")
+            res.status(500).send("Hiba")
        }
        else
        {
             console.log("Sikeres felvitel!")
-            res.status(200).json("Sikeres felvitel")
+            res.status(200).send("Sikeres felvitel")
        }
       })
       
@@ -159,7 +160,7 @@ app.post('/betegFelvitel', (req, res) => {
 
 app.get('/idopontok', (req, res) => {
   kapcsolat()
-  connection.query('SELECT * FROM idopont_foglalas INNER JOIN orvosok ON orvosok.orvos_id = idopont_foglalas.if_orvosid INNER JOIN szakteruletek ON szakteruletek.szak_id = idopont_foglalas.if_szakrendelesid;', (err, rows, fields) => {
+  connection.query('SELECT orvosok.nev, szakteruletek.szak_nev, idopont_foglalas.if_datum, idopont_foglalas.if_idopont, idopont_foglalas.if_nev, idopont_foglalas.if_email, idopont_foglalas.if_telefon FROM idopont_foglalas INNER JOIN orvosok ON orvosok.orvos_id = idopont_foglalas.if_orvosid INNER JOIN szakteruletek ON szakteruletek.szak_id = idopont_foglalas.if_szakrendelesid;', (err, rows, fields) => {
       if (err) {
           console.log(err)
           res.status(500).send("Hiba")
@@ -171,6 +172,60 @@ app.get('/idopontok', (req, res) => {
     })
     connection.end()
 })
+
+app.get('/idopontokDatumUtan', (req, res) => {
+    kapcsolat()
+    connection.query(`
+      SELECT 
+        orvosok.nev, 
+        szakteruletek.szak_nev, 
+        idopont_foglalas.if_datum, 
+        idopont_foglalas.if_idopont, 
+        idopont_foglalas.if_nev, 
+        idopont_foglalas.if_email, 
+        idopont_foglalas.if_telefon 
+      FROM idopont_foglalas 
+      INNER JOIN orvosok ON orvosok.orvos_id = idopont_foglalas.if_orvosid 
+      INNER JOIN szakteruletek ON szakteruletek.szak_id = idopont_foglalas.if_szakrendelesid 
+      WHERE idopont_foglalas.if_datum >= CURDATE();
+    `, (err, rows, fields) => {
+        if (err) {
+            console.log(err)
+            res.status(500).send("Hiba")
+        }
+        else{
+            console.log(rows)
+            res.status(200).send(rows)
+        }
+      })
+      connection.end()
+  })
+
+  app.delete('/idopontTorles', (req, res) => {
+    kapcsolat()
+    connection.query(`DELETE FROM idopont_foglalas WHERE if_telefon = ${req.body.bevitel1}`,
+    (err, rows, fields) => {
+       if (err)    
+       {
+            console.log("Hiba")
+            console.log(err)
+            res.status(500).send("Hiba")
+       }
+       else
+       {
+            console.log("Sikeres törlés!")
+            res.status(200).send("Sikeres törlés")
+       }
+      })
+      
+      connection.end()
+  })
+
+
+
+  
+
+
 
 
 

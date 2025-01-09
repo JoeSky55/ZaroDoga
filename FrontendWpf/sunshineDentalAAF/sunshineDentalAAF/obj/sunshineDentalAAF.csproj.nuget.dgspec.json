@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_2024\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\sunshineDentalAAF.csproj": {}
+    "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\ZaroDoga_0109\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\sunshineDentalAAF.csproj": {}
   },
   "projects": {
-    "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_2024\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\sunshineDentalAAF.csproj": {
+    "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\ZaroDoga_0109\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\sunshineDentalAAF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_2024\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\sunshineDentalAAF.csproj",
+        "projectUniqueName": "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\ZaroDoga_0109\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\sunshineDentalAAF.csproj",
         "projectName": "sunshineDentalAAF",
-        "projectPath": "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_2024\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\sunshineDentalAAF.csproj",
+        "projectPath": "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\ZaroDoga_0109\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\sunshineDentalAAF.csproj",
         "packagesPath": "C:\\Users\\diak\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_2024\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\obj\\",
+        "outputPath": "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\ZaroDoga_0109\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
