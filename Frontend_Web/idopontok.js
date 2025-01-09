@@ -69,7 +69,7 @@ function orvosKivalaszt(szakTeruletId, orvos, orvosId) {
     document.getElementById("idopontokCim").innerHTML = 
     `
     <h3 style="margin-top: 15px; margin-left: 40px; margin-right: 40px; background-color: lightcyan; padding: 10px; border-radius: 10px;"><span style="font-size: 23px;">❸ </span>Időpontfoglalás</h3>
-    <input type="date" id="datumValasztas" min="2024-11-25" max="2024-11-30" name="datumValasztas" onchange="dátumKiválasztása('${szakTeruletId}', '${orvos}', '${orvosId}')">
+    <input type="date" id="datumValasztas" name="datumValasztas" onchange="dátumKiválasztása('${szakTeruletId}', '${orvos}', '${orvosId}')">
     `;
     document.getElementById("idopontok").innerHTML = '';
 }
@@ -186,14 +186,13 @@ function idopontKivalaszt(idopont, orvos, orvosId, szakTeruletId) {
     `
     <h3 style="margin-top: 15px; margin-left: 40px; margin-right: 40px; background-color: lightcyan; padding: 10px; border-radius: 10px;"><span style="font-size: 23px;">❹ </span>Véglegesítés</h3>
     <br>
-    <input type="text" id="fNev" value="Név *" >
+    <input type="text" id="fNev" placeholder="Név *" >
     <input type="text" id="fDatum" value="${datum}" readonly >
     <input type="text" id="fIdopont" value="${idopont}" readonly >
     <br>
     <br>
-    <input type="text" id="fEmail" value="E-mail cím *" >
+    <input type="text" id="fEmail" placeholder="E-mail cím *" >
     <input type="text" id="fOrvos" value="${orvos}" readonly >
-    <input type="text" id="fOrvos" value="${orvosId}" readonly >
     <br>
     <br>
     <select name="" id="fTelefonKezdete">
@@ -205,15 +204,13 @@ function idopontKivalaszt(idopont, orvos, orvosId, szakTeruletId) {
         <option value="">+44</option>
         <option value="">+45</option>
     </select>
-    <input type="text" id="fTelefon" value="Telefonszám *" >
+    <input type="text" id="fTelefon" placeholder="Telefonszám *" >
     <input type="text" id="fSzakrendeles" value="${szakrendeles}" readonly >
-    <input type="text" id="fOrvos" value="${szakTeruletId}" readonly >
     <br>
     <br>
     <button class="FoglalasGomb" onclick="Felvitel('${szakTeruletId}', '${orvosId}', '${datum}', '${idopont}')">Foglalás véglegesítése</button>
     <button class="visszaGomb" onclick="visszaAzElejere()">Foglalás újrakezdése</button>
     `
-    //alert(`Kiválasztott időpont: ${idopont}`);
 }
 function Felvitel(szakTeruletId, orvosId, datum, idopont) {
     var adatok = {
@@ -232,7 +229,12 @@ function Felvitel(szakTeruletId, orvosId, datum, idopont) {
     })
     .then(x => x.text())
     .then(y => {
-        document.getElementById("visszajelzes").innerHTML = y;
+        alert("A foglalás sikeresen megtörtént! Hamarosan e-mailben tájékoztatjuk a részletekről!")
+        document.getElementById("veglegesites").innerHTML = '';
+        document.getElementById("idopontokCim").innerHTML = '';
+        document.getElementById("idopontok").innerHTML = '';
+        document.getElementById("keresettOrvos").innerHTML = '';
+        document.getElementById("orvosokCim").innerHTML = '';
     })
     .catch(error => console.error('Error:', error));
 }

@@ -28,9 +28,9 @@ function myDisplay(y)
     for (const elem of y) {
        document.getElementById("orvosAdatok").innerHTML += 
        `
-        <div class="col-sm-4 keret">
+        <div class="col-sm-4 ">
             <div class="adatok">
-                <img class="orvosKep mx-auto d-block" src="kepek/profile_photo.jpg" alt="">
+                <img class="orvosKep mx-auto d-block" src="http://localhost:3000/${elem.kep}" alt="">
                 <p class="orvosNev">${elem.nev}</p>
                 <p class="orvosSzakterulet">${elem.szakteruletek}</p>
             </div>
