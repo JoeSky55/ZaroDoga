@@ -23,15 +23,15 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Főoldal">
         
-        <Stack.Screen name="Főoldal" component={HomeScreen} />
+        <Stack.Screen name="Főoldal" component={HomeScreen} options={{headerLeft: null, headerShown: false }}  />
         <Stack.Screen name="Orvosaink" component={OrvosainkScreen} />
         <Stack.Screen name="Rendelőnk" component={RendelonkScreen} />
         <Stack.Screen name="Kapcsolat" component={KapcsolatScreen} />
         
-        <Stack.Screen name="Időpontfoglalás" component={FoglalasScreen} />
-        <Stack.Screen name=" " component={Foglalas2Screen} />
-        <Stack.Screen name="  " component={Foglalas3Screen} />
-        <Stack.Screen name="SikeresFoglalas" component={SikeresFoglalasScreen} />
+        <Stack.Screen name="Időpontfoglalás" component={FoglalasScreen} options={{headerTitle: '',headerStyle:{borderBottomWidth: 0,shadowOpacity: 0,elevation: 0,}}}  />
+        <Stack.Screen name="Foglalas2Screen" component={Foglalas2Screen} options={{headerTitle: ''}}/>
+        <Stack.Screen name="Foglalas3Screen" component={Foglalas3Screen} options={{headerTitle: '',headerStyle:{borderBottomWidth: 0,shadowOpacity: 0,elevation: 0,}}}/>
+        <Stack.Screen name="SikeresFoglalas" component={SikeresFoglalasScreen} options={{headerLeft: null,headerShown: false }}/>
         
         
       </Stack.Navigator>

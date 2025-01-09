@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, Text, Button, Image, StyleSheet, SafeAreaView, Touchable, TouchableOpacity, Linking } from 'react-native';
+import { useEffect } from 'react';
 
 export default function SikeresFoglalasScreen({navigation,route}) {
   //console.log(route.params)
     const {id,nev,orvosId,idopont,datumMentese,orvosNeve}=route.params
 
+    
 
 
     const makeCall = (phoneNumber) => {
@@ -43,7 +45,7 @@ export default function SikeresFoglalasScreen({navigation,route}) {
       <View style={{flex: 0.3, alignItems: "center"}} >
       <Image source={require('../kepek/logo.jpg')} style={styles.logo} />
       </View>
-      <View style={{flex: 2}}>
+      <View style={{flex: 2, backgroundColor:'#113F67', borderRadius:40}}>
         
 
         <View style={styles.foglalasiAdatok}>
@@ -59,7 +61,7 @@ export default function SikeresFoglalasScreen({navigation,route}) {
           <Text style={{alignSelf: 'center', color:'red',fontFamily:'inter', fontWeight:'bold', fontSize:20}}>
             Időpontot lemondani, illetve módosítani a 
             <TouchableOpacity onPress={()=> makeCall("36 30 602 8611")}>
-              <Text style={{fontSize:17, color:'black',textDecorationLine: 'underline'}}>+36 30 602 8611</Text>
+              <Text style={{fontSize:17, color:'white',textDecorationLine: 'underline'}}>+36 30 602 8611</Text>
             </TouchableOpacity>
              -os számon lehet.
           </Text>
@@ -84,6 +86,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    paddingTop: 50,
     backgroundColor: '#fff'
   },
   logo:{
@@ -103,15 +106,15 @@ const styles = StyleSheet.create({
     padding:20,
     margin:20,
     width:300,
-    backgroundColor: '#113F67',
+    backgroundColor: 'white',
     borderRadius:50,
-    color:'white',
+    
     alignSelf:'center'
     
   },
   gombokSzoveg:{
     alignSelf:'center',
-    color:'white',
+    color:'#113F67',
     fontFamily:'inter',
     fontWeight:'400',
     fontSize:24
@@ -123,7 +126,7 @@ const styles = StyleSheet.create({
 
 },
 foglalasiSzoveg:{
-  color:'#113F67',
+  color:'white',
   fontSize:20,
   fontFamily:'inter',
   fontWeight:'400',
@@ -131,7 +134,7 @@ foglalasiSzoveg:{
   //backgroundColor: '#113F67'
 },
 koszonjuk:{
-  color:'#113F67',
+  color:'white',
   fontSize:30,
   fontFamily:'inter',
   fontWeight:'400',

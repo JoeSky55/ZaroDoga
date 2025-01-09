@@ -14,7 +14,7 @@ export default function HomeScreen({navigation}) {
       <View style={{flex: 1, alignItems: "center"}} >
       <Image source={require('../kepek/logo.jpg')} style={styles.logo} />
       </View>
-      <View style={{flex: 4}}>
+      <View style={{flex: 2.5}}>
         <View >
 
           
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    paddingTop: 50,
     backgroundColor: '#fff'
   },
   logo:{

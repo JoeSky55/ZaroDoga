@@ -18,7 +18,7 @@ export default function FoglalasScreen({navigation}) {
 
   const reszletekFv=(id,nev)=>{
     //alert(id)
-    navigation.navigate(" ",{id:id,nev:nev})
+    navigation.navigate("Foglalas2Screen",{id:id,nev:nev})
 
   }
   return (
