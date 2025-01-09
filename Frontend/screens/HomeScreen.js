@@ -54,7 +54,9 @@ const styles = StyleSheet.create({
   logo:{
     width:'80%',
     height:'80%',
-    resizeMode: 'contain'
+    resizeMode: 'contain',
+    
+    
     
   },
   logo_box:{
@@ -62,13 +64,13 @@ const styles = StyleSheet.create({
     height: 'auto',
     alignItems: 'center',
     marginBottom: 30,
-    backgroundColor: 'red'
+    backgroundColor: 'red',
   },
   gombok:{
     padding:20,
     margin:20,
     width:300,
-    backgroundColor: '#113F67',
+    backgroundColor: '#788BFF',
     borderRadius:50,
     color:'white',
     alignSelf:'center'

@@ -128,6 +128,7 @@ export default function Foglalas3Screen({ navigation, route }) {
               value={telefon}
               onChangeText={onChangeTelefon}
               placeholder='Telefonszám'
+              keyboardType='numeric'
             />
           </View>
           </KeyboardAwareScrollView>

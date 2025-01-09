@@ -22,26 +22,28 @@ export default function FoglalasScreen({navigation}) {
 
   }
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'white' }}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'#bfd7ff', }}>
       <Text style={styles.cim}>Szakrendeléseink</Text>
 
       <FlatList
           data={adatok}
           renderItem={({item}) => (
-              <View>
+              <View style={{width:300}}>
 
                 <TouchableOpacity  onPress={() => reszletekFv(item.szak_id,item.szak_nev)}>
                   <Image style={styles.rendeles_logo} source={require('../kepek/rendeles_ikon.png')} />
                 </TouchableOpacity>
 
+              <View style={styles.feliratHatter}>
                 <Text style={styles.rendeles_felirat}>{item.szak_nev}</Text>
+              </View>
               </View>
             )}
           keyExtractor={item => item.szak_nev}
         />
 
 
-      <Button title="Vissza" onPress={() => navigation.goBack()}/> 
+      
 
     </View>
   );
@@ -59,11 +61,26 @@ const styles = StyleSheet.create({
   },
   rendeles_felirat:{
     alignSelf:'center',
-    fontSize:22
+    fontSize:22,
+    color:'#113F67',
+    padding:10,
+    flexWrap: 'wrap',
+    
+  },
+  feliratHatter:{
+    backgroundColor:'#788BFF',
+    height:50,
+    borderRadius:50,
+    alignContent:'center',
+    justifyContent:'center',
+    width:'100%',
+    
   },
   cim:{
     fontSize:24,
-    backgroundColor:'#fff',
+    color:'#113F67',
+    backgroundColor:'#bfd7ff',
+    
     
   }
 })
