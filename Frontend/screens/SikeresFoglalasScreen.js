@@ -45,7 +45,7 @@ export default function SikeresFoglalasScreen({navigation,route}) {
       <View style={{flex: 0.3, alignItems: "center"}} >
       <Image source={require('../kepek/logo.jpg')} style={styles.logo} />
       </View>
-      <View style={{flex: 2, backgroundColor:'#113F67', borderRadius:40}}>
+      <View style={{flex: 2, backgroundColor:'#4da8dd', borderRadius:40}}>
         
 
         <View style={styles.foglalasiAdatok}>
@@ -58,7 +58,7 @@ export default function SikeresFoglalasScreen({navigation,route}) {
         </View>
         
         <View style={{flex:3}}>
-          <Text style={{alignSelf: 'center', color:'red',fontFamily:'inter', fontWeight:'bold', fontSize:20}}>
+          <Text style={{alignSelf: 'center', color:'black',fontFamily:'inter', fontWeight:'bold', fontSize:20}}>
             Időpontot lemondani, illetve módosítani a 
             <TouchableOpacity onPress={()=> makeCall("36 30 602 8611")}>
               <Text style={{fontSize:17, color:'white',textDecorationLine: 'underline'}}>+36 30 602 8611</Text>
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     paddingTop: 50,
-    backgroundColor: '#fff'
+    backgroundColor: '#d4eaea'
   },
   logo:{
     width:'80%',

@@ -28,10 +28,10 @@ export default function App() {
         <Stack.Screen name="Rendelőnk" component={RendelonkScreen} />
         <Stack.Screen name="Kapcsolat" component={KapcsolatScreen} />
         
-        <Stack.Screen name="Időpontfoglalás" component={FoglalasScreen} options={{headerTitle: '',headerStyle:{borderBottomWidth: 0,shadowOpacity: 0,elevation: 0,backgroundColor: '#bfd7ff'}, headerTintColor: '#113F67' }}  />
-        <Stack.Screen name="Foglalas2Screen" component={Foglalas2Screen} options={{headerTitle: ''}}/>
-        <Stack.Screen name="Foglalas3Screen" component={Foglalas3Screen} options={{headerTitle: '',headerStyle:{borderBottomWidth: 0,shadowOpacity: 0,elevation: 0,}}}/>
-        <Stack.Screen name="SikeresFoglalas" component={SikeresFoglalasScreen} options={{headerLeft: null,headerShown: false }}/>
+        <Stack.Screen name="Időpontfoglalás" component={FoglalasScreen} options={{headerTitle: '',headerStyle:{borderBottomWidth: 0,shadowOpacity: 0,elevation: 0,backgroundColor: '#d4eaea'}, headerTintColor: '#113F67' }}  />
+        <Stack.Screen name="Foglalas2Screen" component={Foglalas2Screen} options={{headerTitle: '', headerStyle:{borderBottomWidth: 0,shadowOpacity: 0,elevation: 0,backgroundColor: '#d4eaea'} }}/>
+        <Stack.Screen name="Foglalas3Screen" component={Foglalas3Screen} options={{headerTitle: '',headerStyle:{borderBottomWidth: 0,shadowOpacity: 0,elevation: 0,backgroundColor: '#d4eaea'}}}/>
+        <Stack.Screen name="SikeresFoglalas" component={SikeresFoglalasScreen} options={{headerLeft: null,headerShown: false,headerStyle:{borderBottomWidth: 0,shadowOpacity: 0,elevation: 0,backgroundColor: '#d4eaea'} }}/>
         
         
       </Stack.Navigator>

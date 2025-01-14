@@ -62,10 +62,11 @@ export default function Foglalas3Screen({ navigation, route }) {
   const [telefon, onChangeTelefon] = useState('');
 
   const TovabbGomb = () => {
-    if (felhasznaloNev == null || email == null || telefon == null) {
+    if (felhasznaloNev == '' || email == '' || telefon == '') {
       alert("Kérlek töltsd ki az összes mezőt!");
       return;
-    } else {
+    } 
+    else {
       feltoltes();
       navigation.replace("SikeresFoglalas", { id: id, nev: nev, orvosId: orvosId, idopont: idopont, datumMentese: datumMentese, orvosNeve: orvosNeve });
     }
@@ -152,12 +153,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: '#d4eaea'
   },
   container2:{
     flex: 1,
     flexDirection:'column',
-    backgroundColor:'white',
+    backgroundColor:'#d4eaea',
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop:0,
@@ -171,7 +172,8 @@ const styles = StyleSheet.create({
   },
   foglalasiAdatok: {
     flex: 1,
-    backgroundColor:'white'
+    backgroundColor:'#4da8dd',
+    borderRadius:20
   },
   foglalasiSzoveg: {
     color: '#113F67',
@@ -185,7 +187,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'left',
     flexDirection: 'column',
-    backgroundColor: 'blue',
+    
     width: '100%',
   },
   adatbevitelCim: {
@@ -194,12 +196,14 @@ const styles = StyleSheet.create({
     fontFamily: 'inter',
     fontWeight: '400',
     flex: 1,
-    marginLeft: 60
+    marginLeft: 6,
+    alignSelf:'center',
+    
   },
   nev_input_view: {
     flex: 0.2,
    
-    backgroundColor: 'white'
+    backgroundColor: '#d4eaea'
   },
   nev_input: {
     borderWidth: 2,
@@ -208,11 +212,11 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     borderRadius: 5,
     borderColor: '#113F67',
-    backgroundColor: 'white',
+    backgroundColor: '#d4eaea',
   },
   email_input_view: {
     flex: 0.2,
-    backgroundColor: 'white'
+    backgroundColor: '#d4eaea'
   },
   email_input: {
     borderWidth: 2,
@@ -224,7 +228,7 @@ const styles = StyleSheet.create({
   },
   telefon_input_view: {
     flex: 0.1,
-    backgroundColor: 'white',
+    backgroundColor: '#d4eaea',
     
     alignContent: 'center',
     justifyContent: 'center'
@@ -243,7 +247,7 @@ const styles = StyleSheet.create({
     width: 350,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: '#d4eaea'
   },
   gombszoveg: {
     color: 'white',
@@ -255,7 +259,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
-    backgroundColor: '#378A19',
+    backgroundColor: '#12AB70',
     borderRadius: 50,
     margin: 10,
     padding: 20,
@@ -266,7 +270,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
-    backgroundColor: '#113F67',
+    backgroundColor: '#8bcefd',
     borderRadius: 50,
     margin: 10,
     padding: 20,
