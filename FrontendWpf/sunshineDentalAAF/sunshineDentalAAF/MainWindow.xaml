@@ -10,7 +10,13 @@
         <TabControl HorizontalAlignment="Center" Height="398" VerticalAlignment="Center" Width="840">
             <TabItem Header="Összes időpont" FontFamily="Bahnschrift" FontWeight="Bold">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="datagrid" HorizontalAlignment="Left" Height="178" Margin="38,25,0,0" VerticalAlignment="Top" Width="770" d:ItemsSource="{d:SampleData ItemCount=5}" AutoGenerateColumns="False" ItemsSource="{Binding YourData}" FontFamily="Bahnschrift" Background="#FFDEDEDE" Foreground="Black" FontSize="14">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="110*"/>
+                        <ColumnDefinition Width="27*"/>
+                        <ColumnDefinition Width="95*"/>
+                        <ColumnDefinition Width="602*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="datagrid" HorizontalAlignment="Left" Height="178" Margin="38,25,0,0" VerticalAlignment="Top" Width="770" d:ItemsSource="{d:SampleData ItemCount=5}" AutoGenerateColumns="False" ItemsSource="{Binding YourData}" FontFamily="Bahnschrift" Background="#FFDEDEDE" Foreground="Black" FontSize="14" Grid.ColumnSpan="4">
                         <DataGrid.BorderBrush>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="Black"/>
@@ -30,61 +36,60 @@
                             <DataGridTextColumn Header="Telefon" Binding="{Binding if_telefon}" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    <ComboBox x:Name="cbkereses" HorizontalAlignment="Left" Height="28" Margin="42,239,0,0" VerticalAlignment="Top" Width="134" SelectionChanged="Cbkereses_SelectionChanged" FontFamily="Bahnschrift" FontSize="14">
+                    <ComboBox x:Name="cbkereses" HorizontalAlignment="Left" Height="26" Margin="38,226,0,0" VerticalAlignment="Top" Width="134" SelectionChanged="Cbkereses_SelectionChanged" FontFamily="Bahnschrift" FontSize="14" Grid.ColumnSpan="3">
                         <ComboBox.Effect>
                             <DropShadowEffect/>
                         </ComboBox.Effect>
                     </ComboBox>
-                    <Button x:Name="osszesGomb" Content="Összes szakrendelés mutatása" HorizontalAlignment="Left" Height="28" Margin="207,239,0,0" VerticalAlignment="Top" Width="219" Click="osszesGomb_Click" FontWeight="Bold" FontFamily="Bahnschrift" FontSize="14">
+                    <Button x:Name="osszesGomb" Content="Összes dátum" HorizontalAlignment="Left" Height="28" Margin="235,225,0,0" VerticalAlignment="Top" Width="110" Click="osszesGomb_Click" FontWeight="Bold" FontFamily="Bahnschrift" FontSize="14" Background="LightCyan" Grid.Column="3">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
-                    <Button Content="Időpont törlése" HorizontalAlignment="Left" Height="28" Margin="668,239,0,0" VerticalAlignment="Top" Width="140" Background="#FFF36A6A" Click="Button_Click" FontSize="14">
+                    <Button Content="Időpont törlése" HorizontalAlignment="Left" Height="28" Margin="308,275,0,0" VerticalAlignment="Top" Width="140" Background="#FF14426A" Click="Button_Click" FontSize="14" Foreground="White" Grid.Column="3">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
-                    <Button x:Name="regebbiIdopontok" Content="Lejárt dátumok mutatása" HorizontalAlignment="Left" Height="28" Margin="442,239,0,0" VerticalAlignment="Top" Width="178" Click="regebbiIdopontok_Click" FontWeight="Bold" FontSize="14">
+                    <Button x:Name="regebbiIdopontok" Content="Lejárt dátum" HorizontalAlignment="Left" Height="28" Margin="356,225,0,0" VerticalAlignment="Top" Width="98" Click="regebbiIdopontok_Click" FontWeight="Bold" FontSize="14" Background="LightCyan" Grid.Column="3">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
-                    <Button x:Name="frissitesButton" Content="Frissítés" HorizontalAlignment="Left" Height="27" Margin="48,301,0,0" VerticalAlignment="Top" Width="113" Click="frissitesButton_Click" FontWeight="Bold" FontSize="14" Background="#FFDDDDDD">
+                    <Button x:Name="frissitesButton" Content="Frissítés" HorizontalAlignment="Left" Height="28" Margin="463,275,0,0" VerticalAlignment="Top" Width="113" Click="frissitesButton_Click" FontWeight="Bold" FontSize="14" Background="#FF14426A" Foreground="White" Grid.Column="3">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+                    <Image HorizontalAlignment="Left" Height="70" Margin="50,290,0,0" VerticalAlignment="Top" Width="297" Grid.ColumnSpan="4"/>
+                    <Image HorizontalAlignment="Left" Height="79" Margin="38,276,0,0" VerticalAlignment="Top" Width="276" Source="/sunshine-dental-high-resolution-logo-transparent.png" Grid.ColumnSpan="4"/>
+                    <Button x:Name="aktualisIdopontok" Grid.Column="3" Content="Aktuális dátum" HorizontalAlignment="Left" Height="28" Margin="466,225,0,0" VerticalAlignment="Top" Width="110" Click="aktualisIdopontok_Click" FontWeight="Bold" FontSize="14" Background="LightCyan">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
                 </Grid>
             </TabItem>
-            <TabItem Header="Aktuális időpont" FontFamily="Bahnschrift" FontWeight="Bold">
+            <TabItem HorizontalAlignment="Left" Height="20" Header="Új időpont felvitel" VerticalAlignment="Center" Width="110" FontFamily="Bahnschrift" FontWeight="Bold" Margin="-1,0,0,0">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="26*"/>
-                        <ColumnDefinition Width="45*"/>
-                        <ColumnDefinition Width="41*"/>
-                        <ColumnDefinition Width="722*"/>
+                        <ColumnDefinition Width="115*"/>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="706*"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="datagrid2" HorizontalAlignment="Left" Height="178" Margin="12,25,0,0" VerticalAlignment="Top" Width="770" d:ItemsSource="{d:SampleData ItemCount=5}" AutoGenerateColumns="False" ItemsSource="{Binding YourData}" FontFamily="Bahnschrift" Background="#FFDEDEDE" Foreground="Black" FontSize="14" Grid.ColumnSpan="3" Grid.Column="1">
-                        <DataGrid.BorderBrush>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="Black"/>
-                                <GradientStop Color="White" Offset="1"/>
-                            </LinearGradientBrush>
-                        </DataGrid.BorderBrush>
-                        <DataGrid.Effect>
+                    <ComboBox x:Name="cbOrvos" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="23" Margin="67,24,0,0" VerticalAlignment="Top" Width="145">
+                        <ComboBox.Effect>
                             <DropShadowEffect/>
-                        </DataGrid.Effect>
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Orvos neve" Binding="{Binding nev}" />
-                            <DataGridTextColumn Header="Szakrendelés" Binding="{Binding szak_nev}" />
-                            <DataGridTextColumn Header="Dátum" Binding="{Binding if_datum, StringFormat=\{0:yyyy-MM-dd\}}" />
-                            <DataGridTextColumn Header="Időpont" Binding="{Binding if_idopont}" />
-                            <DataGridTextColumn Header="Név" Binding="{Binding if_nev}" />
-                            <DataGridTextColumn Header="Email" Binding="{Binding if_email}" />
-                            <DataGridTextColumn Header="Telefon" Binding="{Binding if_telefon}" />
-                        </DataGrid.Columns>
-                    </DataGrid>
+                        </ComboBox.Effect>
+                    </ComboBox>
+                    <ComboBox x:Name="cbSzakterulet" HorizontalAlignment="Left" Height="23" Margin="229,24,0,0" VerticalAlignment="Top" Width="145" Grid.Column="2">
+                        <ComboBox.Effect>
+                            <DropShadowEffect/>
+                        </ComboBox.Effect>
+                    </ComboBox>
+                    <Label Content="Orvos:" HorizontalAlignment="Left" Height="26" Margin="10,23,0,0" VerticalAlignment="Top" Width="57" FontSize="14" RenderTransformOrigin="0.686,0.514"/>
+                    <Label Content="Szakterület:" HorizontalAlignment="Left" Height="26" Margin="137,23,0,0" VerticalAlignment="Top" Width="92" FontSize="14" Grid.Column="2"/>
+                    <ComboBox x:Name="cbIdopontok" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="488,24,0,0" VerticalAlignment="Top" Width="134"/>
                 </Grid>
             </TabItem>
         </TabControl>

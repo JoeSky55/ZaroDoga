@@ -9,9 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="sunshine-dental-high-resolution-logo-transparent.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="NetworkHelper">
       <HintPath>..\..\..\..\..\..\..\Downloads\NetworkHelper.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="sunshine-dental-high-resolution-logo-transparent.png" />
   </ItemGroup>
 
 </Project>

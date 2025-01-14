@@ -77,6 +77,35 @@ app.get('/szakteruletek', (req, res) => {
   })
 
 //Robi végpontjai________________________________________________
+app.get('/csak_orvosok', (req, res) => {
+    kapcsolat()
+    connection.query(`SELECT * FROM orvosok;`, (err, rows, fields) => {
+        if (err) {
+            console.log(err)
+            res.status(500).send("Hiba")
+        }
+        else{
+            console.log(rows)
+            res.status(200).send(rows)
+        }
+      })
+      connection.end()
+  })
+
+  app.get('/csak_szakteruletek', (req, res) => {
+    kapcsolat()
+    connection.query(`SELECT * FROM szakteruletek;`, (err, rows, fields) => {
+        if (err) {
+            console.log(err)
+            res.status(500).send("Hiba")
+        }
+        else{
+            console.log(rows)
+            res.status(200).send(rows)
+        }
+      })
+      connection.end()
+  })
 
 app.get('/orvosAdatok2', (req, res) => {
   kapcsolat()
@@ -173,34 +202,6 @@ app.get('/idopontok', (req, res) => {
     connection.end()
 })
 
-app.get('/idopontokDatumUtan', (req, res) => {
-    kapcsolat()
-    connection.query(`
-      SELECT 
-        orvosok.nev, 
-        szakteruletek.szak_nev, 
-        idopont_foglalas.if_datum, 
-        idopont_foglalas.if_idopont, 
-        idopont_foglalas.if_nev, 
-        idopont_foglalas.if_email, 
-        idopont_foglalas.if_telefon 
-      FROM idopont_foglalas 
-      INNER JOIN orvosok ON orvosok.orvos_id = idopont_foglalas.if_orvosid 
-      INNER JOIN szakteruletek ON szakteruletek.szak_id = idopont_foglalas.if_szakrendelesid 
-      WHERE idopont_foglalas.if_datum >= CURDATE();
-    `, (err, rows, fields) => {
-        if (err) {
-            console.log(err)
-            res.status(500).send("Hiba")
-        }
-        else{
-            console.log(rows)
-            res.status(200).send(rows)
-        }
-      })
-      connection.end()
-  })
-
   app.delete('/idopontTorles', (req, res) => {
     kapcsolat()
     connection.query(`DELETE FROM idopont_foglalas WHERE if_telefon = ${req.body.bevitel1}`,
@@ -220,19 +221,6 @@ app.get('/idopontokDatumUtan', (req, res) => {
       
       connection.end()
   })
-
-
-
-  
-
-
-
-
-
-  
-
-
-
 
 //******************************************************
   app.listen(port, () => {
