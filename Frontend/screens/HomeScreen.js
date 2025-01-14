@@ -14,7 +14,7 @@ export default function HomeScreen({navigation}) {
       <View style={{flex: 1, alignItems: "center"}} >
       <Image source={require('../kepek/logo.jpg')} style={styles.logo} />
       </View>
-      <View style={{flex: 4}}>
+      <View style={{flex: 2.5}}>
         <View >
 
           
@@ -48,12 +48,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#fff'
+    paddingTop: 50,
+    backgroundColor: '#d4eaea'
   },
   logo:{
     width:'80%',
     height:'80%',
-    resizeMode: 'contain'
+    resizeMode: 'contain',
+    
+    
     
   },
   logo_box:{
@@ -61,13 +64,13 @@ const styles = StyleSheet.create({
     height: 'auto',
     alignItems: 'center',
     marginBottom: 30,
-    backgroundColor: 'red'
+    backgroundColor: 'red',
   },
   gombok:{
     padding:20,
     margin:20,
     width:300,
-    backgroundColor: '#113F67',
+    backgroundColor: '#4da8dd',
     borderRadius:50,
     color:'white',
     alignSelf:'center'

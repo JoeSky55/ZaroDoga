@@ -130,7 +130,7 @@ export default function Foglalas2Screen({ navigation, route }) {
     function TovabbGomb(){
       
       if (idopont != null && orvosId != null && datumMentese != null  && id != null) {
-        navigation.navigate("  ",{id:id,nev:nev,orvosId:orvosId,idopont:idopont,datumMentese:datumMentese, orvosNeve:orvosNeve})
+        navigation.navigate("Foglalas3Screen",{id:id,nev:nev,orvosId:orvosId,idopont:idopont,datumMentese:datumMentese, orvosNeve:orvosNeve})
       }
       else{
         alert('Add meg az összes adatot')
@@ -163,15 +163,12 @@ export default function Foglalas2Screen({ navigation, route }) {
       </View>
 
       <View
-          style={{
-            borderBottomColor: 'white',
-            borderBottomWidth: 2,
-          }}
+          
         />
 
 
       <View style={styles.orvosok}>
-          <Text style={styles.orvosnev}>Válasszon orvost:</Text>
+          <Text style={styles.orvosnev3}>Válasszon orvost:</Text>
         <FlatList
           data={adatok.filter(orvos => orvos.szakterulet_id === id)}
           renderItem={({ item }) => (
@@ -193,16 +190,11 @@ export default function Foglalas2Screen({ navigation, route }) {
         />   
       </View>
 
-        <View
-          style={{
-            borderBottomColor: 'white',
-            borderBottomWidth: 2,
-          }}
-        />
+        
 
 
 
-      <Text style={styles.orvosnev}>Dátum kiválasztása</Text>
+      <Text style={styles.orvosnev2}>Dátum kiválasztása</Text>
 
       <View style={styles.datum}>
 
@@ -344,7 +336,7 @@ export default function Foglalas2Screen({ navigation, route }) {
 
       
 
-          <View>
+          {/*<View>
             <Text>Időpont:  {idopont}</Text>
             <Text>Szakrendelés id: {id}</Text>
             <Text>Orvos Id: {orvosId}</Text>
@@ -352,7 +344,7 @@ export default function Foglalas2Screen({ navigation, route }) {
             <Text>Orvos neve:  {orvosNeve}</Text>
           
           </View>
-
+        */}
 
 
 
@@ -368,7 +360,7 @@ export default function Foglalas2Screen({ navigation, route }) {
         
 
         
-          <TouchableOpacity style={styles.gombok} onPress={()=>TovabbGomb()}>
+          <TouchableOpacity style={styles.gombok2} onPress={()=>TovabbGomb()}>
             <Text style={styles.gombszoveg}>Tovább</Text>
           </TouchableOpacity>
         
@@ -386,7 +378,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
     padding: 20,
-    backgroundColor:'#113F67'
+    backgroundColor:'#d4eaea'
     
   },
   cim:{
@@ -399,7 +391,7 @@ const styles = StyleSheet.create({
 
   },
   szakCim:{
-    color:'white',
+    color:'#1b4965',
     fontSize:26,
     fontFamily:'inter',
     fontWeight:'600',
@@ -408,31 +400,53 @@ const styles = StyleSheet.create({
   
   orvosok:{
     flex:3.5,
-    backgroundColor:'orvosSzin',
-    margin:3
+    backgroundColor:'#8bcefd',
+    margin:3,
+    borderRadius:30
+    
+    
   },
   orvosnev:{
+    color:'#1b4865',
+    fontSize:20,
+    fontFamily:'inter',
+    fontWeight:'400',
+    padding:10,
+    backgroundColor: '#8bcefd',
+    
+  },
+  orvosnev2:{
     color:'white',
     fontSize:20,
     fontFamily:'inter',
     fontWeight:'400',
     padding:10,
-    backgroundColor: '#113F67'
+    backgroundColor: '#1fa0cc',
+    borderRadius:50
   },
-  orvosnevvaltoztatva:{
-    backgroundColor: 'white',
-    color: '#113F67',
+  orvosnev3:{
+    color:'white',
     fontSize:20,
     fontFamily:'inter',
     fontWeight:'400',
     padding:10,
-    backgroundColor: 'white',
+    backgroundColor: '#1fa0cc',
+    borderRadius:50
+  },
+  orvosnevvaltoztatva:{
+    backgroundColor: '#4da8dd',
+    color: 'white',
+    fontSize:20,
+    fontFamily:'inter',
+    fontWeight:'400',
+    padding:10,
+    
     borderRadius:50
   },
 
   datum:{
     flex:1,
-    backgroundColor:'white',
+    backgroundColor:'#8bcefd',
     width:350,
     borderRadius:20,
     alignContent:'center',
@@ -442,7 +456,7 @@ const styles = StyleSheet.create({
   },
   kivalasztottDatum:{
     flex:1,
-    backgroundColor:'white',
+    backgroundColor:'#8bcefd',
     alignContent:'center',
     justifyContent:'center',
     //borderRadius:50,
@@ -450,7 +464,7 @@ const styles = StyleSheet.create({
     
   },
   kivalasztottDatumSzoveg:{
-    color:'#113F67',
+    color:'white',
     fontSize:18,
     fontFamily:'inter',
     fontWeight:'400',
@@ -461,7 +475,7 @@ const styles = StyleSheet.create({
   },
   datepicker:{
     flex:1,
-    backgroundColor:'white',
+    backgroundColor:'#8bcefd',
     alignContent:'center',
     justifyContent:'center',
     //borderRadius:50,
@@ -477,14 +491,14 @@ const styles = StyleSheet.create({
   idopont_gombok:{
     flexDirection:'row',
     flex:1,
-    backgroundColor:'#113F67',
+    backgroundColor:'#1fa0cc',
     
     
   },
   gombstilus:{
     
     flex:1,
-    backgroundColor:'white',
+    backgroundColor:'#d4eaea',
     justifyContent:'center',
     alignItems:'center',
     margin:10,
@@ -496,7 +510,7 @@ const styles = StyleSheet.create({
   gombstilus_valtoztat:{
     
     flex:1,
-    backgroundColor:'gray',
+    backgroundColor:'#92A6AB',
     justifyContent:'center',
     alignItems:'center',
     margin:10,
@@ -508,7 +522,7 @@ const styles = StyleSheet.create({
   gombstilus_2:{
     
     flex:1,
-    backgroundColor:'white',
+    backgroundColor:'#d4eaea',
     justifyContent:'center',
     alignItems:'center',
     margin:10,
@@ -519,7 +533,7 @@ const styles = StyleSheet.create({
   gombstilus_2_valtoztat:{
     
     flex:1,
-    backgroundColor:'gray',
+    backgroundColor:'#92A6AB',
     justifyContent:'center',
     alignItems:'center',
     margin:10,
@@ -528,7 +542,7 @@ const styles = StyleSheet.create({
     
   },
   kivalasztottGomb: {
-    backgroundColor: 'green', 
+    backgroundColor: '#12AB70', 
     opacity:50
   },
   idopontgombszoveg:{
@@ -537,7 +551,7 @@ const styles = StyleSheet.create({
     fontFamily:'inter'
   },
   gombszoveg:{
-    color:'#113F67',
+    color:'white',
     fontSize:20,
     fontFamily:'inter'
     
@@ -552,7 +566,18 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent:'center',
     padding:10,
-    backgroundColor:'white',
+    backgroundColor:'#8bcefd',
+    borderRadius:50,
+    margin: 10,
+    padding:20,
+    width:150,
+  },
+  gombok2:{
+    flex:1,
+    alignItems:'center',
+    justifyContent:'center',
+    padding:10,
+    backgroundColor:'#1fa0cc',
     borderRadius:50,
     margin: 10,
     padding:20,

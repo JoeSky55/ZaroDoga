@@ -18,30 +18,35 @@ export default function FoglalasScreen({navigation}) {
 
   const reszletekFv=(id,nev)=>{
     //alert(id)
-    navigation.navigate(" ",{id:id,nev:nev})
+    navigation.navigate("Foglalas2Screen",{id:id,nev:nev})
 
   }
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'white' }}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'#d4eaea', }}>
       <Text style={styles.cim}>Szakrendeléseink</Text>
 
       <FlatList
           data={adatok}
           renderItem={({item}) => (
-              <View>
+              <View style={{width:300}}>
+                <View>
+                <Image style={styles.rendeles_logo} source={require('../kepek/rendeles_ikon.png')} />
+                </View>
+                
 
-                <TouchableOpacity  onPress={() => reszletekFv(item.szak_id,item.szak_nev)}>
-                  <Image style={styles.rendeles_logo} source={require('../kepek/rendeles_ikon.png')} />
-                </TouchableOpacity>
-
-                <Text style={styles.rendeles_felirat}>{item.szak_nev}</Text>
+              <View style={styles.feliratHatter}>
+              <TouchableOpacity  onPress={() => reszletekFv(item.szak_id,item.szak_nev)}>
+              <Text style={styles.rendeles_felirat}>{item.szak_nev}</Text>
+              </TouchableOpacity>
+                
+              </View>
               </View>
             )}
           keyExtractor={item => item.szak_nev}
         />
 
 
-      <Button title="Vissza" onPress={() => navigation.goBack()}/> 
+      
 
     </View>
   );
@@ -59,11 +64,28 @@ const styles = StyleSheet.create({
   },
   rendeles_felirat:{
     alignSelf:'center',
-    fontSize:22
+    fontSize:22,
+    color:'#fff',
+    fontFamily:'inter',
+    fontWeight:'400',
+    padding:10,
+    flexWrap: 'wrap',
+    
+  },
+  feliratHatter:{
+    backgroundColor:'#4da8dd',
+    height:50,
+    borderRadius:50,
+    alignContent:'center',
+    justifyContent:'center',
+    width:'100%',
+    
   },
   cim:{
     fontSize:24,
-    backgroundColor:'#fff',
+    color:'#1b4965',
+    backgroundColor:'#d4eaea',
+    
     
   }
 })
