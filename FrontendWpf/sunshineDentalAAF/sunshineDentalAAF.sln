@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sunshineDentalAAF", "sunshineDentalAAF\sunshineDentalAAF.csproj", "{1B4CD631-C137-497D-B1BA-7478D916892E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sunshineDentalAAF", "sunshineDentalAAF\sunshineDentalAAF.csproj", "{7AE542B1-91D6-4EDE-A26F-F5970639B68C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1B4CD631-C137-497D-B1BA-7478D916892E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B4CD631-C137-497D-B1BA-7478D916892E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1B4CD631-C137-497D-B1BA-7478D916892E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1B4CD631-C137-497D-B1BA-7478D916892E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AE542B1-91D6-4EDE-A26F-F5970639B68C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AE542B1-91D6-4EDE-A26F-F5970639B68C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AE542B1-91D6-4EDE-A26F-F5970639B68C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AE542B1-91D6-4EDE-A26F-F5970639B68C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {A8C5BDC4-E460-4C4C-8BB8-CB598D7E10BE}
+		SolutionGuid = {3A3ED94B-BBA1-4B57-B6FF-CC55E51523F4}
 	EndGlobalSection
 EndGlobal
