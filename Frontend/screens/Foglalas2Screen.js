@@ -3,6 +3,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet, FlatList, TouchableOpacity, } from 'react-native';
 import { setStatusBarBackgroundColor } from 'expo-status-bar';
+import IpCim from './IpCim';
 
 export default function Foglalas2Screen({ navigation, route }) {
 
@@ -21,7 +22,7 @@ export default function Foglalas2Screen({ navigation, route }) {
 
 
     const letoltes=async ()=>{
-      const x=await fetch("http://192.168.10.62:3000/orvosok")
+      const x=await fetch(IpCim.Ipcim +"orvosok")
       const y=await x.json()
       setAdatok(y)
       //alert(JSON.stringify(y))
@@ -32,7 +33,7 @@ export default function Foglalas2Screen({ navigation, route }) {
         "bevitel1":orvosNeve,
         "bevitel2":datumMentese
       }
-      const x=await fetch("http://192.168.10.62:3000/foglaltIdopontok",{
+      const x=await fetch(IpCim.Ipcim +"foglaltIdopontok",{
         method: "POST",
         body: JSON.stringify(adatok),
         headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -484,13 +485,14 @@ const styles = StyleSheet.create({
   idopontok:{
 
     flex:3,
-    backgroundColor:'#113F67',
-    
+    backgroundColor:'#1fa0cc',
+    borderRadius:20
     
   },
   idopont_gombok:{
     flexDirection:'row',
     flex:1,
+    borderRadius:20,
     backgroundColor:'#1fa0cc',
     
     
