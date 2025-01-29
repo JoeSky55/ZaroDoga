@@ -8,31 +8,40 @@ export default function KapcsolatScreen({navigation}) {
     <View style={styles.container}>
 
       <View style={styles.cim}>
-        <Text>
+        <Text style={styles.cim2}>
           Elérhetőségeink:
         </Text>
       </View>
 
 
       <View style={styles.box1}>
-        <Text>
+        <Text style={styles.szoveg}>
           Telefon: +36 (50) 501 6461
         </Text>
       </View>
 
 
       <View style={styles.box2}>
-        <TouchableOpacity onPress={() => Linking.openURL('mailto:sunshineinfo@gmail.com') }
+        <View style={{flex:1, marginRight:0, paddingRight:0, marginLeft:60, backgroundColor:'blue'}}>
+          <Text style={styles.szoveg}>
+            Email: 
+          </Text>
+        </View>
+        <View style={{flex:1, marginLeft:0, marginRight:50, backgroundColor:'red', width:200}}>
+        <TouchableOpacity onPress={() => Linking.openURL('mailto:sunshinedentalfogaszat@gmail.com') }
       title="support@example.com" >
-        <Text>
-          Email:  sunshineinfo@gmail.com
+
+        <Text style={styles.szoveg}>
+           sunshineinfo@gmail.com
         </Text>
         </TouchableOpacity>
+        </View>
+        
       </View>
 
 
       <View style={styles.box3}>
-        <Text>
+        <Text style={styles.szoveg}>
           Posta: 4031 Debrecen István út 26.
         </Text>
       </View>
@@ -60,13 +69,25 @@ const styles = StyleSheet.create({
   },
   box1:{
     flex:1,
-    alignContent:'center'
+    alignSelf:'center',
   },
   box2:{
-    flex:1
+    flex:1,
+    alignSelf:'center',
+    flexDirection:'row'
   },
   box3:{
-    flex:1
+    flex:1,
+    alignSelf:'center',
   },
+  szoveg:{
+    fontSize:20,
+    fontFamily:'Inter',
+    color:'#1b4965'
+  },
+  cim2:{
+    fontSize:25,
+    color:'#1b4965'
+  }
   
 });
