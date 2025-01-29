@@ -123,8 +123,8 @@ footer{
 }
 .orvosKep{
     width: 250px;
-    border-radius: 150px;
-    border: 1px solid black;
+    height: 270px;
+    border-radius: 3px;
     margin-top: 12px;
 }
 .orvosNev{

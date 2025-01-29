@@ -8,7 +8,7 @@ namespace sunshineDentalAAF
 {
     public class Idopontok
     {
-        public string nev {  get; set; }
+        public string nev { get; set; }
         public string szak_nev { get; set; }
         public DateTime if_datum
         {
