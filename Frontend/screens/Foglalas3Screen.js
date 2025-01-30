@@ -4,16 +4,16 @@ import { useState, useEffect } from 'react';
 import { TextInput } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Picker } from '@react-native-picker/picker';
-import IpCim from './IpCim';
+
 export default function Foglalas3Screen({ navigation, route }) {
   const letoltes = async () => {
-    const x = await fetch(IpCim.Ipcim +"orvosok");
+    const x = await fetch("http://192.168.10.62:3000/orvosok");
     const y = await x.json();
     setAdatok(y);
   }
 
   const letoltes_2 = async () => {
-    const x = await fetch(IpCim.Ipcim +"idopontok");
+    const x = await fetch("http://192.168.10.62:3000/idopontok");
     const y = await x.json();
     setAdatok_2(y);
   }
@@ -29,8 +29,8 @@ export default function Foglalas3Screen({ navigation, route }) {
       "bevitel7": telefon
     };
 
-  
-      const response = await fetch(IpCim.Ipcim +"betegFelvitel", {
+    try {
+      const response = await fetch("http://192.168.10.62:3000/betegFelvitel", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,7 +43,9 @@ export default function Foglalas3Screen({ navigation, route }) {
       } else {
         alert("Hiba történt a feltöltés során: " + response.status);
       }
-     
+    } catch (error) {
+      alert("Hálózati hiba: " + error.message);
+    }
   };
 
   useEffect(() => {

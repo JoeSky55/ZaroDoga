@@ -24,12 +24,22 @@ function myDisplay(y)
 {
     for (const elem of y) {
        document.getElementById("szakrendelesek").innerHTML += 
-       `
-       <option value="${elem.szak_nev}">${elem.szak_nev}</option>
+       `  
+       <option value="${elem.szak_nev}">
+            ${elem.szak_nev}
+       </option>
        `
     }
+
+    /*for (const elem of y) {
+        document.getElementById("szakrendelesek").innerHTML += 
+        `
+        <button onclick="Kivalasztas()" value="${elem.szak_nev}">${elem.szak_nev}</button>
+        `
+    }*/
 }
 function Kivalasztas() {
+
     document.getElementById("orvosokCim").innerHTML = 
     `
     <h3 style="margin-top: 15px; margin-left: 40px; margin-right: 40px; background-color: lightcyan; padding: 10px; border-radius: 10px;"><span style="font-size: 23px;">❷ </span>Orvos</h3>

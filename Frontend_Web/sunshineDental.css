@@ -101,8 +101,78 @@ footer{
 }
 /*Kezdolap.html_______________*/
 #sh_epulet{
-    width: 20DDDD50px;
+    width: 450px;
+    border-radius: 10px;
+    margin-left: 105px;
+    margin-top: 25px;
+    border: 3px solid transparent;
+    border-image: linear-gradient(to right, lightcyan 40%, transparent 50%) 2;  
+    clip-path: inset(0 round 20px);
+}
+#bemutatkozoCim{
+    font-variant: small-caps;
+    margin-left: 15px;
+    margin-top: 15px;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+    color: #113F67;
+}
+#bemutatkozoSzoveg{
+    margin-top: 10px;
+    margin-left: 15px;
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: larger;
     
+}
+#bemutatkozoKeret{
+    border-radius: 10px;
+    background-color: lightcyan;
+    margin-left: -65px;
+    margin-top: 25px;
+    margin-right: -370px;
+}
+
+#kezdolapIdopontGomb{
+    margin: 5px;
+    padding-left: -15px;
+    padding-right: 15px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    background-color: #113F67;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#forovos2{
+    width: 450px;
+    border-radius: 10px;
+    margin-left: 390px ;
+    margin-top: 25px;
+    border: 5px solid transparent;
+    border-image: linear-gradient(to left, lightcyan 40%, transparent 50%) 2;  
+    clip-path: inset(0 round 20px);
+}
+
+#bemutatkozoSzoveg2{
+    margin-top: 10px;
+    margin-left: 5px;
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: larger;
+    
+}
+#bemutatkozoKeret2{
+    border-radius: 10px;
+    background-color: lightcyan;
+    margin-left: 115px;
+    margin-top: 25px;
+    margin-right: -370px;
 }
 
 

@@ -1,5 +1,7 @@
 const express = require('express')
 const mysql = require('mysql')
+const nodemailer = require('nodemailer');
+
 const app = express()
 const port = 3000
 var cors = require('cors')
@@ -19,7 +21,7 @@ function kapcsolat()
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'fogorvos_vizsga'
+    database: 'fogorvos_vizsga2'
     })
 
     connection.connect()    
@@ -166,7 +168,7 @@ app.post('/foglaltIdopontok', (req, res) => {
     connection.end()
 })
 
-app.post('/betegFelvitel', (req, res) => {
+  app.post('/betegFelvitel', (req, res) => {
     kapcsolat()
     connection.query(`INSERT INTO idopont_foglalas VALUES (NULL,?,?,?,?,?,?,?);
     `, [req.body.bevitel1, req.body.bevitel2, req.body.bevitel3, req.body.bevitel4, req.body.bevitel5, req.body.bevitel6, req.body.bevitel7],
@@ -179,13 +181,44 @@ app.post('/betegFelvitel', (req, res) => {
        }
        else
        {
-            console.log("Sikeres felvitel!")
-            res.status(200).send("Sikeres felvitel")
+        console.log("Sikeres felvitel!");
+
+        //Email küldése funkció 
+        const userEmail = req.body.bevitel6;
+        if (userEmail) {
+            sendConfirmationEmail(userEmail);
+        }
+
+        res.status(200).send("Sikeres felvitel");
        }
       })
       
       connection.end()
-  })
+    })
+
+    //Email küldő függvény
+    const sendConfirmationEmail = (recipientEmail) => {
+        let transporter = nodemailer.createTransport({
+            service: 'gmail', 
+            auth: {
+                user: 'sunshinedentalfogaszat@gmail.com', 
+                pass: 'opal lhvt wasb ocod' 
+            }
+        });
+        let mailOptions = {
+            from: 'sunshinedentalfogaszat@gmail.com',
+            to: recipientEmail,
+            subject: 'Időpontfoglalás visszaigazolás',
+            text: 'Kedves páciens! Sikeresen lefoglalta az időpontját. Köszönjük, hogy minket választott!'
+        };
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log("Email küldési hiba:", error);
+            } else {
+                console.log("Email elküldve: " + info.response);
+            }
+        });
+    };
 
 app.get('/idopontok', (req, res) => {
   kapcsolat()

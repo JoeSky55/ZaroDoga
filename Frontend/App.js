@@ -25,8 +25,8 @@ export default function App() {
         
         <Stack.Screen name="Főoldal" component={HomeScreen} options={{headerLeft: null, headerShown: false }}  />
         <Stack.Screen name="Orvosaink" component={OrvosainkScreen} />
-        <Stack.Screen name="Rendelőnk" component={RendelonkScreen} options={{headerTitle: '',headerStyle:{borderBottomWidth: 0,shadowOpacity: 0,elevation: 0,backgroundColor: '#d4eaea'}, headerTintColor: '#113F67' }} />
-        <Stack.Screen name="Kapcsolat" component={KapcsolatScreen} options={{headerTitle: '',headerStyle:{borderBottomWidth: 0,shadowOpacity: 0,elevation: 0,backgroundColor: '#d4eaea'}, headerTintColor: '#113F67' }} />
+        <Stack.Screen name="Rendelőnk" component={RendelonkScreen} />
+        <Stack.Screen name="Kapcsolat" component={KapcsolatScreen} />
         
         <Stack.Screen name="Időpontfoglalás" component={FoglalasScreen} options={{headerTitle: '',headerStyle:{borderBottomWidth: 0,shadowOpacity: 0,elevation: 0,backgroundColor: '#d4eaea'}, headerTintColor: '#113F67' }}  />
         <Stack.Screen name="Foglalas2Screen" component={Foglalas2Screen} options={{headerTitle: '', headerStyle:{borderBottomWidth: 0,shadowOpacity: 0,elevation: 0,backgroundColor: '#d4eaea'} }}/>

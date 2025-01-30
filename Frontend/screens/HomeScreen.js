@@ -12,7 +12,7 @@ export default function HomeScreen({navigation}) {
         },
       ]}>
       <View style={{flex: 1, alignItems: "center"}} >
-      <Image source={require('../kepek/logo_transparent.png')} style={styles.logo} />
+      <Image source={require('../kepek/logo.jpg')} style={styles.logo} />
       </View>
       <View style={{flex: 2.5}}>
         <View >
@@ -73,14 +73,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#4da8dd',
     borderRadius:50,
     color:'white',
-    alignSelf:'center',
-    shadowColor:'#113F67',
-    shadowOffset:{width:0,height:5},
-    shadowOpacity:0.4,
-    shadowRadius:7,
-    
-    
-    
+    alignSelf:'center'
     
   },
   gombokSzoveg:{
@@ -88,7 +81,6 @@ const styles = StyleSheet.create({
     color:'white',
     fontFamily:'inter',
     fontWeight:'400',
-    fontSize:24,
-    
+    fontSize:24
   }
 });

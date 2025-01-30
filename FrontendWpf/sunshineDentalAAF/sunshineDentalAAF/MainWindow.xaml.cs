@@ -175,5 +175,18 @@ namespace sunshineDentalAAF
             datagrid.ItemsSource = null;
             datagrid.ItemsSource = aktualisIdopontokLista;
         }
+
+        private void cbSzakterulet_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            
+            foreach (var a in SzakAdatok)
+            {
+                if (cbSzakterulet.SelectedItem.ToString() == a.szak_nev)
+                {
+                    MessageBox.Show(a.szak_id.ToString());
+                }
+            }
+        }
     }
 }
