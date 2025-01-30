@@ -12,7 +12,7 @@ export default function HomeScreen({navigation}) {
         },
       ]}>
       <View style={{flex: 1, alignItems: "center"}} >
-      <Image source={require('../kepek/logo.jpg')} style={styles.logo} />
+      <Image source={require('../kepek/logo_transparent.png')} style={styles.logo} />
       </View>
       <View style={{flex: 2.5}}>
         <View >
