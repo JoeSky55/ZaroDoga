@@ -15,7 +15,6 @@ navLinks.forEach(link => {
         indicator.style.width = '0';
     });
 });
-//
 
 
 
