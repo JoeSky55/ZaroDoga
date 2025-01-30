@@ -30,13 +30,6 @@ function myDisplay(y)
        </option>
        `
     }
-
-    /*for (const elem of y) {
-        document.getElementById("szakrendelesek").innerHTML += 
-        `
-        <button onclick="Kivalasztas()" value="${elem.szak_nev}">${elem.szak_nev}</button>
-        `
-    }*/
 }
 function Kivalasztas() {
 

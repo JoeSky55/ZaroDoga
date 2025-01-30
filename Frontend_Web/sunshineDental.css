@@ -10,7 +10,6 @@ footer{
     color:  #113F67;
     border-top: 1px solid #ddd; 
 }
-
 /*Fooldal______________________*/
 .FooldalLogo{
     width: 600px;
@@ -124,7 +123,6 @@ footer{
     color: black;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: larger;
-    
 }
 #bemutatkozoKeret{
     border-radius: 10px;
@@ -133,20 +131,20 @@ footer{
     margin-top: 25px;
     margin-right: -370px;
 }
-
 #kezdolapIdopontGomb{
-    margin: 5px;
-    padding-left: -15px;
-    padding-right: 15px;
-    padding-left: 5px;
-    padding-bottom: 5px;
+    margin-top: 30px;
+    margin-left: 15px;
+    padding: 15px;
+    padding-right: 25px;
+    padding-left: 25px;
     background-color: #113F67;
     border: none;
-    border-radius: 5px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    border-radius: 45px;
     color: white;
     font-weight: bold;
     transition: background-color 0.3s;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 17px;
 }
 
 #forovos2{
