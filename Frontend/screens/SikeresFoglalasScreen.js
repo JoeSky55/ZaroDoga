@@ -43,7 +43,7 @@ export default function SikeresFoglalasScreen({navigation,route}) {
         },
       ]}>
       <View style={{flex: 0.3, alignItems: "center"}} >
-      <Image source={require('../kepek/logo_transparent.png')} style={styles.logo} />
+      <Image source={require('../kepek/logo.jpg')} style={styles.logo} />
       </View>
       <View style={{flex: 2, backgroundColor:'#4da8dd', borderRadius:40}}>
         
@@ -58,10 +58,10 @@ export default function SikeresFoglalasScreen({navigation,route}) {
         </View>
         
         <View style={{flex:3}}>
-          <Text style={{alignSelf: 'center', color:'black',fontFamily:'inter', fontWeight:'bold', fontSize:21}}>
+          <Text style={{alignSelf: 'center', color:'black',fontFamily:'inter', fontWeight:'bold', fontSize:20}}>
             Időpontot lemondani, illetve módosítani a 
             <TouchableOpacity onPress={()=> makeCall("36 30 602 8611")}>
-              <Text style={{fontSize:17, color:'white',textDecorationLine: 'underline', fontFamily:'Inter'}}>+36 30 602 8611</Text>
+              <Text style={{fontSize:17, color:'white',textDecorationLine: 'underline'}}>+36 30 602 8611</Text>
             </TouchableOpacity>
              -os számon lehet.
           </Text>

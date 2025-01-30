@@ -1,12 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { View, Text, Button, FlatList, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import IpCim from './IpCim';
 
 export default function FoglalasScreen({navigation}) {
   const [adatok,setAdatok]=useState([])
 
   const letoltes=async ()=>{
-    const x=await fetch("http://192.168.10.62:3000/szakteruletek")
+    const x=await fetch(IpCim.Ipcim +"szakteruletek")
     const y=await x.json()
     setAdatok(y)
     //alert(JSON.stringify(y))
@@ -28,21 +29,24 @@ export default function FoglalasScreen({navigation}) {
       <FlatList
           data={adatok}
           renderItem={({item}) => (
-              <View style={{width:300}}>
+              <View style={{width:370
+              , alignContent:'center', justifyContent:'center', alignSelf:'center', marginBottom:50}}>
                 <View>
                 <Image style={styles.rendeles_logo} source={require('../kepek/rendeles_ikon.png')} />
                 </View>
                 
-
+              
               <View style={styles.feliratHatter}>
               <TouchableOpacity  onPress={() => reszletekFv(item.szak_id,item.szak_nev)}>
               <Text style={styles.rendeles_felirat}>{item.szak_nev}</Text>
               </TouchableOpacity>
-                
               </View>
+                
+              
               </View>
             )}
           keyExtractor={item => item.szak_nev}
+          showsVerticalScrollIndicator={false}
         />
 
 
@@ -69,7 +73,7 @@ const styles = StyleSheet.create({
     fontFamily:'inter',
     fontWeight:'400',
     padding:10,
-    flexWrap: 'wrap',
+    
     
   },
   feliratHatter:{
@@ -78,7 +82,12 @@ const styles = StyleSheet.create({
     borderRadius:50,
     alignContent:'center',
     justifyContent:'center',
-    width:'100%',
+    width:'80%',
+    marginLeft:35,
+    shadowColor:'#113F67',
+    shadowOffset:{width:0,height:5},
+    shadowOpacity:0.4,
+    shadowRadius:7,
     
   },
   cim:{

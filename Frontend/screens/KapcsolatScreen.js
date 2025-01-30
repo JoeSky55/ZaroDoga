@@ -1,28 +1,10 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, StyleSheet, Image } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import { Linking } from 'react-native';
 
 export default function KapcsolatScreen({navigation}) {
-  const makeCall = (phoneNumber) => {
-    const phoneUrl = `tel:${phoneNumber}`;
-    Linking.canOpenURL(phoneUrl)
-      .then((supported) => {
-        if (!supported) {
-          Alert.alert("Hiba", "Nem lehet megnyitni a telefonhívás funkciót ezen az eszközön.");
-        } else {
-          return Linking.openURL(phoneUrl);
-        }
-      })
-      .catch((err) => console.error("Hiba történt a hívásindítás közben:", err));
-  };
   return (
-<<<<<<< Updated upstream
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Kapcsolat Screen</Text>
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-    </View>
-  );
-}
-=======
     <View style={styles.container}>
 
       <View style={styles.cim}>
@@ -31,33 +13,25 @@ export default function KapcsolatScreen({navigation}) {
         </Text>
       </View>
 
-      
 
       <View style={styles.box1}>
-      <View style={{flex:1.5, marginRight:0, paddingRight:0, marginLeft:60,}}>
-          <Text style={styles.szoveg}>
-            Telefon: 
-          </Text>
-        </View>
-        <View style={{flex:5, marginLeft:0, marginRight:50,backgroundColor:'Red'}}>
-        <TouchableOpacity onPress={()=> makeCall("36 30 602 8611")}>
-              <Text style={{fontSize:20, color:'#1b4965', fontFamily:'Inter',textDecorationLine: 'underline', fontSize:20, }}>+36 30 602 8611</Text>
-            </TouchableOpacity>
-        </View>
+        <Text style={styles.szoveg}>
+          Telefon: +36 (50) 501 6461
+        </Text>
       </View>
 
 
       <View style={styles.box2}>
-        <View style={{flex:1.1, marginRight:0, paddingRight:0, marginLeft:60,}}>
+        <View style={{flex:1, marginRight:0, paddingRight:0, marginLeft:60, backgroundColor:'blue'}}>
           <Text style={styles.szoveg}>
             Email: 
           </Text>
         </View>
-        <View style={{flex:5, marginLeft:0, marginRight:50,backgroundColor:'Red'}}>
+        <View style={{flex:1, marginLeft:0, marginRight:50, backgroundColor:'red', width:200}}>
         <TouchableOpacity onPress={() => Linking.openURL('mailto:sunshinedentalfogaszat@gmail.com') }
       title="support@example.com" >
 
-        <Text style={{fontSize:20, color:'#1b4965', fontFamily:'Inter',textDecorationLine: 'underline', fontSize:20, }}>
+        <Text style={styles.szoveg}>
            sunshineinfo@gmail.com
         </Text>
         </TouchableOpacity>
@@ -94,24 +68,17 @@ const styles = StyleSheet.create({
     paddingBottom:50
   },
   box1:{
-    flex:0.5,
+    flex:1,
     alignSelf:'center',
-    flexDirection:'row',
-    width:450,
-    //backgroundColor:'#4da8dd'
   },
   box2:{
-    flex:0.5,
+    flex:1,
     alignSelf:'center',
-    flexDirection:'row',
-    width:450,
-    //backgroundColor:'#4da8dd'
+    flexDirection:'row'
   },
   box3:{
     flex:1,
     alignSelf:'center',
-    //backgroundColor:'#4da8dd',
-    marginBottom:400
   },
   szoveg:{
     fontSize:20,
@@ -124,4 +91,3 @@ const styles = StyleSheet.create({
   }
   
 });
->>>>>>> Stashed changes
