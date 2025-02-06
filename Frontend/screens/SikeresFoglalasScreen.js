@@ -43,7 +43,7 @@ export default function SikeresFoglalasScreen({navigation,route}) {
         },
       ]}>
       <View style={{flex: 0.3, alignItems: "center"}} >
-      <Image source={require('../kepek/logo.jpg')} style={styles.logo} />
+      <Image source={require('../kepek/logo_transparent.png')} style={styles.logo} />
       </View>
       <View style={{flex: 2, backgroundColor:'#4da8dd', borderRadius:40}}>
         

@@ -4,6 +4,18 @@ import { TouchableOpacity } from 'react-native';
 import { Linking } from 'react-native';
 
 export default function KapcsolatScreen({navigation}) {
+  const makeCall = (phoneNumber) => {
+    const phoneUrl = `tel:${phoneNumber}`;
+    Linking.canOpenURL(phoneUrl)
+      .then((supported) => {
+        if (!supported) {
+          Alert.alert("Hiba", "Nem lehet megnyitni a telefonhívás funkciót ezen az eszközön.");
+        } else {
+          return Linking.openURL(phoneUrl);
+        }
+      })
+      .catch((err) => console.error("Hiba történt a hívásindítás közben:", err));
+  };
   return (
     <View style={styles.container}>
 
@@ -15,41 +27,41 @@ export default function KapcsolatScreen({navigation}) {
 
 
       <View style={styles.box1}>
-        <Text style={styles.szoveg}>
-          Telefon: +36 (50) 501 6461
-        </Text>
+      <View style={{flex:1.5, marginRight:0, paddingRight:0, marginLeft:60,}}>
+          <Text style={styles.szoveg}>
+            Telefon: 
+          </Text>
+        </View>
+        <View style={{flex:5, marginLeft:0, marginRight:50,backgroundColor:'Red'}}>
+        <TouchableOpacity onPress={()=> makeCall("36 30 602 8611")}>
+              <Text style={{fontSize:20, color:'#1b4965', fontFamily:'Inter',textDecorationLine: 'underline', fontSize:20, }}>+36 30 602 8611</Text>
+            </TouchableOpacity>
+        </View>
       </View>
 
 
       <View style={styles.box2}>
-        <View style={{flex:1, marginRight:0, paddingRight:0, marginLeft:60, backgroundColor:'blue'}}>
+        <View style={{flex:1.1, marginRight:0, paddingRight:0, marginLeft:60,}}>
           <Text style={styles.szoveg}>
             Email: 
           </Text>
         </View>
-        <View style={{flex:1, marginLeft:0, marginRight:50, backgroundColor:'red', width:200}}>
+        <View style={{flex:5, marginLeft:0, marginRight:50,backgroundColor:'Red'}}>
         <TouchableOpacity onPress={() => Linking.openURL('mailto:sunshinedentalfogaszat@gmail.com') }
       title="support@example.com" >
-
-        <Text style={styles.szoveg}>
+        <Text style={{fontSize:20, color:'#1b4965', fontFamily:'Inter',textDecorationLine: 'underline', fontSize:20, }}>
            sunshineinfo@gmail.com
         </Text>
         </TouchableOpacity>
         </View>
         
       </View>
-
-
       <View style={styles.box3}>
         <Text style={styles.szoveg}>
           Posta: 4031 Debrecen István út 26.
         </Text>
       </View>
-
-
       
-
-
     </View>
   );
 }
@@ -68,17 +80,24 @@ const styles = StyleSheet.create({
     paddingBottom:50
   },
   box1:{
-    flex:1,
+    flex:0.5,
     alignSelf:'center',
+    flexDirection:'row',
+    width:450,
+    //backgroundColor:'#4da8dd'
   },
   box2:{
-    flex:1,
+    flex:0.5,
     alignSelf:'center',
-    flexDirection:'row'
+    flexDirection:'row',
+    width:450,
+    //backgroundColor:'#4da8dd'
   },
   box3:{
     flex:1,
     alignSelf:'center',
+    //backgroundColor:'#4da8dd',
+    marginBottom:400
   },
   szoveg:{
     fontSize:20,
