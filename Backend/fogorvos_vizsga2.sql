@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Feb 10. 08:56
+-- Létrehozás ideje: 2025. Feb 10. 11:51
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -54,7 +54,8 @@ INSERT INTO `idopont_foglalas` (`if_id`, `if_szakrendelesid`, `if_orvosid`, `if_
 (25, 1, 1, '2025-01-31', '19:30', 'Robogo', 'kortvelyesi.robert.1040@dszcbaross.edu.hu', '2147483647'),
 (26, 1, 1, '2025-02-22', '19:30', 'Bybs', 'Bbd', '858484'),
 (27, 1, 1, '2025-02-22', '19:30', 'Nybxbx', 'Bdbdbx', '8484845'),
-(28, 1, 6, '2025-02-22', '19:30', 'Joska0207', 'Joska', '0');
+(28, 1, 6, '2025-02-22', '19:30', 'Joska0207', 'Joska', '0'),
+(29, 1, 1, '2025-02-22', '19:00', 'Bbbb', 'Vbbb', '888885');
 
 -- --------------------------------------------------------
 
@@ -116,21 +117,22 @@ INSERT INTO `orvos_szakterulet` (`altalanos_id`, `orvos_id`, `szakterulet_id`) V
 
 CREATE TABLE `szakteruletek` (
   `szak_id` int(11) NOT NULL,
-  `szak_nev` varchar(255) NOT NULL
+  `szak_nev` varchar(255) NOT NULL,
+  `szak_kep` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `szakteruletek`
 --
 
-INSERT INTO `szakteruletek` (`szak_id`, `szak_nev`) VALUES
-(1, 'Fogkőeltávolítás és szájhigiéniai kezelés'),
-(2, 'Fogtömés és kisebb konzerváló fogászati kezelések'),
-(3, 'Rendszeres fogászati szűrővizsgálat'),
-(4, 'Gyökérkezelés (endodoncia)'),
-(5, 'Konzerváló fogászat és endodoncia'),
-(6, 'Fogfehérítés'),
-(11, 'Időpontfoglalás konzultációra');
+INSERT INTO `szakteruletek` (`szak_id`, `szak_nev`, `szak_kep`) VALUES
+(1, 'Fogkőeltávolítás és szájhigiéniai kezelés', '101.png'),
+(2, 'Fogtömés és kisebb konzerváló fogászati kezelések', '102.png'),
+(3, 'Rendszeres fogászati szűrővizsgálat', '103.png'),
+(4, 'Gyökérkezelés (endodoncia)', '104.png'),
+(5, 'Konzerváló fogászat és endodoncia', '105.png'),
+(6, 'Fogfehérítés', '106.png'),
+(11, 'Időpontfoglalás konzultációra', '107.png');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -172,7 +174,7 @@ ALTER TABLE `szakteruletek`
 -- AUTO_INCREMENT a táblához `idopont_foglalas`
 --
 ALTER TABLE `idopont_foglalas`
-  MODIFY `if_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `if_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT a táblához `orvosok`

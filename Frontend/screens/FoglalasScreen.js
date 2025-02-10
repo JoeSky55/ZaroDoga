@@ -22,6 +22,18 @@ export default function FoglalasScreen({navigation}) {
     navigation.navigate("Foglalas2Screen",{id:id,nev:nev})
 
   }
+
+  const helyiKepek = {
+    "101.png": require('../kepek/101.png'),
+    "102.png": require('../kepek/102.png'),
+    "103.png": require('../kepek/103.png'),
+    "104.png": require('../kepek/104.png'),
+    "105.png": require('../kepek/105.png'),
+    "106.png": require('../kepek/106.png'),
+    "107.png": require('../kepek/107.png'),
+  };
+
+
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'#f0f8ff', }}>
       <Text style={styles.cim}>Szakrendeléseink</Text>
@@ -31,7 +43,7 @@ export default function FoglalasScreen({navigation}) {
           renderItem={({item}) => (
               <View style={{width:370, alignContent:'center', justifyContent:'center', alignSelf:'center', marginBottom:50}}>
                 <View>
-                <Image style={styles.rendeles_logo} source={require('../kepek/rendeles_ikon.png')} />
+                <Image style={styles.rendeles_logo} source={helyiKepek[item.szak_kep] || require('../kepek/rendeles_ikon.png')} />
                 </View>
                 
               
@@ -57,8 +69,8 @@ export default function FoglalasScreen({navigation}) {
 const styles = StyleSheet.create({
 
   rendeles_logo:{
-    width: 200, // Állítsd be megfelelő méretre
-    height: 200,
+    width: 128, // Állítsd be megfelelő méretre
+    height: 128,
     padding: 10,
     alignSelf:'center',
     marginBottom: 10,
