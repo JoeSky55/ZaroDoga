@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     paddingTop: 50,
-    backgroundColor: '#d4eaea'
+    backgroundColor: '#f0f8ff'
   },
   logo:{
     width:'80%',

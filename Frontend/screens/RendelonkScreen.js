@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     width:400,
     padding: 20,
     paddingTop: 50,
-    backgroundColor: '#d4eaea',
+    backgroundColor: '#f0f8ff',
     
   },
   rendelo_kep:{

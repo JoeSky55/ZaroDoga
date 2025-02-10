@@ -23,7 +23,7 @@ export default function FoglalasScreen({navigation}) {
 
   }
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'#d4eaea', }}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'#f0f8ff', }}>
       <Text style={styles.cim}>Szakrendeléseink</Text>
 
       <FlatList
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
   },
   rendeles_felirat:{
     alignSelf:'center',
+    textAlign:'center',
     fontSize:22,
     color:'#fff',
     fontFamily:'inter',
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
   },
   feliratHatter:{
     backgroundColor:'#4da8dd',
-    height:80,
+    height:100,
     borderRadius:50,
     alignContent:'center',
     justifyContent:'center',
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
   cim:{
     fontSize:24,
     color:'#1b4965',
-    backgroundColor:'#d4eaea',
+    backgroundColor:'#f0f8ff',
     
     
   }

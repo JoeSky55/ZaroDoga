@@ -379,7 +379,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
     padding: 20,
-    backgroundColor:'#d4eaea'
+    backgroundColor:'#f0f8ff'
     
   },
   cim:{
@@ -500,7 +500,7 @@ const styles = StyleSheet.create({
   gombstilus:{
     
     flex:1,
-    backgroundColor:'#d4eaea',
+    backgroundColor:'#f0f8ff',
     justifyContent:'center',
     alignItems:'center',
     margin:10,
@@ -524,7 +524,7 @@ const styles = StyleSheet.create({
   gombstilus_2:{
     
     flex:1,
-    backgroundColor:'#d4eaea',
+    backgroundColor:'#f0f8ff',
     justifyContent:'center',
     alignItems:'center',
     margin:10,

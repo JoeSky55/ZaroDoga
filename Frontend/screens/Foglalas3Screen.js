@@ -151,12 +151,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#d4eaea'
+    backgroundColor: '#f0f8ff'
   },
   container2:{
     flex: 1,
     flexDirection:'column',
-    backgroundColor:'#d4eaea',
+    backgroundColor:'#f0f8ff',
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop:0,
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
   nev_input_view: {
     flex: 0.2,
    
-    backgroundColor: '#d4eaea'
+    backgroundColor: '#f0f8ff'
   },
   nev_input: {
     borderWidth: 2,
@@ -210,11 +210,11 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     borderRadius: 5,
     borderColor: '#113F67',
-    backgroundColor: '#d4eaea',
+    backgroundColor: '#f0f8ff',
   },
   email_input_view: {
     flex: 0.2,
-    backgroundColor: '#d4eaea'
+    backgroundColor: '#f0f8ff'
   },
   email_input: {
     borderWidth: 2,
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
   },
   telefon_input_view: {
     flex: 0.1,
-    backgroundColor: '#d4eaea',
+    backgroundColor: '#f0f8ff',
     
     alignContent: 'center',
     justifyContent: 'center'
@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
     width: 350,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#d4eaea'
+    backgroundColor: '#f0f8ff'
   },
   gombszoveg: {
     color: 'white',
