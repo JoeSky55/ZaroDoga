@@ -29,8 +29,7 @@ export default function FoglalasScreen({navigation}) {
       <FlatList
           data={adatok}
           renderItem={({item}) => (
-              <View style={{width:370
-              , alignContent:'center', justifyContent:'center', alignSelf:'center', marginBottom:50}}>
+              <View style={{width:370, alignContent:'center', justifyContent:'center', alignSelf:'center', marginBottom:50}}>
                 <View>
                 <Image style={styles.rendeles_logo} source={require('../kepek/rendeles_ikon.png')} />
                 </View>
@@ -78,7 +77,7 @@ const styles = StyleSheet.create({
   },
   feliratHatter:{
     backgroundColor:'#4da8dd',
-    height:50,
+    height:80,
     borderRadius:50,
     alignContent:'center',
     justifyContent:'center',
