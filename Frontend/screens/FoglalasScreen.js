@@ -41,10 +41,11 @@ export default function FoglalasScreen({navigation}) {
       <FlatList
           data={adatok}
           renderItem={({item}) => (
-              <View style={{width:370, alignContent:'center', justifyContent:'center', alignSelf:'center', marginBottom:50}}>
-                <View>
+            <View style={styles.card}>
+              <View style={{width:370, alignContent:'center', justifyContent:'center', alignSelf:'center', marginBottom:0}}>
+                <TouchableOpacity onPress={() => reszletekFv(item.szak_id,item.szak_nev)}>
                 <Image style={styles.rendeles_logo} source={helyiKepek[item.szak_kep] || require('../kepek/rendeles_ikon.png')} />
-                </View>
+                </TouchableOpacity>
                 
               
               <View style={styles.feliratHatter}>
@@ -55,6 +56,7 @@ export default function FoglalasScreen({navigation}) {
                 
               
               </View>
+            </View>
             )}
           keyExtractor={item => item.szak_nev}
           showsVerticalScrollIndicator={false}
@@ -69,13 +71,29 @@ export default function FoglalasScreen({navigation}) {
 const styles = StyleSheet.create({
 
   rendeles_logo:{
-    width: 128, // Állítsd be megfelelő méretre
-    height: 128,
+    width: 200, // Állítsd be megfelelő méretre
+    height: 200,
     padding: 10,
     alignSelf:'center',
     marginBottom: 10,
     //backgroundColor:"red"
     
+  },
+  card: {
+    width: 300,
+    alignSelf: 'center',
+    marginBottom: 0,
+    backgroundColor: '#fff',
+    padding: 0,
+    borderRadius: 20,
+    shadowColor: '#113F67',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.4,
+    shadowRadius: 7,
+    marginHorizontal:30,
+    marginVertical:40,
+    
+    alignItems: 'center',
   },
   rendeles_felirat:{
     alignSelf:'center',
@@ -85,16 +103,17 @@ const styles = StyleSheet.create({
     fontFamily:'inter',
     fontWeight:'400',
     padding:10,
+    marginBottom:0
     
     
   },
   feliratHatter:{
     backgroundColor:'#4da8dd',
     height:100,
-    borderRadius:50,
+    borderRadius:20,
     alignContent:'center',
     justifyContent:'center',
-    width:'80%',
+    width:'81%',
     marginLeft:35,
     shadowColor:'#113F67',
     shadowOffset:{width:0,height:5},

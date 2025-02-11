@@ -8,7 +8,7 @@ export default function RendelonkScreen({navigation}) {
       <Image style={styles.rendelo_kep} source={require('../kepek/shbuilding.webp')} />
       </View>
 
-      <View style={{flex:11, paddingTop:50}}>
+      <View style={{flex:11, paddingTop:0}}>
         <Text style={{backgroundColor:'#8bcefd', borderRadius:30, padding:20, fontFamily:'Inter'}}>
         A Sunshine Dentál modern és barátságos fogászati rendelő, ahol elkötelezettek vagyunk a pácienseink
 ragyogó és egészséges mosolyáért. Magasan képzett, tapasztalt csapatunk korszerű technológiával és
