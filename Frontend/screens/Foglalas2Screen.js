@@ -163,9 +163,7 @@ export default function Foglalas2Screen({ navigation, route }) {
         <Text style={styles.szakCim}>{nev}</Text>
       </View>
 
-      <View
-          
-        />
+     
 
 
       <View style={styles.orvosok}>
@@ -383,7 +381,7 @@ const styles = StyleSheet.create({
     
   },
   cim:{
-    flex:0.7,
+    flex:1,
     //backgroundColor:'blue',
     margin: 2,
     paddingBottom:15
@@ -400,10 +398,11 @@ const styles = StyleSheet.create({
   },
   
   orvosok:{
-    flex:3.5,
+    flex:3,
     backgroundColor:'#8bcefd',
     margin:3,
-    borderRadius:30
+    borderRadius:20,
+    marginBottom:50
     
     
   },
@@ -423,7 +422,7 @@ const styles = StyleSheet.create({
     fontWeight:'400',
     padding:10,
     backgroundColor: '#1fa0cc',
-    borderRadius:50
+    borderRadius:20
   },
   orvosnev3:{
     color:'white',
@@ -432,7 +431,7 @@ const styles = StyleSheet.create({
     fontWeight:'400',
     padding:10,
     backgroundColor: '#1fa0cc',
-    borderRadius:50
+    borderRadius:20
   },
   orvosnevvaltoztatva:{
     backgroundColor: '#4da8dd',
@@ -442,7 +441,7 @@ const styles = StyleSheet.create({
     fontWeight:'400',
     padding:10,
     
-    borderRadius:50
+    borderRadius:20
   },
 
   datum:{
@@ -569,7 +568,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     padding:10,
     backgroundColor:'#8bcefd',
-    borderRadius:50,
+    borderRadius:20,
     margin: 10,
     padding:20,
     width:150,
@@ -580,7 +579,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     padding:10,
     backgroundColor:'#1fa0cc',
-    borderRadius:50,
+    borderRadius:20,
     margin: 10,
     padding:20,
     width:150,

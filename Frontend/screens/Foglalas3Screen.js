@@ -56,6 +56,7 @@ export default function Foglalas3Screen({ navigation, route }) {
   const { id, nev, orvosId, idopont, datumMentese, orvosNeve } = route.params;
 
   const [felhasznaloNev, onChangeFelhasznaloNev] = useState('');
+
   const [email, onChangeEmail] = useState('');
   const [telefon, onChangeTelefon] = useState('');
 
@@ -95,7 +96,11 @@ export default function Foglalas3Screen({ navigation, route }) {
             <TextInput
               style={styles.nev_input}
               value={felhasznaloNev}
-              onChangeText={onChangeFelhasznaloNev}
+              onChangeText={(text) => {
+              const filteredText = text.replace(/[^a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰ ]/g, '');
+              onChangeFelhasznaloNev(filteredText);
+              }}
+              autoCapitalize='words'
               placeholder='Teljes név'
             />
           </View>
@@ -110,7 +115,13 @@ export default function Foglalas3Screen({ navigation, route }) {
             <TextInput
               style={styles.email_input}
               value={email}
-              onChangeText={onChangeEmail}
+              onChangeText={(text) => {
+                // Csak az e-mailben megengedett karaktereket engedélyezzük
+                const filteredText = text.replace(/[^a-zA-Z0-9@._-]/g, ''); 
+                onChangeEmail(filteredText);
+              }}
+              keyboardType='email-address'
+              autoCapitalize='none'
               placeholder='E-mail'
             />
           </View>
@@ -258,7 +269,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 10,
     backgroundColor: '#12AB70',
-    borderRadius: 50,
+    borderRadius: 20,
     margin: 10,
     padding: 20,
     width: 150,
@@ -269,7 +280,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 10,
     backgroundColor: '#8bcefd',
-    borderRadius: 50,
+    borderRadius: 20,
     margin: 10,
     padding: 20,
     width: 150,

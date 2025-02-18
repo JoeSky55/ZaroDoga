@@ -36,7 +36,7 @@ export default function FoglalasScreen({navigation}) {
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'#f0f8ff', }}>
-      <Text style={styles.cim}>Szakrendeléseink</Text>
+      <Text style={styles.cim}>Konzultációk</Text>
 
       <FlatList
           data={adatok}

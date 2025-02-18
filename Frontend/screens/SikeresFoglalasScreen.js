@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     margin:20,
     width:300,
     backgroundColor: 'white',
-    borderRadius:50,
+    borderRadius:20,
     
     alignSelf:'center'
     
