@@ -4,6 +4,7 @@ import { TouchableOpacity } from 'react-native';
 import { Linking } from 'react-native';
 import IpCim from './IpCim';
 
+
 export default function KapcsolatScreen({navigation}) {
   const makeCall = (phoneNumber) => {
     const phoneUrl = `tel:${phoneNumber}`;
@@ -17,6 +18,7 @@ export default function KapcsolatScreen({navigation}) {
       })
       .catch((err) => console.error("Hiba történt a hívásindítás közben:", err));
   };
+  
   return (
     <View style={styles.container}>
       <View style={styles.card}>
