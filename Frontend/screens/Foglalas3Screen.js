@@ -116,7 +116,7 @@ export default function Foglalas3Screen({ navigation, route }) {
               style={styles.email_input}
               value={email}
               onChangeText={(text) => {
-                // Csak az e-mailben megengedett karaktereket engedélyezzük
+                
                 const filteredText = text.replace(/[^a-zA-Z0-9@._-]/g, ''); 
                 onChangeEmail(filteredText);
               }}

@@ -43,24 +43,20 @@ export default function FoglalasScreen({navigation}) {
           renderItem={({item}) => (
             <View style={styles.card}>
               <View style={{width:370, alignContent:'center', justifyContent:'center', alignSelf:'center', marginBottom:0}}>
-                <TouchableOpacity onPress={() => reszletekFv(item.szak_id,item.szak_nev)}>
-                <Image style={styles.rendeles_logo} source={helyiKepek[item.szak_kep] || require('../kepek/rendeles_ikon.png')} />
-                </TouchableOpacity>
-                
-              
-              <View style={styles.feliratHatter}>
-              <TouchableOpacity  onPress={() => reszletekFv(item.szak_id,item.szak_nev)}>
-              <Text style={styles.rendeles_felirat}>{item.szak_nev}</Text>
-              </TouchableOpacity>
-              </View>
-                
-              
+                  <TouchableOpacity onPress={() => reszletekFv(item.szak_id,item.szak_nev)}>
+                    <Image style={styles.rendeles_logo} source={helyiKepek[item.szak_kep] || require('../kepek/rendeles_ikon.png')} />
+                  </TouchableOpacity>
+                <View style={styles.feliratHatter}>
+                  <TouchableOpacity  onPress={() => reszletekFv(item.szak_id,item.szak_nev)}>
+                    <Text style={styles.rendeles_felirat}>{item.szak_nev}</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
-            )}
+          )}
           keyExtractor={item => item.szak_nev}
           showsVerticalScrollIndicator={false}
-        />
+      />
 
 
       
