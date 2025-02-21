@@ -64,18 +64,32 @@ export default function KapcsolatScreen({navigation}) {
           Posta:
         </Text>
         <Text style={styles.szoveg2}>
-          4031 Debrecen István út 26.
+          4031 Debrecen 
+          
         </Text>
+        <Text style={styles.szoveg2}>
+        István út 26. 
+          
+        </Text>
+        
       </View>
 
 
       <View style={styles.box4}>
         <Text style={styles.szoveg}>
-          Weblapunk:
+          Web:
         </Text>
         <TouchableOpacity onPress={() => Linking.openURL(IpCim.Ipcim + 'kezdolap')}>
-        <Text style={styles.szoveg2}>
-          4031 Debrecen István út 26.
+        <Text style={{fontSize:20, color:'#1b4965', fontFamily:'Inter',textDecorationLine: 'underline', fontSize:20,marginLeft:25 }}>
+          sunshinedental.com
+        </Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.box5}>
+      <TouchableOpacity onPress={() => Linking.openURL(IpCim.Ipcim + 'kezdolap')}>
+        <Text style={styles.szoveg3}>
+          Foglalási szabályzat
         </Text>
         </TouchableOpacity>
       </View>
@@ -121,7 +135,7 @@ const styles = StyleSheet.create({
     width:300,
     justifyContent:'center',
     alignContent:'center',
-    backgroundColor:'red',
+    //backgroundColor:'red',
     padding:30
     
   },
@@ -132,13 +146,13 @@ const styles = StyleSheet.create({
     width:300,
     alignContent:'center',
     justifyContent:'center',
-    backgroundColor:'red',
+    //backgroundColor:'red',
     padding:30
   },
   box3:{
     flex:0.5,
     alignSelf:'center',
-    backgroundColor:'red',
+    //backgroundColor:'red',
     width:300,
     alignContent:'center',
     justifyContent:'center',
@@ -147,7 +161,16 @@ const styles = StyleSheet.create({
   box4:{
     flex:0.5,
     alignSelf:'center',
-    backgroundColor:'red',
+    //backgroundColor:'red',
+    width:300,
+    alignContent:'center',
+    justifyContent:'center',
+    padding:30
+  },
+  box5:{
+    flex:0.5,
+    alignSelf:'center',
+    //backgroundColor:'red',
     width:300,
     alignContent:'center',
     justifyContent:'center',
@@ -159,6 +182,15 @@ const styles = StyleSheet.create({
     color:'#1b4965',
     textAlign:'center',
     fontWeight:'bold'
+  },
+  szoveg3:{
+    fontSize:20,
+    fontFamily:'Inter',
+    color:'#1b4965',
+    textAlign:'center',
+    fontWeight:'bold',
+    textDecorationLine: 'underline',
+    
   },
   szoveg2:{
     fontSize:20,
