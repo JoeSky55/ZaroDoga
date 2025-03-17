@@ -1,17 +1,36 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, Image } from 'react-native';
+import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import OrvosainkScreen from './OrvosainkScreen';
+import FoglalasScreen from './FoglalasScreen';
+import GaleriaScreen from './GaleriaScreen';
+
+
 
 
 export default function RendelonkScreen({navigation}) {
+
+  
   return (
     <View style={styles.container}>
       <View style={styles.card}>
       <View stlye={styles.rendelo_doboz} >
       <Image style={styles.rendelo_kep} source={require('../kepek/shbuilding.webp')} />
       </View>
-
-      <View style={{flex:11, paddingTop:30}}>
-        <Text style={{backgroundColor:'#8bcefd', borderRadius:30, padding:20, fontFamily:'Inter'}}>
+      <View style={styles.gombok}>
+        <View style={styles.gombok1}>
+          <TouchableOpacity onPress={() => navigation.navigate("Orvosaink")}>
+            <Text style={styles.gombSzoveg}>Orvosaink</Text>
+          </TouchableOpacity>
+        </View>
+        
+        <View style={styles.gombok1}>
+          <TouchableOpacity onPress={() => navigation.navigate("Időpontfoglalás")}>
+          <Text style={styles.gombSzoveg}>Időpontfoglalás</Text>
+          </TouchableOpacity>
+          </View>
+      </View>
+      <View style={{flex:12, paddingTop:10}}>
+        <Text style={{backgroundColor:'#f0f8ff', borderRadius:30, padding:15, fontFamily:'Inter'}}>
         A Sunshine Dentál modern és barátságos fogászati rendelő, ahol elkötelezettek vagyunk a pácienseink
 ragyogó és egészséges mosolyáért. Magasan képzett, tapasztalt csapatunk korszerű technológiával és
 személyre szabott figyelemmel biztosítja a legjobb ellátást, legyen szó megelőző kezelésekről, esztétikai
@@ -49,10 +68,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 7,
     marginHorizontal:30,
-    marginVertical:20,
+    marginVertical:0,
     alignContent: 'center',
     //flexdirection:'row',
-    flex:5
+    flex:8,
+    
   },
   rendelo_kep:{
     width:'100%',
@@ -71,8 +91,26 @@ const styles = StyleSheet.create({
     fontSize:10,
     color:'gray'
   },
+  gombok:{
+    flexDirection:'row',
+    
+    
+    alignContent:'center',
+    justifyContent:'center',
+  },
+  gombok1:{
+    backgroundColor:'#8bcefd',
+    padding:5,
+    margin:10,
+    borderRadius:10,
+    
+  },
+  gombSzoveg:{
+    fontSize:20
+  },
+  
   copySzoveg:{
-    flex:0.5,
+    flex:0.6,
     alignItems:'center',
     marginBottom:10,
     //backgroundColor:'blue'

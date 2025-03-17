@@ -379,9 +379,11 @@ const styles = StyleSheet.create({
   },
   szakCim:{
     color:'#1b4965',
-    fontSize:26,
+    fontSize:23,
     fontFamily:'inter',
     fontWeight:'600',
+    
+    flex:1.5
 
   },
   

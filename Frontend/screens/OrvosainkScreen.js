@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, Image, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, FlatList, Image, StyleSheet, ActivityIndicator, Modal } from 'react-native';
 import IpCim from './IpCim';
+import { TouchableOpacity } from 'react-native';
 
-// Local image mapping
+
 const helyiKepek = {
   "01.jpg": require('../kepek/01.jpg'),
   "02.jpeg": require('../kepek/02.jpeg'),
@@ -13,8 +14,11 @@ const helyiKepek = {
 
 export default function OrvosainkScreen({ navigation }) {
   const [adatok, setAdatok] = useState([]);
-  const [loading, setLoading] = useState(true); // Track loading state
+  const [loading, setLoading] = useState(true); 
+  const [modalVisible, setModalVisible] = useState(false);
+  const [orvos, setOrvos] = useState(null);
 
+  
   const letoltes = async () => {
     try {
       const response = await fetch(IpCim.Ipcim + "orvosAdatok2");
@@ -23,13 +27,19 @@ export default function OrvosainkScreen({ navigation }) {
     } catch (error) {
       console.error("Hiba történt az adatok letöltésekor:", error);
     } finally {
-      setLoading(false); // Hide loader once data is fetched
+      setLoading(false); 
     }
   };
 
   useEffect(() => {
     letoltes();
   }, []);
+
+  
+  const toggleModal = (orvos) => {
+    setOrvos(orvos); 
+    setModalVisible(!modalVisible);
+  };
 
   return (
     <View style={styles.container}>
@@ -43,18 +53,45 @@ export default function OrvosainkScreen({ navigation }) {
               <View>
                 <Image
                   style={styles.rendeles_logo}
-                  source={helyiKepek[item.kep] || require('../kepek/rendeles_ikon.png')} // Default image fallback
+                  source={helyiKepek[item.kep] || require('../kepek/rendeles_ikon.png')}
                 />
               </View>
 
               <View style={styles.feliratHatter}>
-                <Text style={styles.rendeles_felirat}>{item.nev}</Text>
+                <TouchableOpacity onPress={() => toggleModal(item)}>
+                  <Text style={styles.rendeles_felirat}>{item.nev}</Text>
+                </TouchableOpacity>
               </View>
             </View>
           )}
           keyExtractor={(item) => item.orvos_id.toString()}
           showsVerticalScrollIndicator={false}
         />
+      )}
+
+      
+      {orvos && (
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => toggleModal(null)}
+        >
+          <View style={styles.modalOverlay}>
+            <View style={styles.modalContent}>
+              <Text style={styles.modalTitle}>{orvos.nev}</Text>
+              <Image
+                style={styles.rendeles_logo}
+                source={helyiKepek[orvos.kep] || require('../kepek/rendeles_ikon.png')}
+              />
+              <Text style={styles.orvosLeiras_felirat}>Lorem ipsum Lorem ipsum Lorem ipsum v Lorem ipsumLorem ipsum v v Lorem ipsum Lorem ipsum  vvv Lorem ipsum Lorem ipsum v Lorem ipsumv Lorem ipsumv Lorem ipsumv</Text>
+              
+              <TouchableOpacity style={styles.closeButton} onPress={() => toggleModal(null)}>
+                <Text style={styles.buttonText}>Bezár</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </Modal>
       )}
     </View>
   );
@@ -66,7 +103,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#f0f8ff',
     paddingTop: 20,
-    
   },
   loader: {
     marginTop: 500,
@@ -82,9 +118,8 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.4,
     shadowRadius: 7,
-    marginHorizontal:30,
-    marginVertical:20,
-    
+    marginHorizontal: 30,
+    marginVertical: 20,
     alignItems: 'center',
   },
   rendeles_logo: {
@@ -111,5 +146,48 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.4,
     shadowRadius: 7,
+  },
+  modalTitle: {
+    alignSelf: 'center',
+    backgroundColor: 'white',
+    width: 250,
+    height: 50,
+    textAlign: 'center',
+    fontSize: 24,
+    marginBottom: 20,
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    padding: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  closeButton: {
+    backgroundColor: 'red',
+    padding: 10,
+    borderRadius: 10,
+    marginTop: 20,
+    
+    width:100
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    alignSelf:'center',
+  },
+  modalOverlay: {
+    marginTop: 150,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    borderColor: '#4da8dd',
+    borderWidth: 5,
+    borderRadius: 10,
+    width:300
+  },
+  orvosLeiras_felirat: {
+    fontSize: 18,
+    color:'black',
   },
 });
