@@ -96,10 +96,10 @@ export default function OrvosainkScreen({ navigation }) {
                 source={helyiKepek[orvos.kep] || require('../kepek/rendeles_ikon.png')}
               />
               <Text style={styles.modalTitle}>{orvos.nev}</Text>
-              {/*<Text style={styles.modalTitle}>{item.szak_nev}</Text>*/}
-              {/*<Text style={styles.modalTitle}>{orvos.nev}</Text>*/}
-
-              <Text style={styles.orvosLeiras_felirat}>Lorem ipsum Lorem ipsum Lorem ipsum v Lorem ipsumLorem ipsum v v Lorem ipsum Lorem ipsum  vvv Lorem ipsum Lorem ipsum v Lorem ipsumv Lorem ipsumv Lorem ipsumv</Text>
+              {/*<Text style={styles.modalTitle}>{orvos.szak_nev}</Text>*/}
+              {/**/}
+              <Text style={styles.modalTitle}>{orvos.szakteruletek}</Text>
+              <Text style={styles.orvosLeiras_felirat}>{orvos.leiras}</Text>
               
               <TouchableOpacity style={styles.closeButton} onPress={() => toggleModal(null)}>
                 <Text style={styles.buttonText}>Bezár</Text>
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     
   },
   orvosLeiras_felirat: {
-    fontSize: 18,
+    fontSize: 15,
     color:'black',
   },
 });

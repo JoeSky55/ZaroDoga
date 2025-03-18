@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Már 18. 12:00
+-- Létrehozás ideje: 2025. Már 18. 13:10
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -50,7 +50,8 @@ INSERT INTO `idopont_foglalas` (`if_id`, `if_szakrendelesid`, `if_orvosid`, `if_
 (43, 6, 6, '2025-03-27', '17:30', 'Károly János', 'janos2000@gmail.com', '2147483647'),
 (44, 6, 6, '2025-03-27', '18:00', 'Lakatos István', 'istvanka345@gmail.com', '2147483647'),
 (45, 6, 6, '2025-03-27', '19:00', 'sss', 'dfd', '06203456789'),
-(46, 4, 2, '2025-03-26', '17:30', 'sdsa', 'dsad', '213234');
+(46, 4, 2, '2025-03-26', '17:30', 'sdsa', 'dsad', '213234'),
+(47, 1, 1, '2025-03-29', '17:30', 'Joska Proba', 'joci.galxd@gmail.com', '000000000');
 
 -- --------------------------------------------------------
 
@@ -113,21 +114,23 @@ INSERT INTO `orvos_szakterulet` (`altalanos_id`, `orvos_id`, `szakterulet_id`) V
 
 CREATE TABLE `szakteruletek` (
   `szak_id` int(11) NOT NULL,
-  `szak_nev` varchar(255) NOT NULL
+  `szak_nev` varchar(255) NOT NULL,
+  `leiras` text NOT NULL,
+  `ar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `szakteruletek`
 --
 
-INSERT INTO `szakteruletek` (`szak_id`, `szak_nev`) VALUES
-(1, 'Fogkőeltávolítás és szájhigiéniai kezelés'),
-(2, 'Fogtömés és kisebb konzerváló fogászati kezelések'),
-(3, 'Rendszeres fogászati szűrővizsgálat'),
-(4, 'Gyökérkezelés (endodoncia)'),
-(5, 'Konzerváló fogászat és endodoncia'),
-(6, 'Fogfehérítés'),
-(11, 'Szájsebészet');
+INSERT INTO `szakteruletek` (`szak_id`, `szak_nev`, `leiras`, `ar`) VALUES
+(1, 'Fogkő-eltávolítás és szájhigiéniai kezelés', 'A fogkő-eltávolítás és szájhigiéniai kezelés a fogak tisztítását jelenti, amely során eltávolítják a fogkövet és lepedéket ultrahangos eszközzel. A kezelés segít megőrizni a fogak és íny egészségét, megelőzve a fogszuvasodást és ínyproblémákat.', '8.000-20.000'),
+(2, 'Fogtömés és kisebb konzerváló fogászati kezelések', 'A sérült vagy szuvas fogak helyreállítása során a szuvas részeket eltávolítják, majd töméssel zárják le a fogat. Ez segít megőrizni a fog funkcióját, megelőzni a további károsodást, és biztosítja annak esztétikai megjelenését.', '10.000-50.000'),
+(3, 'Rendszeres fogászati szűrővizsgálat', 'A rendszeres fogászati szűrővizsgálat során a fogorvos átvizsgálja a fogakat, az ínyt és a szájüreg egészségét, hogy időben felismerje a problémákat, mint például a szuvasodást vagy az ínygyulladást. A szűrővizsgálat segít megelőzni a komolyabb fogászati problémákat.', '10.000'),
+(4, 'Gyökérkezelés (endodoncia)', 'A gyökérkezelés során a fog belső részében található fertőzött vagy gyulladt szöveteket eltávolítják, majd a fogat fertőtlenítik és betömik. A kezelés célja a fog megmentése, hogy elkerüljük a foghúzást és megőrizzük annak funkcióját.', '20.000-50.000'),
+(5, 'Konzerváló fogászat és endodoncia', 'A konzerváló fogászat célja a fogak megőrzése és helyreállítása, legyen szó szuvasodás kezeléséről, fogtömésről vagy gyökérkezelésről. Az endodoncia (gyökérkezelés) során a fog belső részét fertőtlenítik és tömítik, hogy megmentsék a fogat a további károsodástól és elkerüljék a foghúzást.', '5.000-50.000'),
+(6, 'Fogfehérítés', 'A fogfehérítés során különböző módszerekkel (pl. fehérítő gélek, lézeres kezelés) eltávolítják a fogak felszínén lévő elszíneződéseket, így fehérebbé és ragyogóbbá téve őket. A kezelés segít visszaállítani a fogak természetes színét és javítja a mosolyt.', '25.000'),
+(11, 'Szájsebészet', 'A szájsebészet a szájüregben végzett sebészeti beavatkozásokat jelenti, mint például a foghúzás, ciszta eltávolítása, fogak beültetése, vagy íny- és állcsont műtétek. Célja a szájüreg egészségének helyreállítása és a fájdalom megszüntetése.', '35.000-250.000');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -169,7 +172,7 @@ ALTER TABLE `szakteruletek`
 -- AUTO_INCREMENT a táblához `idopont_foglalas`
 --
 ALTER TABLE `idopont_foglalas`
-  MODIFY `if_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `if_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT a táblához `orvosok`
