@@ -16,7 +16,7 @@ navLinks.forEach(link => {
     });
 });
 //_________________________________________________________!
-fetch("http://localhost:3000/szakteruletAdatok")
+fetch("http://localhost:3000/csak_szakteruletek")
 .then(x => x.json())
 .then(y => myDisplay(y));
 
@@ -29,13 +29,14 @@ function myDisplay(y)
             ${elem.szak_nev}
        </option>
        `
+   
     }
 }
 function Kivalasztas() {
 
     document.getElementById("orvosokCim").innerHTML = 
     `
-    <h3 style="margin-top: 15px; margin-left: 40px; margin-right: 40px; background-color: lightcyan; padding: 10px; border-radius: 10px;"><span style="font-size: 23px;">❷ </span>Orvos</h3>
+    <h3 style="margin-top: 15px; margin-left: 40px; margin-right: 40px; background-color: lightcyan; padding: 10px; border-radius: 10px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: #113F67;"><span style="font-size: 23px;">❷ </span>Orvos</h3>
     `
     var adat = {
         "bevitel1": document.getElementById("szakrendelesek").value
@@ -55,7 +56,7 @@ function Kivalasztas() {
                 keresettOrvos.innerHTML += 
                 `
                 <span style="display: flex; align-items: center;">
-                    <span style="margin-top: 10px;">${elem.orvos}</span>
+                    <span id="orvosNev">${elem.orvos}</span>
                     <hr style="flex-grow: 1; border: none; border-top: 1px solid #000; margin: 0 10px; margin-top: 10px;">
                     <button style="margin-top: 10px;" class="orvosGomb" onclick="orvosKivalaszt('${elem.szakTeruletId}', '${elem.orvos}', '${elem.orvosId}')">Tovább</button>
                 </span>
@@ -67,11 +68,10 @@ function Kivalasztas() {
     .catch(error => console.error('Error:', error));
 }
 
-
 function orvosKivalaszt(szakTeruletId, orvos, orvosId) {
     document.getElementById("idopontokCim").innerHTML = 
     `
-    <h3 style="margin-top: 15px; margin-left: 40px; margin-right: 40px; background-color: lightcyan; padding: 10px; border-radius: 10px;"><span style="font-size: 23px;">❸ </span>Időpontfoglalás</h3>
+    <h3 style="margin-top: 15px; margin-left: 40px; margin-right: 40px; background-color: lightcyan; padding: 10px; border-radius: 10px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: #113F67;"><span style="font-size: 23px;">❸ </span>Időpontfoglalás</h3>
     <input type="date" id="datumValasztas" name="datumValasztas" onchange="dátumKiválasztása('${szakTeruletId}', '${orvos}', '${orvosId}')">
     `;
     document.getElementById("idopontok").innerHTML = '';
@@ -82,7 +82,7 @@ function dátumKiválasztása(szakTeruletId, orvos, orvosId) {
 
         var adat = {
             "bevitel1": orvos,
-            "bevitel2": datum
+            "bevitel2": datum,
         };
     fetch("http://localhost:3000/foglaltIdopontok", {
         method: "POST",
@@ -187,27 +187,18 @@ function idopontKivalaszt(idopont, orvos, orvosId, szakTeruletId) {
     var datum = document.getElementById("datumValasztas").value;
     document.getElementById("veglegesites").innerHTML = 
     `
-    <h3 style="margin-top: 15px; margin-left: 40px; margin-right: 40px; background-color: lightcyan; padding: 10px; border-radius: 10px;"><span style="font-size: 23px;">❹ </span>Véglegesítés</h3>
+    <h3 style="margin-top: 15px; margin-left: 40px; margin-right: 40px; background-color: lightcyan; padding: 10px; border-radius: 10px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: #113F67;"><span style="font-size: 23px;">❹ </span>Véglegesítés</h3>
     <br>
-    <input type="text" id="fNev" placeholder="Név *" >
+    <input type="text" id="fNev" placeholder="Páciens neve *" >
     <input type="text" id="fDatum" value="${datum}" readonly >
     <input type="text" id="fIdopont" value="${idopont}" readonly >
     <br>
     <br>
-    <input type="text" id="fEmail" placeholder="E-mail cím *" >
+    <input type="text" id="fEmail" placeholder="Kapcsolattartó e-mail címe *" >
     <input type="text" id="fOrvos" value="${orvos}" readonly >
     <br>
     <br>
-    <select name="" id="fTelefonKezdete">
-        <option value="">+36</option>
-        <option value="">+39</option>
-        <option value="">+40</option>
-        <option value="">+41</option>
-        <option value="">+43</option>
-        <option value="">+44</option>
-        <option value="">+45</option>
-    </select>
-    <input type="text" id="fTelefon" placeholder="Telefonszám *" >
+    <input type="text" id="fTelefon" placeholder="Kapcsolattartó telefonszáma *" >
     <input type="text" id="fSzakrendeles" value="${szakrendeles}" readonly >
     <br>
     <br>
@@ -225,21 +216,26 @@ function Felvitel(szakTeruletId, orvosId, datum, idopont) {
         "bevitel6": document.getElementById("fEmail").value,
         "bevitel7": document.getElementById("fTelefon").value,
     };
-    fetch("http://localhost:3000/betegFelvitel", {
-        method: "POST",
-        body: JSON.stringify(adatok),
-        headers: { "Content-type": "application/json; charset=UTF-8" }
-    })
-    .then(x => x.text())
-    .then(y => {
-        alert("A foglalás sikeresen megtörtént! Hamarosan e-mailben tájékoztatjuk a részletekről!")
-        document.getElementById("veglegesites").innerHTML = '';
-        document.getElementById("idopontokCim").innerHTML = '';
-        document.getElementById("idopontok").innerHTML = '';
-        document.getElementById("keresettOrvos").innerHTML = '';
-        document.getElementById("orvosokCim").innerHTML = '';
-    })
-    .catch(error => console.error('Error:', error));
+    if (adatok.bevitel5 == "" || adatok.bevitel6 == "" || adatok.bevitel7 == "") {
+        alert("Kérem töltse ki az összes adatát!")
+    }
+    else{
+        fetch("http://localhost:3000/betegFelvitel", {
+            method: "POST",
+            body: JSON.stringify(adatok),
+            headers: { "Content-type": "application/json; charset=UTF-8" }
+        })
+        .then(x => x.text())
+        .then(y => {
+            alert("A foglalás sikeresen megtörtént! Hamarosan e-mailben tájékoztatjuk a részletekről!")
+            document.getElementById("veglegesites").innerHTML = '';
+            document.getElementById("idopontokCim").innerHTML = '';
+            document.getElementById("idopontok").innerHTML = '';
+            document.getElementById("keresettOrvos").innerHTML = '';
+            document.getElementById("orvosokCim").innerHTML = '';
+        })
+        .catch(error => console.error('Error:', error));
+    }
 }
 
 function visszaAzElejere() {
