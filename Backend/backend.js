@@ -111,7 +111,7 @@ app.get('/csak_orvosok', (req, res) => {
 
 app.get('/orvosAdatok2', (req, res) => {
   kapcsolat()
-  connection.query(`SELECT orvosok.orvos_id, orvosok.nev, orvosok.telefon, orvosok.kep, GROUP_CONCAT(szakteruletek.szak_nev ORDER BY szakteruletek.szak_nev SEPARATOR ' , ') AS szakteruletek FROM orvosok INNER JOIN orvos_szakterulet ON orvosok.orvos_id = orvos_szakterulet.orvos_id INNER JOIN szakteruletek ON orvos_szakterulet.szakterulet_id = szakteruletek.szak_id GROUP BY orvosok.orvos_id, orvosok.nev, orvosok.telefon;`, (err, rows, fields) => {
+  connection.query(`SELECT orvosok.orvos_id, orvosok.nev, orvosok.telefon, orvosok.kep, orvosok.leiras, GROUP_CONCAT(szakteruletek.szak_nev ORDER BY szakteruletek.szak_nev SEPARATOR ' , ') AS szakteruletek FROM orvosok INNER JOIN orvos_szakterulet ON orvosok.orvos_id = orvos_szakterulet.orvos_id INNER JOIN szakteruletek ON orvos_szakterulet.szakterulet_id = szakteruletek.szak_id GROUP BY orvosok.orvos_id, orvosok.nev, orvosok.telefon;`, (err, rows, fields) => {
       if (err) {
           console.log(err)
           res.status(500).send("Hiba")
@@ -140,7 +140,7 @@ app.get('/szakteruletAdatok', (req, res) => {
 //Szaktüreletek orvosai foglalt idopontokkal
 app.get('/szakteruletAdatok2', (req, res) => {
     kapcsolat()
-    connection.query(`SELECT szakteruletek.szak_id, szakteruletek.szak_nev, GROUP_CONCAT(DISTINCT orvosok.nev ORDER BY orvosok.nev SEPARATOR ' , ') AS orvosok, GROUP_CONCAT(DISTINCT CONCAT(idopont_foglalas.if_datum, ' : ', idopont_foglalas.if_idopont) ORDER BY idopont_foglalas.if_datum, idopont_foglalas.if_idopont SEPARATOR ' | ') AS foglalt_idopontok FROM szakteruletek INNER JOIN orvos_szakterulet ON orvos_szakterulet.szakterulet_id = szakteruletek.szak_id INNER JOIN orvosok ON orvos_szakterulet.orvos_id = orvosok.orvos_id LEFT JOIN idopont_foglalas ON orvosok.orvos_id = idopont_foglalas.if_orvosid GROUP BY szakteruletek.szak_id, szakteruletek.szak_nev;`, (err, rows, fields) => {
+    connection.query(`SELECT orvosok.nev, szakteruletek.szak_nev, idopont_foglalas.if_datum, idopont_foglalas.if_idopont FROM idopont_foglalas INNER JOIN orvosok ON orvosok.orvos_id = idopont_foglalas.if_orvosid INNER JOIN szakteruletek ON szakteruletek.szak_id = idopont_foglalas.if_szakrendelesid;`, (err, rows, fields) => {
         if (err) {
             console.log(err)
             res.status(200).send("Hiba")
@@ -212,7 +212,7 @@ app.post('/foglaltIdopontok', (req, res) => {
 
     app.post('/betegFelvitel', (req, res) => {
         kapcsolat()
-        connection.query(`SELECT * FROM idopont_foglalas WHERE if_szakrendelesid=? AND if_orvosid=? AND if_datum=? AND if_idopont=?`,[req.body.bevitel1, req.body.bevitel2, req.body.bevitel3, req.body.bevitel4], (err, rows, fields) => {
+        connection.query(`SELECT * FROM idopont_foglalas WHERE if_orvosid=? AND if_datum=? AND if_idopont=?`,[req.body.bevitel2, req.body.bevitel3, req.body.bevitel4], (err, rows, fields) => {
             if (err) {
                 console.log(err)
                 res.status(500).send("Hiba")
