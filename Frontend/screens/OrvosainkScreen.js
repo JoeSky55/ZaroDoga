@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, ActivityIndicator, Modal } from 'react-native';
 import IpCim from './IpCim';
 import { TouchableOpacity } from 'react-native';
+import { BlurView } from '@react-native-community/blur';
 
 
 const helyiKepek = {
@@ -78,12 +79,26 @@ export default function OrvosainkScreen({ navigation }) {
           onRequestClose={() => toggleModal(null)}
         >
           <View style={styles.modalOverlay}>
+
+          <BlurView
+            style={styles.absolute}
+            blurType="extralight"   // You can choose "light", "dark", or "extraLight"
+            blurAmount={70}    // Adjust the blur intensity
+            //reducedTransparencyFallbackColor="white"  // Fallback color for Android
+          />
+
+
+
             <View style={styles.modalContent}>
-              <Text style={styles.modalTitle}>{orvos.nev}</Text>
+              
               <Image
                 style={styles.rendeles_logo}
                 source={helyiKepek[orvos.kep] || require('../kepek/rendeles_ikon.png')}
               />
+              <Text style={styles.modalTitle}>{orvos.nev}</Text>
+              {/*<Text style={styles.modalTitle}>{item.szak_nev}</Text>*/}
+              {/*<Text style={styles.modalTitle}>{orvos.nev}</Text>*/}
+
               <Text style={styles.orvosLeiras_felirat}>Lorem ipsum Lorem ipsum Lorem ipsum v Lorem ipsumLorem ipsum v v Lorem ipsum Lorem ipsum  vvv Lorem ipsum Lorem ipsum v Lorem ipsumv Lorem ipsumv Lorem ipsumv</Text>
               
               <TouchableOpacity style={styles.closeButton} onPress={() => toggleModal(null)}>
@@ -103,6 +118,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#f0f8ff',
     paddingTop: 20,
+  },
+  absolute: {
+    backgroundColor:'rgba(0,255,255,0.5)',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    
   },
   loader: {
     marginTop: 500,
@@ -162,13 +186,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
+    //borderColor: '#4da8dd',
+    //borderWidth: 5,
+    width:350,
+    shadowColor: '#113F67',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.4,
+    shadowRadius: 7,
   },
   closeButton: {
-    backgroundColor: 'red',
+    backgroundColor: '#4da8dd',
     padding: 10,
     borderRadius: 10,
     marginTop: 20,
-    
+    opacity: 0.8,
     width:100
   },
   buttonText: {
@@ -177,14 +208,17 @@ const styles = StyleSheet.create({
     alignSelf:'center',
   },
   modalOverlay: {
-    marginTop: 150,
+    flex:1,
+    marginTop: 0,
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    borderColor: '#4da8dd',
-    borderWidth: 5,
+    //borderColor: '#4da8dd',
+    //borderWidth: 5,
     borderRadius: 10,
-    width:300
+    width: 400,
+    
+    
   },
   orvosLeiras_felirat: {
     fontSize: 18,
