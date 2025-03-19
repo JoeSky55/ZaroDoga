@@ -1,23 +1,12 @@
-//Menü kis segítséggel;)___________________________________!
-const navLinks = document.querySelectorAll('.nav-link');
-const indicator = document.getElementById('menu-indicator');
-
-navLinks.forEach(link => {
-    link.addEventListener('mouseover', (e) => {
-        const linkRect = e.target.getBoundingClientRect();
-
-        indicator.style.width = `${linkRect.width}px`;
-        indicator.style.left = `${linkRect.left}px`;
-        indicator.style.display = 'block';
-    });
-
-    link.addEventListener('mouseout', () => {
-        indicator.style.width = '0';
-    });
+//Elérhetőségek
+fetch("Elerhetosegek.html")
+.then(response => response.text())
+.then(data => {
+  document.getElementById("elerhetoseg").innerHTML = data;
 });
-//_________________________________________________________!
+//---------------------------------------------------------//
 
-fetch("http://localhost:3000/orvosAdatok2")
+fetch(Cim + "orvosAdatok2")
 .then(x => x.json())
 .then(y => myDisplay(y));
 
@@ -29,7 +18,7 @@ function myDisplay(y)
         `
              <div class="col-sm-4 ">
                  <div class="adatok">
-                     <img class="orvosKep mx-auto d-block" src="./kepek/${elem.kep}" alt="">
+                     <img class="orvosKep mx-auto d-block" src="${Cim}${elem.kep}" alt="">
                      <p class="orvosNev">${elem.nev}</p>
                      <p class="orvosSzakterulet">${elem.szakteruletek}</p>  
                      <p style="text-align: center;"><button class="bovebbenStilus" onclick='Bovebben(${JSON.stringify(elem)}, ${valtozo})'>Bemutatkozás ▿</button></p>
@@ -68,3 +57,4 @@ function Bovebben(y, id) {
         leirasGomb.style.boxShadow = "none";
     }
 }
+

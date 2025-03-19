@@ -1,22 +1,12 @@
-//Menü kis segítséggel;)___________________________________!
-const navLinks = document.querySelectorAll('.nav-link');
-const indicator = document.getElementById('menu-indicator');
-
-navLinks.forEach(link => {
-    link.addEventListener('mouseover', (e) => {
-        const linkRect = e.target.getBoundingClientRect();
-
-        indicator.style.width = `${linkRect.width}px`;
-        indicator.style.left = `${linkRect.left}px`;
-        indicator.style.display = 'block';
-    });
-
-    link.addEventListener('mouseout', () => {
-        indicator.style.width = '0';
-    });
+//Elérhetőségek
+fetch("Elerhetosegek.html")
+.then(response => response.text())
+.then(data => {
+  document.getElementById("elerhetoseg").innerHTML = data;
 });
-//_________________________________________________________!
-fetch("http://localhost:3000/csak_szakteruletek")
+//---------------------------------------------------------//
+
+fetch(Cim + "csak_szakteruletek")
 .then(x => x.json())
 .then(y => myDisplay(y));
 
@@ -42,7 +32,7 @@ function Kivalasztas() {
         "bevitel1": document.getElementById("szakrendelesek").value
     };
 
-    fetch("http://localhost:3000/szakteruletKeres", {
+    fetch(Cim + "szakteruletKeres", {
         method: "POST",
         body: JSON.stringify(adat),
         headers: { "Content-type": "application/json; charset=UTF-8" }
@@ -72,19 +62,32 @@ function orvosKivalaszt(szakTeruletId, orvos, orvosId) {
     document.getElementById("idopontokCim").innerHTML = 
     `
     <h3 style="margin-top: 15px; margin-left: 40px; margin-right: 40px; background-color: lightcyan; padding: 10px; border-radius: 10px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: #113F67;"><span style="font-size: 23px;">❸ </span>Időpontfoglalás</h3>
-    <input type="date" id="datumValasztas" name="datumValasztas" onchange="dátumKiválasztása('${szakTeruletId}', '${orvos}', '${orvosId}')">
+    <input type="date" id="datumValasztas" name="datumValasztas" onchange="datumKivalasztasa('${szakTeruletId}', '${orvos}', '${orvosId}')">
     `;
     document.getElementById("idopontok").innerHTML = '';
 }
 
-function dátumKiválasztása(szakTeruletId, orvos, orvosId) {
+function datumKivalasztasa(szakTeruletId, orvos, orvosId) {
+
+        document.getElementById("idopontok").innerHTML = ""
+
         var datum = document.getElementById("datumValasztas").value;
 
+        var datumKivalasztva = new Date(datum);
+        var nap = datumKivalasztva.getDay(); // 0: vasárnap, 6: szombat
+
+        if (nap == 0 || nap == 6) {
+            alert("A hétvégén nem lehet időpontot foglalni!");
+            return
+        }
         var adat = {
             "bevitel1": orvos,
             "bevitel2": datum,
         };
-    fetch("http://localhost:3000/foglaltIdopontok", {
+        
+        
+       
+    fetch(Cim + "foglaltIdopontok", {
         method: "POST",
         body: JSON.stringify(adat),
         headers: { "Content-type": "application/json; charset=UTF-8" }
@@ -220,7 +223,7 @@ function Felvitel(szakTeruletId, orvosId, datum, idopont) {
         alert("Kérem töltse ki az összes adatát!")
     }
     else{
-        fetch("http://localhost:3000/betegFelvitel", {
+        fetch(Cim + "betegFelvitel", {
             method: "POST",
             body: JSON.stringify(adatok),
             headers: { "Content-type": "application/json; charset=UTF-8" }

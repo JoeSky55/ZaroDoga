@@ -1,18 +1,41 @@
-//Menü kis segítséggel;)___________________________________!
-const navLinks = document.querySelectorAll('.nav-link');
-const indicator = document.getElementById('menu-indicator');
-
-navLinks.forEach(link => {
-    link.addEventListener('mouseover', (e) => {
-        const linkRect = e.target.getBoundingClientRect();
-
-        indicator.style.width = `${linkRect.width}px`;
-        indicator.style.left = `${linkRect.left}px`;
-        indicator.style.display = 'block';
-    });
-
-    link.addEventListener('mouseout', () => {
-        indicator.style.width = '0';
-    });
+//Elérhetőségek
+fetch("Elerhetosegek.html")
+.then(response => response.text())
+.then(data => {
+  document.getElementById("elerhetoseg").innerHTML = data;
 });
-//_________________________________________________________!
+//---------------------------------------------------------//
+
+fetch(Cim + "szakteruletek")
+.then(x => x.json())
+.then(y => myDisplay(y));
+
+function myDisplay(y)
+{
+    /*for (const elem of y) {
+        document.getElementById("kezeleseinkTablazat").innerHTML += 
+        `
+        <tr>
+            <td>${elem.szak_nev} </td>
+            <td>${elem.ar} Ft</td>
+            <td><i>${elem.leiras}</i></td>
+        </tr>
+        `
+    }*/
+    for (const elem of y) {
+        document.getElementById("KezeleseinkAdatok").innerHTML += 
+        `
+             <div class="col-sm-4 ">
+                 <div class="adatok">
+                    <img class="szakKep mx-auto d-block" src="${Cim}${elem.szak_kep_web}" alt="">
+                    <h5 class="szakNev">${elem.szak_nev}</h5>
+                    <p class="szakAr">${elem.szak_ar} Ft</p>
+                    <p class="szakLeiras">${elem.szak_leiras}</p>
+                 </div>
+                 <br>
+             </div>
+             <br>
+        `
+    }
+}
+

@@ -1,4 +1,3 @@
-//Menü kis segítséggel;)___________________________________!
 const navLinks = document.querySelectorAll('.nav-link');
 const indicator = document.getElementById('menu-indicator');
 
@@ -15,9 +14,3 @@ navLinks.forEach(link => {
         indicator.style.width = '0';
     });
 });
-
-
-
-
-
-

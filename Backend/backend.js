@@ -183,33 +183,6 @@ app.post('/foglaltIdopontok', (req, res) => {
     connection.end()
 })
 
-  /*app.post('/betegFelvitel', (req, res) => {
-    kapcsolat()
-    connection.query(`INSERT INTO idopont_foglalas VALUES (NULL,?,?,?,?,?,?,?);
-    `, [req.body.bevitel1, req.body.bevitel2, req.body.bevitel3, req.body.bevitel4, req.body.bevitel5, req.body.bevitel6, req.body.bevitel7],
-    (err, rows, fields) => {
-       if (err)    
-       {
-            console.log("Hiba")
-            console.log(err)
-            res.status(500).send("Hiba")
-       }
-       else
-       {
-        console.log("Sikeres felvitel!");
-
-        //Email küldése funkció 
-        const userEmail = req.body.bevitel6;
-        if (userEmail) {
-            sendConfirmationEmail(userEmail);
-        }
-
-        res.status(200).send("Sikeres felvitel");
-       }
-      })
-      connection.end()
-    })*/
-
     app.post('/betegFelvitel', (req, res) => {
         kapcsolat()
         connection.query(`SELECT * FROM idopont_foglalas WHERE if_orvosid=? AND if_datum=? AND if_idopont=?`,[req.body.bevitel2, req.body.bevitel3, req.body.bevitel4], (err, rows, fields) => {
