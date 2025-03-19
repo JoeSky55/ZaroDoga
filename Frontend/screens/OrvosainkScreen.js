@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, Image, StyleSheet, ActivityIndicator, Modal } from 'react-native';
+import { View, Text, FlatList, Image, StyleSheet, ActivityIndicator, Modal, ScrollView } from 'react-native';
 import IpCim from './IpCim';
 import { TouchableOpacity } from 'react-native';
 import { BlurView } from '@react-native-community/blur';
 
 
-const helyiKepek = {
-  "01.jpg": require('../kepek/01.jpg'),
-  "02.jpeg": require('../kepek/02.jpeg'),
-  "03.jpeg": require('../kepek/03.jpeg'),
-  "04.jpg": require('../kepek/04.jpg'),
-  "05.jpg": require('../kepek/05.jpg'),
-};
 
 export default function OrvosainkScreen({ navigation }) {
   const [adatok, setAdatok] = useState([]);
@@ -54,7 +47,8 @@ export default function OrvosainkScreen({ navigation }) {
               <View>
                 <Image
                   style={styles.rendeles_logo}
-                  source={helyiKepek[item.kep] || require('../kepek/rendeles_ikon.png')}
+                  source={{uri:IpCim.Ipcim+item.kep}|| require('../kepek/rendeles_ikon.png')} 
+                  
                 />
               </View>
 
@@ -77,6 +71,7 @@ export default function OrvosainkScreen({ navigation }) {
           transparent={true}
           visible={modalVisible}
           onRequestClose={() => toggleModal(null)}
+          //scrollEnabled={true}
         >
           <View style={styles.modalOverlay}>
 
@@ -90,17 +85,18 @@ export default function OrvosainkScreen({ navigation }) {
 
 
             <View style={styles.modalContent}>
-              
+              <ScrollView contentContainerStyle={styles.centeredContainer}>
               <Image
                 style={styles.rendeles_logo}
-                source={helyiKepek[orvos.kep] || require('../kepek/rendeles_ikon.png')}
+                source={{uri:IpCim.Ipcim+orvos.kep}|| require('../kepek/rendeles_ikon.png')}
               />
               <Text style={styles.modalTitle}>{orvos.nev}</Text>
-              {/*<Text style={styles.modalTitle}>{orvos.szak_nev}</Text>*/}
-              {/**/}
-              <Text style={styles.modalTitle}>{orvos.szakteruletek}</Text>
+
+              <Text style={styles.modalTitleSzakterulet}>{orvos.szakteruletek}</Text>
               <Text style={styles.orvosLeiras_felirat}>{orvos.leiras}</Text>
               
+              
+              </ScrollView>
               <TouchableOpacity style={styles.closeButton} onPress={() => toggleModal(null)}>
                 <Text style={styles.buttonText}>Bezár</Text>
               </TouchableOpacity>
@@ -119,6 +115,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f8ff',
     paddingTop: 20,
   },
+  centeredContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',  // Középre igazítás függőlegesen
+    alignItems: 'center',      // Középre igazítás vízszintesen
+  },
   absolute: {
     backgroundColor:'rgba(0,255,255,0.5)',
     position: 'absolute',
@@ -133,6 +134,7 @@ const styles = StyleSheet.create({
   },
   card: {
     width: 300,
+    height: 400,
     alignSelf: 'center',
     marginBottom: 50,
     backgroundColor: '#fff',
@@ -151,6 +153,7 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 10,
     marginBottom: 10,
+    marginTop: 10,
   },
   rendeles_felirat: {
     textAlign: 'center',
@@ -160,9 +163,10 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   feliratHatter: {
+    marginTop: 25,
     backgroundColor: '#4da8dd',
-    height: 50,
-    borderRadius: 50,
+    height: 80,
+    borderRadius: 20,
     justifyContent: 'center',
     width: '80%',
     alignSelf: 'center',
@@ -174,15 +178,28 @@ const styles = StyleSheet.create({
   modalTitle: {
     alignSelf: 'center',
     backgroundColor: 'white',
-    width: 250,
+    width: 300,
     height: 50,
     textAlign: 'center',
     fontSize: 24,
     marginBottom: 20,
   },
+  modalTitleSzakterulet: {
+    alignSelf: 'center',
+    backgroundColor: 'white',
+    //width: '80%',
+    flexWrap: 'wrap',
+    height: 50,
+    textAlign: 'center',
+    fontSize: 15,
+    marginBottom: 20,
+  },
   modalContent: {
     backgroundColor: 'white',
-    padding: 20,
+    paddingRight: 20,
+    paddingLeft: 20,
+    paddingBottom: 0,
+    paddingTop: 0,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
@@ -193,12 +210,16 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.4,
     shadowRadius: 7,
+    maxHeight:'80%',
+    
+    
   },
   closeButton: {
     backgroundColor: '#4da8dd',
     padding: 10,
     borderRadius: 10,
-    marginTop: 20,
+    marginTop: 10,
+    marginBottom: 10,
     opacity: 0.8,
     width:100
   },
@@ -219,9 +240,12 @@ const styles = StyleSheet.create({
     width: 400,
     
     
+    
+    
   },
   orvosLeiras_felirat: {
     fontSize: 15,
     color:'black',
+    
   },
 });
