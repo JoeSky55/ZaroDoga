@@ -12,16 +12,6 @@ fetch(Cim + "szakteruletek")
 
 function myDisplay(y)
 {
-    /*for (const elem of y) {
-        document.getElementById("kezeleseinkTablazat").innerHTML += 
-        `
-        <tr>
-            <td>${elem.szak_nev} </td>
-            <td>${elem.ar} Ft</td>
-            <td><i>${elem.leiras}</i></td>
-        </tr>
-        `
-    }*/
     for (const elem of y) {
         document.getElementById("KezeleseinkAdatok").innerHTML += 
         `

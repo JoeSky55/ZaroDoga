@@ -21,8 +21,8 @@ namespace sunshineDentalAAF
     /// </summary>
     public partial class MainWindow : Window
     {
-        //const string Cim = "http://localhost:3000/";
-        const string Cim = "https://nodejs320.dszcbaross.edu.hu/";
+        const string Cim = "http://localhost:3000/";
+        //const string Cim = "https://nodejs320.dszcbaross.edu.hu/";
        
         string url = Cim + "idopontok";
         List<Idopontok> idopontAdatok = new List<Idopontok>();
@@ -30,13 +30,10 @@ namespace sunshineDentalAAF
         string url4 = Cim +  "csak_orvosok";
         List<Orvosok> OrvosAdatok = new List<Orvosok>();
 
-        string url5 = Cim + "csak_szakteruletek";
+        string url5 = Cim + "szakteruletek";
         List<Szakteruletek> SzakAdatok = new List<Szakteruletek>();
 
-        string url6 = Cim +  "szakteruletAdatok2";
-        List<OrvosokSzakteruletei> OrvosSzakAdatok = new List<OrvosokSzakteruletei>();
-
-
+ 
         public MainWindow()
         {
             InitializeComponent();
@@ -65,11 +62,6 @@ namespace sunshineDentalAAF
             cbkereses.SelectedIndex = 0;
 
             //ÚJ IDŐPONT FELTÖLTÉSE FÜL:---------------------------------------------:
-
-            //datagrid2 feltöltése adatokkal
-            //OrvosSzakAdatok = Backend.GET(url6).Send().As<List<OrvosokSzakteruletei>>();
-            //datagrid2.ItemsSource = OrvosSzakAdatok;
-
             //cbOrvos feltöltése adatokkal
             OrvosAdatok = Backend.GET(url4).Send().As<List<Orvosok>>();
             foreach (var a in OrvosAdatok)
@@ -247,6 +239,20 @@ namespace sunshineDentalAAF
             datepicker.SelectedDate = null;
 
             adatokbetoltese();
+        }
+
+        private void tbkereses_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            List<Idopontok> keresemLista = new List<Idopontok>();
+            foreach (var a in idopontAdatok)
+            {
+                if (a.szak_nev.ToLower().Contains(tbkereses.Text.ToLower()) ||a.nev.ToLower().Contains(tbkereses.Text.ToLower()) || a.if_nev.ToLower().Contains(tbkereses.Text.ToLower()))
+                {
+                    keresemLista.Add(a);
+                }
+            }
+            datagrid.ItemsSource = null;
+            datagrid.ItemsSource = keresemLista;
         }
     }
 }

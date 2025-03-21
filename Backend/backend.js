@@ -31,22 +31,6 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
   })
 
-  //Józsi végpontjai________________________________________________
-  app.get('/orvosAdatok', (req, res) => {
-    kapcsolat()
-    connection.query('SELECT * FROM orvosok INNER JOIN orvos_szakterulet ON orvosok.orvos_id = orvos_szakterulet.orvos_id INNER JOIN szakteruletek ON orvos_szakterulet.szakterulet_id = szakteruletek.szak_id WHERE orvosok.orvos_id = 1 GROUP BY orvosok.orvos_id', (err, rows, fields) => {
-        if (err) {
-            console.log(err)
-            res.status(500).send("Hiba")
-        }
-        else{
-            console.log(rows)
-            res.status(200).send(rows)
-        }
-      })
-      connection.end()
-  })
-//---------------------------------------Osszes szakterulet :D
 app.get('/szakteruletek', (req, res) => {
     kapcsolat()
     connection.query('SELECT * from szakteruletek', (err, rows, fields) => {
@@ -62,8 +46,7 @@ app.get('/szakteruletek', (req, res) => {
       connection.end()
   })
 
-//-----------------------------------------------------------------------------------Orvosok szakteruletenkent
-  app.get('/orvosok', (req, res) => {
+app.get('/OrvosokSzakteruletei', (req, res) => {
     kapcsolat()
     connection.query('SELECT * from orvos_szakterulet inner join szakteruletek on orvos_szakterulet.szakterulet_id = szakteruletek.szak_id inner join orvosok on orvosok.orvos_id = orvos_szakterulet.orvos_id', (err, rows, fields) => {
         if (err) {
@@ -78,7 +61,6 @@ app.get('/szakteruletek', (req, res) => {
       connection.end()
   })
 
-//Robi végpontjai________________________________________________
 app.get('/csak_orvosok', (req, res) => {
     kapcsolat()
     connection.query(`SELECT * FROM orvosok;`, (err, rows, fields) => {
@@ -90,24 +72,9 @@ app.get('/csak_orvosok', (req, res) => {
             console.log(rows)
             res.status(200).send(rows)
         }
-      })
-      connection.end()
-  })
-
-  app.get('/csak_szakteruletek', (req, res) => {
-    kapcsolat()
-    connection.query(`SELECT * FROM szakteruletek;`, (err, rows, fields) => {
-        if (err) {
-            console.log(err)
-            res.status(500).send("Hiba")
-        }
-        else{
-            console.log(rows)
-            res.status(200).send(rows)
-        }
-      })
-      connection.end()
-  })
+    })
+    connection.end()
+})
 
 app.get('/orvosAdatok2', (req, res) => {
   kapcsolat()
@@ -123,35 +90,6 @@ app.get('/orvosAdatok2', (req, res) => {
     })
     connection.end()
 })
-app.get('/szakteruletAdatok', (req, res) => {
-  kapcsolat()
-  connection.query(`SELECT szakteruletek.szak_id, szakteruletek.szak_nev, GROUP_CONCAT(orvosok.nev ORDER BY orvosok.nev SEPARATOR ' , ') AS orvosok FROM szakteruletek INNER JOIN orvos_szakterulet ON orvos_szakterulet.szakterulet_id = szakteruletek.szak_id INNER JOIN orvosok ON orvos_szakterulet.orvos_id = orvosok.orvos_id GROUP BY szakteruletek.szak_id, szakteruletek.szak_nev;`, (err, rows, fields) => {
-      if (err) {
-          console.log(err)
-          res.status(500).send("Hiba")
-      }
-      else{
-          console.log(rows)
-          res.status(200).send(rows)
-      }
-    })
-    connection.end()
-})
-//Szaktüreletek orvosai foglalt idopontokkal
-app.get('/szakteruletAdatok2', (req, res) => {
-    kapcsolat()
-    connection.query(`SELECT orvosok.nev, szakteruletek.szak_nev, idopont_foglalas.if_datum, idopont_foglalas.if_idopont FROM idopont_foglalas INNER JOIN orvosok ON orvosok.orvos_id = idopont_foglalas.if_orvosid INNER JOIN szakteruletek ON szakteruletek.szak_id = idopont_foglalas.if_szakrendelesid;`, (err, rows, fields) => {
-        if (err) {
-            console.log(err)
-            res.status(200).send("Hiba")
-        }
-        else{
-            console.log(rows)
-            res.status(200).send(rows)
-        }
-      })
-      connection.end()
-  })
 
 app.post('/szakteruletKeres', (req, res) => {
   kapcsolat()
@@ -183,68 +121,66 @@ app.post('/foglaltIdopontok', (req, res) => {
     connection.end()
 })
 
-    app.post('/betegFelvitel', (req, res) => {
-        kapcsolat()
-        connection.query(`SELECT * FROM idopont_foglalas WHERE if_orvosid=? AND if_datum=? AND if_idopont=?`,[req.body.bevitel2, req.body.bevitel3, req.body.bevitel4], (err, rows, fields) => {
-            if (err) {
+app.post('/betegFelvitel', (req, res) => {
+    kapcsolat()
+    connection.query(`SELECT * FROM idopont_foglalas WHERE if_orvosid=? AND if_datum=? AND if_idopont=?`,[req.body.bevitel2, req.body.bevitel3, req.body.bevitel4], (err, rows, fields) => {
+        if (err) {
+            console.log(err)
+            res.status(500).send("Hiba")
+        }
+        else{
+            console.log(rows)
+            if (rows.length!=0) {
+                res.status(200).send("Az időpont már foglalt!")
+        } else {
+            kapcsolat()
+            connection.query(`INSERT INTO idopont_foglalas VALUES (NULL,?,?,?,?,?,?,?);
+            `, [req.body.bevitel1, req.body.bevitel2, req.body.bevitel3, req.body.bevitel4, req.body.bevitel5, req.body.bevitel6, req.body.bevitel7],
+            (err, rows, fields) => {
+            if (err)    
+            {
+                console.log("Hiba")
                 console.log(err)
                 res.status(500).send("Hiba")
             }
-            else{
-                console.log(rows)
-                if (rows.length!=0) {
-                    res.status(200).send("fogl!")
-          } else {
-                kapcsolat()
-                connection.query(`INSERT INTO idopont_foglalas VALUES (NULL,?,?,?,?,?,?,?);
-                `, [req.body.bevitel1, req.body.bevitel2, req.body.bevitel3, req.body.bevitel4, req.body.bevitel5, req.body.bevitel6, req.body.bevitel7],
-                (err, rows, fields) => {
-                if (err)    
-                {
-                    console.log("Hiba")
-                    console.log(err)
-                    res.status(500).send("Hiba")
-                }
-                else
-                {
-                console.log("Sikeres felvitel!");
-                //Email küldése funkció 
-                const userEmail = req.body.bevitel6;
-                if (userEmail) {
-                    sendConfirmationEmail(userEmail);
-                }
-                res.status(200).send("Sikeres felvitel");
-                }
-                })
-            }}
-        })
-        connection.end()
+            else
+            {
+            console.log("Sikeres felvitel!");
+            //Email küldése funkció 
+            const userEmail = req.body.bevitel6;
+            if (userEmail) {
+                sendConfirmationEmail(userEmail);
+            }
+            res.status(200).send("Sikeres felvitel!");
+            }
+            })
+        }}
     })
-
-
-    //Email küldő függvény
-    const sendConfirmationEmail = (recipientEmail) => {
-        let transporter = nodemailer.createTransport({
-            service: 'gmail', 
-            auth: {
-                user: 'sunshinedentalfogaszat@gmail.com', 
-                pass: 'opal lhvt wasb ocod' 
-            }
-        });
-        let mailOptions = {
-            from: 'sunshinedentalfogaszat@gmail.com',
-            to: recipientEmail,
-            subject: 'Időpontfoglalás visszaigazolás',
-            text: 'Kedves páciens! Sikeresen lefoglalta az időpontját. Köszönjük, hogy minket választott!'
-        };
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.log("Email küldési hiba:", error);
-            } else {
-                console.log("Email elküldve: " + info.response);
-            }
-        });
+    connection.end()
+})
+//Email küldő függvény
+const sendConfirmationEmail = (recipientEmail) => {
+    let transporter = nodemailer.createTransport({
+        service: 'gmail', 
+        auth: {
+            user: 'sunshinedentalfogaszat@gmail.com', 
+            pass: 'opal lhvt wasb ocod' 
+        }
+    });
+    let mailOptions = {
+        from: 'sunshinedentalfogaszat@gmail.com',
+        to: recipientEmail,
+        subject: 'Időpontfoglalás visszaigazolás',
+        text: 'Kedves páciens! Sikeresen lefoglalta az időpontját. Köszönjük, hogy minket választott!'
     };
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log("Email küldési hiba:", error);
+        } else {
+            console.log("Email elküldve: " + info.response);
+        }
+    });
+};
 
 app.get('/idopontok', (req, res) => {
   kapcsolat()
@@ -258,28 +194,27 @@ app.get('/idopontok', (req, res) => {
           res.status(200).send(rows)
       }
     })
-    connection.end()
+connection.end()
 })
 
-  app.delete('/idopontTorles', (req, res) => {
-    kapcsolat()
-    connection.query(`DELETE FROM idopont_foglalas WHERE if_telefon = ${req.body.bevitel1}`,
-    (err, rows, fields) => {
-       if (err)    
-       {
-            console.log("Hiba")
-            console.log(err)
-            res.status(500).send("Hiba")
-       }
-       else
-       {
-            console.log("Sikeres törlés!")
-            res.status(200).send("Sikeres törlés")
-       }
-      })
-      
-      connection.end()
-  })
+app.delete('/idopontTorles', (req, res) => {
+kapcsolat()
+connection.query(`DELETE FROM idopont_foglalas WHERE if_telefon = ${req.body.bevitel1}`,
+(err, rows, fields) => {
+    if (err)    
+    {
+        console.log("Hiba")
+        console.log(err)
+        res.status(500).send("Hiba")
+    }
+    else
+    {
+        console.log("Sikeres törlés!")
+        res.status(200).send("Sikeres törlés")
+    }
+    })  
+connection.end()
+})
 
 //******************************************************
   app.listen(port, () => {

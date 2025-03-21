@@ -1,3 +1,7 @@
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 /*footer_______________________________*/
 footer{
     position: fixed;
@@ -181,6 +185,29 @@ footer{
     margin-left: 115px;
     margin-top: 25px;
     margin-right: -370px;
+}
+.szakkKep{
+    height: 69px;
+    width: 79px;
+    margin: 5px;
+}
+#szakBovebben{
+    margin-top: 12px;
+    margin-left: 5px;
+    padding: 5px;
+    padding-right: 15px;
+    padding-left: 15px;
+    background-color: #113F67;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    transition: background-color 0.3s;
+}
+#szakBovebben:hover{
+    background-color: lightskyblue; 
+    border: 0px;
+    color: #000;
 }
 
 
@@ -559,15 +586,18 @@ footer{
     text-align: center;
     margin-top: 15px;
     font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .szakAr{
     text-align: center;
     margin-top: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     
 }
 .szakLeiras{
     margin-top: 25px;
-    text-align: justify;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 

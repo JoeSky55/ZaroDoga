@@ -6,7 +6,7 @@ fetch("Elerhetosegek.html")
 });
 //---------------------------------------------------------//
 
-fetch(Cim + "csak_szakteruletek")
+fetch(Cim + "szakteruletek")
 .then(x => x.json())
 .then(y => myDisplay(y));
 
@@ -74,10 +74,10 @@ function datumKivalasztasa(szakTeruletId, orvos, orvosId) {
         var datum = document.getElementById("datumValasztas").value;
 
         var datumKivalasztva = new Date(datum);
-        var nap = datumKivalasztva.getDay(); // 0: vasárnap, 6: szombat
+        var nap = datumKivalasztva.getDay();
 
         if (nap == 0 || nap == 6) {
-            alert("A hétvégén nem lehet időpontot foglalni!");
+            alert("A hétvégre nem lehet időpontot foglalni! Kérem foglaljon hétköznapra időpontot!");
             return
         }
         var adat = {
