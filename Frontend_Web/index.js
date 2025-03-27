@@ -17,6 +17,7 @@ function myDisplay(y)
         `
         <td>
             <img class="szakkKep rounded-circle" src="${Cim}${elem.szak_kep_web}" alt="">
+            <p style="font-size: 10px; text-align: center">${elem.szak_nev}</p>   
         </td>
         
         `
