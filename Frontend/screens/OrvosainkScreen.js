@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, Image, StyleSheet, ActivityIndicator, Modal, ScrollView } from 'react-native';
+import { View, Text, FlatList, Image, StyleSheet, ActivityIndicator, Modal, ScrollView, TouchableOpacity } from 'react-native';
 import IpCim from './IpCim';
-import { TouchableOpacity } from 'react-native';
+//import { TouchableOpacity } from 'react-native';
 import { BlurView } from '@react-native-community/blur';
 
 
@@ -52,9 +52,19 @@ export default function OrvosainkScreen({ navigation }) {
                 />
               </View>
 
-              <View style={styles.feliratHatter}>
-                <TouchableOpacity onPress={() => toggleModal(item)}>
+              <View style={styles.nevHatter}>
+                
                   <Text style={styles.rendeles_felirat}>{item.nev}</Text>
+                
+              </View>
+              <View style={styles.bemutatkozasHatter}>
+                <TouchableOpacity onPress={() => toggleModal(item)}>
+                  
+                <Image
+                  style={styles.nyil}
+                  source={require('../kepek/down_2626994.png') || require('../kepek/rendeles_ikon.png')} 
+                  
+                />
                 </TouchableOpacity>
               </View>
             </View>
@@ -155,6 +165,15 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginTop: 10,
   },
+  nyil: {
+    width: 40,
+    height: 40,
+    borderRadius: 10,
+    marginBottom: 10,
+    marginTop: 10,
+    opacity: 0.4,
+    alignSelf: 'center',
+  },
   rendeles_felirat: {
     textAlign: 'center',
     fontSize: 22,
@@ -162,9 +181,24 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     padding: 10,
   },
-  feliratHatter: {
-    marginTop: 25,
+  bemutatkozasHatter: {
+    marginTop: 10,
+    backgroundColor: '#61c5dc',
+    height: 50,
+    borderRadius: 20,
+    justifyContent: 'center',
+    width: '80%',
+    alignSelf: 'center',
+    //alignContent: 'center',
+    shadowColor: '#113F67',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.4,
+    shadowRadius: 7,
+  },
+  nevHatter: {
+    marginTop: 10,
     backgroundColor: '#4da8dd',
+    opacity: 0.8,
     height: 80,
     borderRadius: 20,
     justifyContent: 'center',

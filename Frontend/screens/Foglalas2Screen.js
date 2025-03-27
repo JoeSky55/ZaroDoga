@@ -22,7 +22,7 @@ export default function Foglalas2Screen({ navigation, route }) {
 
 
     const letoltes=async ()=>{
-      const x=await fetch(IpCim.Ipcim +"orvosok")
+      const x=await fetch(IpCim.Ipcim +"OrvosokSzakteruletei")
       const y=await x.json()
       setAdatok(y)
       //alert(JSON.stringify(y))
@@ -65,6 +65,10 @@ export default function Foglalas2Screen({ navigation, route }) {
 
       const datumok = (event, selectedDate ) => {
         const currentDate = selectedDate || date;
+        if (currentDate.getDay() === 0 || currentDate.getDay() === 6) {
+          alert('A hétvégék nem választhatók ki!');
+          return;
+        }
         setDate(currentDate)
         setDatumMentese(currentDate.toISOString().split('T')[0]);
         //alert(orvosNeve) undefinednél hibauzenet kiirasa 

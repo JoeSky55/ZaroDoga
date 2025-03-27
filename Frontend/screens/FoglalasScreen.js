@@ -23,15 +23,7 @@ export default function FoglalasScreen({navigation}) {
 
   }
 
-  const helyiKepek = {
-    "101.png": require('../kepek/101.png'),
-    "102.png": require('../kepek/102.png'),
-    "103.png": require('../kepek/103.png'),
-    "104.png": require('../kepek/104.png'),
-    "105.png": require('../kepek/105.png'),
-    "106.png": require('../kepek/106.png'),
-    "107.png": require('../kepek/107.png'),
-  };
+  
 
 
   return (
@@ -44,12 +36,17 @@ export default function FoglalasScreen({navigation}) {
             <View style={styles.card}>
               <View style={{width:370, alignContent:'center', justifyContent:'center', alignSelf:'center', marginBottom:0}}>
                   <TouchableOpacity onPress={() => reszletekFv(item.szak_id,item.szak_nev)}>
-                    <Image style={styles.rendeles_logo} source={helyiKepek[item.szak_kep] || require('../kepek/rendeles_ikon.png')} />
+                    <Image style={styles.rendeles_logo} source={{uri:IpCim.Ipcim+item.szak_kep_mobil} || require('../kepek/rendeles_ikon.png')} />
                   </TouchableOpacity>
                 <View style={styles.feliratHatter}>
                   <TouchableOpacity  onPress={() => reszletekFv(item.szak_id,item.szak_nev)}>
                     <Text style={styles.rendeles_felirat}>{item.szak_nev}</Text>
                   </TouchableOpacity>
+                </View>
+                <View style={styles.feliratLeirasHatter}>
+                  <Text style={styles.szakLeiras}>
+                    {item.szak_leiras}
+                  </Text>
                 </View>
               </View>
             </View>
@@ -77,8 +74,9 @@ const styles = StyleSheet.create({
   },
   card: {
     width: 300,
+    height: 500,
     alignSelf: 'center',
-    marginBottom: 0,
+    marginBottom: 20,
     backgroundColor: '#fff',
     padding: 0,
     borderRadius: 20,
@@ -87,7 +85,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 7,
     marginHorizontal:30,
-    marginVertical:40,
+    marginVertical:20,
     
     alignItems: 'center',
   },
@@ -115,6 +113,31 @@ const styles = StyleSheet.create({
     shadowOffset:{width:0,height:5},
     shadowOpacity:0.4,
     shadowRadius:7,
+    
+  },
+  szakLeiras:{
+    alignSelf:'center',
+    textAlign:'center',
+    fontSize:15,
+    color:'black',
+    fontFamily:'inter',
+    fontWeight:'400',
+    padding:10,
+    marginBottom:0,
+    
+    
+  },
+  feliratLeirasHatter:{
+    //backgroundColor:'#fff',
+    height:200,
+    //borderRadius:20,
+    textAlign: "justify",
+    //alignContent:'center',
+    //justifyContent:'center',
+    width:'81%',
+    marginLeft:35,
+    marginTop:10,
+    
     
   },
   cim:{

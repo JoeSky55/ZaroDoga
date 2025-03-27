@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, Image } from 'react-native';
-import { TouchableOpacity } from 'react-native';
-import { Linking } from 'react-native';
+import { View, Text, StyleSheet, Modal, Linking, TouchableOpacity, } from 'react-native';
+import { useState } from 'react';
+//import { TouchableOpacity } from 'react-native';
+//import { Linking } from 'react-native';
 import IpCim from './IpCim';
+import { BlurView } from '@react-native-community/blur';
 
 
 export default function KapcsolatScreen({navigation}) {
@@ -18,7 +20,12 @@ export default function KapcsolatScreen({navigation}) {
       })
       .catch((err) => console.error("Hiba történt a hívásindítás közben:", err));
   };
-  
+  const [modalVisible, setModalVisible] = useState(false);
+  const toggleModal = () => {
+    
+    setModalVisible(!modalVisible);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.card}>
@@ -87,11 +94,47 @@ export default function KapcsolatScreen({navigation}) {
       </View>
 
       <View style={styles.box5}>
-      <TouchableOpacity onPress={() => Linking.openURL(IpCim.Ipcim + 'kezdolap')}>
+      <TouchableOpacity onPress={() => toggleModal()}>
         <Text style={styles.szoveg3}>
           Foglalási szabályzat
         </Text>
         </TouchableOpacity>
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => toggleModal(null)}
+          //scrollEnabled={true}
+        >
+          <View style={styles.modalOverlay}>
+
+          <BlurView
+            style={styles.absolute}
+            blurType="extralight"   // You can choose "light", "dark", or "extraLight"
+            blurAmount={70}    // Adjust the blur intensity
+            //reducedTransparencyFallbackColor="white"  // Fallback color for Android
+          />
+
+
+
+            <View style={styles.modalContent}>
+              
+              
+              <Text style={styles.modalTitle}>Foglalási szabályzat</Text>
+
+              
+              <Text style={styles.orvosLeiras_felirat}>Időpont foglalási szabályzatunk bevezetésére azért van szükség, mivel TÖBB HETES ELŐJEGYZÉSSEL dolgozunk. Akivel időpontot egyeztetünk, attól elvárjuk, hogy az adott kezelésen megjelenjen, vagy amennyiben erre nincs lehetősége, azt időben jelezze.
+Az időpont lemondására/módosítására díjmentesen a foglalást megelőző 24 órán túl van lehetőség. Ezt megtehetik telefonon, sms-ben vagy e-mailben.
+Amennyiben az időpont lemondása a foglalást megelőző 24 órán belül történik, a következő kezelés árán felül plusz 5.000 Ft-os díjat számolunk fel!</Text>
+              
+              
+              
+              <TouchableOpacity style={styles.closeButton} onPress={() => toggleModal(null)}>
+                <Text style={styles.buttonText}>Bezár</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </Modal>
       </View>
       </View>
     </View>
@@ -175,6 +218,83 @@ const styles = StyleSheet.create({
     alignContent:'center',
     justifyContent:'center',
     padding:30
+  },
+  modalTitle: {
+    alignSelf: 'center',
+    backgroundColor: 'white',
+    width: 300,
+    height: 50,
+    textAlign: 'center',
+    fontSize: 24,
+    marginBottom: 20,
+  },
+  modalTitleSzakterulet: {
+    alignSelf: 'center',
+    backgroundColor: 'white',
+    //width: '80%',
+    flexWrap: 'wrap',
+    height: 50,
+    textAlign: 'center',
+    fontSize: 15,
+    marginBottom: 20,
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    paddingRight: 20,
+    paddingLeft: 20,
+    paddingBottom: 0,
+    paddingTop: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    //borderColor: '#4da8dd',
+    //borderWidth: 5,
+    width:350,
+    shadowColor: '#113F67',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.4,
+    shadowRadius: 7,
+    maxHeight:'80%',
+    
+    
+  },
+  closeButton: {
+    backgroundColor: '#4da8dd',
+    padding: 10,
+    borderRadius: 10,
+    marginTop: 10,
+    marginBottom: 10,
+    opacity: 0.8,
+    width:100
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    alignSelf:'center',
+  },
+  modalOverlay: {
+    flex:1,
+    marginTop: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    //borderColor: '#4da8dd',
+    //borderWidth: 5,
+    borderRadius: 10,
+    width: 400,
+    
+    
+    
+    
+  },
+  absolute: {
+    backgroundColor:'rgba(0,255,255,0.5)',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    
   },
   szoveg:{
     fontSize:20,
