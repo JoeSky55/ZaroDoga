@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Már 27. 12:10
+-- Létrehozás ideje: 2025. Már 27. 12:17
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -79,7 +79,7 @@ INSERT INTO `orvosok` (`orvos_id`, `nev`, `telefon`, `leiras`, `kep`) VALUES
 (3, 'Dr. Csurgóbb Martin', '703456789', 'A Debreceni Egyetemen szereztem fogorvosi diplomát 2023-ban, majd közvetlen ezután konzerváló fogászként helyezkedtem el. Érdeklődésem ugyanakkor nem csupán e terület felé irányul, hanem hasonló elhivatottsággal fordulok a fogorvoslás minden szakiránya felé. Hivatásomat igyekszem mindig derűsen, jókedvvel, de a helyzet komolyságának és képességeimnek megfelelően a legnagyobb precizitással és alázattal művelni. Köszönöm pácienseimnek, hogy kitüntetnek bizalmukkal!', '03.jpg'),
 (4, 'Dr. Deák Szabolcs', '304567890', '2019-ben végeztem a Debreceni Egyetem Fogorvostudományi Karán. Rezidens éveimet a Hajdú Bihar vármegyei szájsebészeten töltöttem, majd 2022-ben dentoalveolaris sebészetből szakvizsgát szereztem a Szegedi Tudományegyetem Fogorvostudományi karán. A rezidensképzés mellett lehetőségem volt részt venni körzeti ellátásban és magán ellátásban is egyaránt az általános fogászat területén mely elősegítette a szakmai tapasztalataim bővülését.', '04.jpg'),
 (5, 'Dr. Király Szabolcs', '205678901', 'A fogorvostudományi diplomámat a Debreceni Egyetemen szereztem meg, majd ezt követően dento-alveolaris rezidens képzésen vettem részt. Kiemelten fontosnak tartom a rendszeres fogászati szűrővizsgálatokat, hiszen ezekkel megelőzhetők a súlyosabb fogászati problémák, és időben felismerhetők az esetleges elváltozások. Számomra a precizitás mellett a páciensek kényelme és elégedettsége a legfontosabb.', '05.jpg'),
-(6, 'Dr. Balogh Katalin', '706789012', 'Fogorvosi diplomámat a Debreceni Egyetem Fogorvostudományi Karán szereztem 2014-ben, majd ezt követően az egyetemi klinikai ellátásban és oktatásban dolgoztam. Szakmai érdeklődésem középpontjában a fogak esztétikai és preventív kezelése áll, különös tekintettel a fogfehérítésre, fogkőeltávolításra és szájhigiéniai kezelésekre. Célom, hogy pácienseim számára egészséges és ragyogó mosolyt biztosítsak a legkorszerűbb eljárások alkalmazásával.', '06.jpg');
+(6, 'Dr. Körtvélyesi Róbert', '706789012', 'Fogorvosi diplomámat a Debreceni Egyetem Fogorvostudományi Karán szereztem 2014-ben, majd ezt követően az egyetemi klinikai ellátásban és oktatásban dolgoztam. Szakmai érdeklődésem középpontjában a fogak esztétikai és preventív kezelése áll, különös tekintettel a fogfehérítésre, fogkőeltávolításra és szájhigiéniai kezelésekre. Célom, hogy pácienseim számára egészséges és ragyogó mosolyt biztosítsak a legkorszerűbb eljárások alkalmazásával.', '06.jpg');
 
 -- --------------------------------------------------------
 
