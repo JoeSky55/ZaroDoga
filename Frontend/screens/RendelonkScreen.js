@@ -114,8 +114,8 @@ export default function RendelonkScreen({navigation}) {
           </TouchableOpacity>
           </View>
       </View>
-      <View style={{flex:12, paddingTop:10}}>
-        <Text style={{backgroundColor:'#f0f8ff', borderRadius:30, padding:15, fontFamily:'Inter'}}>
+      <View style={{flex:14, paddingTop:10,}}>
+        <Text style={{backgroundColor:'#f0f8ff', borderRadius:30, padding:15, fontFamily:'Inter', height:280, textAlign:''}}>
         A Sunshine Dentál modern és barátságos fogászati rendelő, ahol elkötelezettek vagyunk a pácienseink
 ragyogó és egészséges mosolyáért. Magasan képzett, tapasztalt csapatunk korszerű technológiával és
 személyre szabott figyelemmel biztosítja a legjobb ellátást, legyen szó megelőző kezelésekről, esztétikai
@@ -142,9 +142,10 @@ const styles = StyleSheet.create({
     
   },
   card: {
+    height:900,
     width: 350,
     alignSelf: 'center',
-    marginBottom: 50,
+    marginBottom: 2,
     backgroundColor: '#fff',
     padding: 20,
     borderRadius: 20,
@@ -153,7 +154,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 7,
     marginHorizontal:30,
-    marginVertical:0,
+    
     alignContent: 'center',
     //flexdirection:'row',
     flex:8,
@@ -180,7 +181,8 @@ const styles = StyleSheet.create({
   rendelo_kep:{
     width:'100%',
     height:250,
-    borderRadius:30
+    borderRadius:30,
+    
     
   },
   galeriaGomb:{
@@ -196,7 +198,8 @@ const styles = StyleSheet.create({
   rendelo_kepek:{
     width:'90%',
     height:250,
-    borderRadius:30
+    borderRadius:30,
+    alignSelf:'center'
     
   },
   rendelo_doboz:{
@@ -291,18 +294,19 @@ const styles = StyleSheet.create({
     justifyContent:'center',
   },
   gombok1:{
-    backgroundColor:'#8bcefd',
+    backgroundColor:'#4da8dd',
     padding:5,
     margin:10,
     borderRadius:10,
     
   },
   gombSzoveg:{
-    fontSize:20
+    fontSize:20,
+    color:'white'
   },
   
   copySzoveg:{
-    flex:0.6,
+    flex:0.7,
     alignItems:'center',
     marginBottom:10,
     //backgroundColor:'blue'

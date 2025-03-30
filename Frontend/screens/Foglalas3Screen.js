@@ -108,7 +108,7 @@ export default function Foglalas3Screen({ navigation, route }) {
               style={styles.nev_input}
               value={felhasznaloNev}
               onChangeText={(text) => {
-              const filteredText = text.replace(/[^a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰ ]/g, '');
+              const filteredText = text.replace(/[^a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰ. ]/g, '');
               onChangeFelhasznaloNev(filteredText);
               }}
               autoCapitalize='words'
