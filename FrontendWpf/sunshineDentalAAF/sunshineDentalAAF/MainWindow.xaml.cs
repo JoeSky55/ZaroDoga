@@ -21,8 +21,8 @@ namespace sunshineDentalAAF
     /// </summary>
     public partial class MainWindow : Window
     {
-        const string Cim = "http://localhost:3000/";
-        //const string Cim = "https://nodejs320.dszcbaross.edu.hu/";
+        //const string Cim = "http://localhost:3000/";
+        const string Cim = "https://nodejs320.dszcbaross.edu.hu/";
        
         string url = Cim + "idopontok";
         List<Idopontok> idopontAdatok = new List<Idopontok>();
@@ -33,7 +33,9 @@ namespace sunshineDentalAAF
         string url5 = Cim + "szakteruletek";
         List<Szakteruletek> SzakAdatok = new List<Szakteruletek>();
 
- 
+        string url6 = Cim + "csakOrvosokEsSzakteruletek";
+        List<OrvosokSzakteruletei> orvosokEsSzakteruletek = new List<OrvosokSzakteruletei>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -43,9 +45,12 @@ namespace sunshineDentalAAF
         {
             //ÖSSZES IDŐPONT FÜL:---------------------------------------------------:
 
-            //datagrid feltöltése adatokkal
+            //datagridek feltöltése adatokkal
             idopontAdatok = Backend.GET(url).Send().As<List<Idopontok>>();
             datagrid.ItemsSource = idopontAdatok;
+
+            orvosokEsSzakteruletek = Backend.GET(url6).Send().As<List<OrvosokSzakteruletei>>();
+            orvosSzakteruletDg.ItemsSource = orvosokEsSzakteruletek;
 
             //cbkereses feltöltése adatokkal
             foreach (var a in idopontAdatok)

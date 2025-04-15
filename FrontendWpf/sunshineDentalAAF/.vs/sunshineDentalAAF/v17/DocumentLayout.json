@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_01_30\\GitHub\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7AE542B1-91D6-4EDE-A26F-F5970639B68C}|sunshineDentalAAF\\sunshineDentalAAF.csproj|C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_01_30\\GitHub\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshinedentalaaf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{7AE542B1-91D6-4EDE-A26F-F5970639B68C}|sunshineDentalAAF\\sunshineDentalAAF.csproj|C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_01_30\\GitHub\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshinedentalaaf\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AE542B1-91D6-4EDE-A26F-F5970639B68C}|sunshineDentalAAF\\sunshineDentalAAF.csproj|solutionrelative:sunshinedentalaaf\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7AE542B1-91D6-4EDE-A26F-F5970639B68C}|sunshineDentalAAF\\sunshineDentalAAF.csproj|c:\\users\\diak\\desktop\\kortvelyesi_robert\\vizsgaremek_01_30\\github\\zarodoga\\frontendwpf\\sunshinedentalaaf\\sunshinedentalaaf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{7AE542B1-91D6-4EDE-A26F-F5970639B68C}|sunshineDentalAAF\\sunshineDentalAAF.csproj|solutionrelative:sunshinedentalaaf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7AE542B1-91D6-4EDE-A26F-F5970639B68C}|sunshineDentalAAF\\sunshineDentalAAF.csproj|c:\\users\\diak\\desktop\\kortvelyesi_robert\\vizsgaremek_01_30\\github\\zarodoga\\frontendwpf\\sunshinedentalaaf\\sunshinedentalaaf\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7AE542B1-91D6-4EDE-A26F-F5970639B68C}|sunshineDentalAAF\\sunshineDentalAAF.csproj|solutionrelative:sunshinedentalaaf\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7AE542B1-91D6-4EDE-A26F-F5970639B68C}|sunshineDentalAAF\\sunshineDentalAAF.csproj|c:\\users\\diak\\desktop\\kortvelyesi_robert\\vizsgaremek_01_30\\github\\zarodoga\\frontendwpf\\sunshinedentalaaf\\sunshinedentalaaf\\orvosokszakteruletei.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AE542B1-91D6-4EDE-A26F-F5970639B68C}|sunshineDentalAAF\\sunshineDentalAAF.csproj|solutionrelative:sunshinedentalaaf\\orvosokszakteruletei.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7AE542B1-91D6-4EDE-A26F-F5970639B68C}|sunshineDentalAAF\\sunshineDentalAAF.csproj|C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_01_30\\GitHub\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshinedentalaaf\\orvosok.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AE542B1-91D6-4EDE-A26F-F5970639B68C}|sunshineDentalAAF\\sunshineDentalAAF.csproj|solutionrelative:sunshinedentalaaf\\orvosok.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7AE542B1-91D6-4EDE-A26F-F5970639B68C}|sunshineDentalAAF\\sunshineDentalAAF.csproj|C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_01_30\\GitHub\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshinedentalaaf\\idopontok.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -17,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{7AE542B1-91D6-4EDE-A26F-F5970639B68C}|sunshineDentalAAF\\sunshineDentalAAF.csproj|C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_01_30\\GitHub\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshinedentalaaf\\szakteruletek.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7AE542B1-91D6-4EDE-A26F-F5970639B68C}|sunshineDentalAAF\\sunshineDentalAAF.csproj|solutionrelative:sunshinedentalaaf\\szakteruletek.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7AE542B1-91D6-4EDE-A26F-F5970639B68C}|sunshineDentalAAF\\sunshineDentalAAF.csproj|C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_01_30\\GitHub\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshinedentalaaf\\orvosok.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7AE542B1-91D6-4EDE-A26F-F5970639B68C}|sunshineDentalAAF\\sunshineDentalAAF.csproj|solutionrelative:sunshinedentalaaf\\orvosok.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,11 +34,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Szakteruletek.cs",
               "DocumentMoniker": "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_01_30\\GitHub\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\Szakteruletek.cs",
               "RelativeDocumentMoniker": "sunshineDentalAAF\\Szakteruletek.cs",
@@ -43,24 +47,26 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-21T12:26:54.539Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Orvosok.cs",
               "DocumentMoniker": "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_01_30\\GitHub\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\Orvosok.cs",
               "RelativeDocumentMoniker": "sunshineDentalAAF\\Orvosok.cs",
               "ToolTip": "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_01_30\\GitHub\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\Orvosok.cs",
               "RelativeToolTip": "sunshineDentalAAF\\Orvosok.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-21T12:26:18.815Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Idopontok.cs",
               "DocumentMoniker": "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_01_30\\GitHub\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\Idopontok.cs",
               "RelativeDocumentMoniker": "sunshineDentalAAF\\Idopontok.cs",
@@ -74,7 +80,21 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "OrvosokSzakteruletei.cs",
+              "DocumentMoniker": "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_01_30\\GitHub\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\OrvosokSzakteruletei.cs",
+              "RelativeDocumentMoniker": "sunshineDentalAAF\\OrvosokSzakteruletei.cs",
+              "ToolTip": "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_01_30\\GitHub\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\OrvosokSzakteruletei.cs",
+              "RelativeToolTip": "sunshineDentalAAF\\OrvosokSzakteruletei.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-15T08:57:30.328Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_01_30\\GitHub\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\MainWindow.xaml",
               "RelativeDocumentMoniker": "sunshineDentalAAF\\MainWindow.xaml",
@@ -86,13 +106,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_01_30\\GitHub\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "sunshineDentalAAF\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\diak\\Desktop\\Kortvelyesi_Robert\\Vizsgaremek_01_30\\GitHub\\ZaroDoga\\FrontendWpf\\sunshineDentalAAF\\sunshineDentalAAF\\MainWindow.xaml.cs",
               "RelativeToolTip": "sunshineDentalAAF\\MainWindow.xaml.cs",
-              "ViewState": "AQIAAOUAAAAAAAAAAAAUwPgAAAC4AAAA",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAkwDAAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-21T12:24:02.942Z",
               "EditorCaption": ""

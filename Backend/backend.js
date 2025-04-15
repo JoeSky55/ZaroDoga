@@ -91,6 +91,23 @@ app.get('/orvosAdatok2', (req, res) => {
     connection.end()
 })
 
+app.get('/csakOrvosokEsSzakteruletek', (req, res) => {
+    kapcsolat()
+    connection.query(`SELECT orvosok.nev, orvosok.telefon, GROUP_CONCAT(szakteruletek.szak_nev ORDER BY szakteruletek.szak_nev SEPARATOR ' , ') AS szakteruletek FROM orvosok INNER JOIN orvos_szakterulet ON orvosok.orvos_id = orvos_szakterulet.orvos_id INNER JOIN szakteruletek ON orvos_szakterulet.szakterulet_id = szakteruletek.szak_id GROUP BY orvosok.orvos_id, orvosok.nev, orvosok.telefon;`, (err, rows, fields) => {
+        if (err) {
+            console.log(err)
+            res.status(500).send("Hiba")
+        }
+        else{
+            console.log(rows)
+            res.status(200).send(rows)
+        }
+      })
+      connection.end()
+  })
+
+
+
 app.post('/szakteruletKeres', (req, res) => {
   kapcsolat()
   connection.query(`SELECT orvosok.orvos_id AS orvosId, szakteruletek.szak_id AS szakTeruletId, szakteruletek.szak_nev, orvosok.nev AS orvos FROM szakteruletek INNER JOIN orvos_szakterulet ON orvos_szakterulet.szakterulet_id = szakteruletek.szak_id INNER JOIN orvosok ON orvos_szakterulet.orvos_id = orvosok.orvos_id WHERE szakteruletek.szak_nev = "${req.body.bevitel1}"`, (err, rows, fields) => {
@@ -215,6 +232,7 @@ connection.query(`DELETE FROM idopont_foglalas WHERE if_telefon = ${req.body.bev
     })  
 connection.end()
 })
+
 
 //******************************************************
   app.listen(port, () => {
