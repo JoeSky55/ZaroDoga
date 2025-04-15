@@ -47,7 +47,7 @@ export default function OrvosainkScreen({ navigation }) {
               <View>
                 <Image
                   style={styles.rendeles_logo}
-                  source={{uri:IpCim.Ipcim+item.kep}|| require('../kepek/rendeles_ikon.png')} 
+                  source={{uri:IpCim.Ipcim+item.kep}} 
                   
                 />
               </View>
