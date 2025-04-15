@@ -1,14 +1,9 @@
 import React from 'react';
-import { View, Text, Button, Image, StyleSheet, SafeAreaView, Touchable, TouchableOpacity, Linking } from 'react-native';
-import { useEffect } from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Linking } from 'react-native';
+
 
 export default function SikeresFoglalasScreen({navigation,route}) {
-  //console.log(route.params)
     const {id,nev,orvosId,idopont,datumMentese,orvosNeve}=route.params
-
-    
-
-
     const makeCall = (phoneNumber) => {
       const phoneUrl = `tel:${phoneNumber}`;
       Linking.canOpenURL(phoneUrl)
@@ -21,24 +16,11 @@ export default function SikeresFoglalasScreen({navigation,route}) {
         })
         .catch((err) => console.error("Hiba történt a hívásindítás közben:", err));
     };
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <View
       style={[
         styles.container,
         {
-          // Try setting `flexDirection` to `"row"`.
           flexDirection: 'column',
         },
       ]}>
@@ -46,17 +28,12 @@ export default function SikeresFoglalasScreen({navigation,route}) {
       <Image source={require('../kepek/logo_transparent.png')} style={styles.logo} />
       </View>
       <View style={{flex: 2, backgroundColor:'#4da8dd', borderRadius:40}}>
-        
-
         <View style={styles.foglalasiAdatok}>
           <Text style={styles.koszonjuk}>Sikeres Foglalás!</Text>
-          
             <Text style={styles.foglalasiSzoveg}>Szakrendelés: {nev}</Text>
             <Text style={styles.foglalasiSzoveg}>Orvos: {orvosNeve}</Text>
             <Text style={styles.foglalasiSzoveg}>Dátum: {datumMentese.replaceAll('-','.')}  {idopont}</Text>
-            
         </View>
-        
         <View style={{flex:3}}>
           <Text style={{alignSelf: 'center', color:'black',fontFamily:'inter', fontWeight:'bold', fontSize:20}}>
             Időpontot lemondani, illetve módosítani a 
@@ -66,19 +43,12 @@ export default function SikeresFoglalasScreen({navigation,route}) {
              -os számon lehet.
           </Text>
         </View>
-           
-          {/*+36 50 501 6461*/}
-           
-          
-           
-        
         <View style={{flex:6}}>
             <TouchableOpacity style={styles.gombok} onPress={() => navigation.navigate("Főoldal")}>
               <Text style={styles.gombokSzoveg}>Vissza a főoldalra</Text>
             </TouchableOpacity >
         </View> 
      </View>
-      
     </View>
   );
 }
@@ -93,7 +63,6 @@ const styles = StyleSheet.create({
     width:'80%',
     height:'80%',
     resizeMode: 'contain'
-    
   },
   logo_box:{
     width:'100%',
@@ -108,9 +77,7 @@ const styles = StyleSheet.create({
     width:300,
     backgroundColor: 'white',
     borderRadius:20,
-    
     alignSelf:'center'
-    
   },
   gombokSzoveg:{
     alignSelf:'center',
@@ -123,23 +90,21 @@ const styles = StyleSheet.create({
     flex:9,
     paddingBottom:200,
     alignSelf:'center'
-
-},
-foglalasiSzoveg:{
-  color:'white',
-  fontSize:20,
-  fontFamily:'inter',
-  fontWeight:'400',
-  padding:10,
-  //backgroundColor: '#113F67'
-},
-koszonjuk:{
-  color:'white',
-  fontSize:30,
-  fontFamily:'inter',
-  fontWeight:'400',
-  padding:10,
-  alignSelf:'center',
-  flex:1
-}
-});
+  },
+  foglalasiSzoveg:{
+    color:'white',
+    fontSize:20,
+    fontFamily:'inter',
+    fontWeight:'400',
+    padding:10,
+  },
+  koszonjuk:{
+    color:'white',
+    fontSize:30,
+    fontFamily:'inter',
+    fontWeight:'400',
+    padding:10,
+    alignSelf:'center',
+    flex:1
+  }
+  });

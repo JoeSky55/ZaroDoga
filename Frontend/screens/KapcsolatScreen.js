@@ -1,12 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, Modal, Linking, TouchableOpacity, } from 'react-native';
 import { useState } from 'react';
-//import { TouchableOpacity } from 'react-native';
-//import { Linking } from 'react-native';
 import IpCim from './IpCim';
 import { BlurView } from '@react-native-community/blur';
-
-
 export default function KapcsolatScreen({navigation}) {
   const makeCall = (phoneNumber) => {
     const phoneUrl = `tel:${phoneNumber}`;
@@ -22,10 +18,8 @@ export default function KapcsolatScreen({navigation}) {
   };
   const [modalVisible, setModalVisible] = useState(false);
   const toggleModal = () => {
-    
     setModalVisible(!modalVisible);
   };
-
   return (
     <View style={styles.container}>
       <View style={styles.card}>
@@ -34,8 +28,6 @@ export default function KapcsolatScreen({navigation}) {
           Elérhetőségeink:
         </Text>
       </View>
-
-
       <View style={styles.box1}>
       <View style={{ justifyContent:'center',alignContent:'center'}}>
           <Text style={styles.szoveg}>
@@ -48,8 +40,6 @@ export default function KapcsolatScreen({navigation}) {
             </TouchableOpacity>
         </View>
       </View>
-
-
       <View style={styles.box2}>
         <View >
           <Text style={styles.szoveg}>
@@ -63,8 +53,7 @@ export default function KapcsolatScreen({navigation}) {
            sunshineinfo@gmail.com
         </Text>
         </TouchableOpacity>
-        </View>
-        
+        </View> 
       </View>
       <View style={styles.box3}>
         <Text style={styles.szoveg}>
@@ -72,16 +61,11 @@ export default function KapcsolatScreen({navigation}) {
         </Text>
         <Text style={styles.szoveg2}>
           4031 Debrecen 
-          
         </Text>
         <Text style={styles.szoveg2}>
-        István út 26. 
-          
+        István út 26.  
         </Text>
-        
       </View>
-
-
       <View style={styles.box4}>
         <Text style={styles.szoveg}>
           Web:
@@ -92,7 +76,6 @@ export default function KapcsolatScreen({navigation}) {
         </Text>
         </TouchableOpacity>
       </View>
-
       <View style={styles.box5}>
       <TouchableOpacity onPress={() => toggleModal()}>
         <Text style={styles.szoveg3}>
@@ -104,31 +87,18 @@ export default function KapcsolatScreen({navigation}) {
           transparent={true}
           visible={modalVisible}
           onRequestClose={() => toggleModal(null)}
-          //scrollEnabled={true}
         >
           <View style={styles.modalOverlay}>
-
           <BlurView
             style={styles.absolute}
-            blurType="extralight"   // You can choose "light", "dark", or "extraLight"
-            blurAmount={70}    // Adjust the blur intensity
-            //reducedTransparencyFallbackColor="white"  // Fallback color for Android
+            blurType="extralight"
+            blurAmount={70} 
           />
-
-
-
             <View style={styles.modalContent}>
-              
-              
               <Text style={styles.modalTitle}>Foglalási szabályzat</Text>
-
-              
               <Text style={styles.orvosLeiras_felirat}>Időpont foglalási szabályzatunk bevezetésére azért van szükség, mivel TÖBB HETES ELŐJEGYZÉSSEL dolgozunk. Akivel időpontot egyeztetünk, attól elvárjuk, hogy az adott kezelésen megjelenjen, vagy amennyiben erre nincs lehetősége, azt időben jelezze.
 Az időpont lemondására/módosítására díjmentesen a foglalást megelőző 24 órán túl van lehetőség. Ezt megtehetik telefonon, sms-ben vagy e-mailben.
 Amennyiben az időpont lemondása a foglalást megelőző 24 órán belül történik, a következő kezelés árán felül plusz 5.000 Ft-os díjat számolunk fel!</Text>
-              
-              
-              
               <TouchableOpacity style={styles.closeButton} onPress={() => toggleModal(null)}>
                 <Text style={styles.buttonText}>Bezár</Text>
               </TouchableOpacity>
@@ -148,7 +118,6 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingTop: 50,
     backgroundColor: '#f0f8ff',
-    
   },
   cim:{
     alignSelf:'center',
@@ -168,7 +137,6 @@ const styles = StyleSheet.create({
     marginHorizontal:30,
     marginVertical:20,
     alignContent: 'center',
-    //flexdirection:'row',
     flex:5
   },
   box1:{
@@ -178,9 +146,7 @@ const styles = StyleSheet.create({
     width:300,
     justifyContent:'center',
     alignContent:'center',
-    //backgroundColor:'red',
     padding:30
-    
   },
   box2:{
     flex:0.5,
@@ -189,13 +155,11 @@ const styles = StyleSheet.create({
     width:300,
     alignContent:'center',
     justifyContent:'center',
-    //backgroundColor:'red',
     padding:30
   },
   box3:{
     flex:0.5,
     alignSelf:'center',
-    //backgroundColor:'red',
     width:300,
     alignContent:'center',
     justifyContent:'center',
@@ -204,7 +168,6 @@ const styles = StyleSheet.create({
   box4:{
     flex:0.5,
     alignSelf:'center',
-    //backgroundColor:'red',
     width:300,
     alignContent:'center',
     justifyContent:'center',
@@ -213,7 +176,6 @@ const styles = StyleSheet.create({
   box5:{
     flex:0.5,
     alignSelf:'center',
-    //backgroundColor:'red',
     width:300,
     alignContent:'center',
     justifyContent:'center',
@@ -231,7 +193,6 @@ const styles = StyleSheet.create({
   modalTitleSzakterulet: {
     alignSelf: 'center',
     backgroundColor: 'white',
-    //width: '80%',
     flexWrap: 'wrap',
     height: 50,
     textAlign: 'center',
@@ -247,16 +208,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
-    //borderColor: '#4da8dd',
-    //borderWidth: 5,
     width:350,
     shadowColor: '#113F67',
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.4,
     shadowRadius: 7,
     maxHeight:'80%',
-    
-    
   },
   closeButton: {
     backgroundColor: '#4da8dd',
@@ -278,14 +235,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    //borderColor: '#4da8dd',
-    //borderWidth: 5,
     borderRadius: 10,
     width: 400,
-    
-    
-    
-    
   },
   absolute: {
     backgroundColor:'rgba(0,255,255,0.5)',
@@ -294,7 +245,6 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0,
-    
   },
   szoveg:{
     fontSize:20,
@@ -310,18 +260,15 @@ const styles = StyleSheet.create({
     textAlign:'center',
     fontWeight:'bold',
     textDecorationLine: 'underline',
-    
   },
   szoveg2:{
     fontSize:20,
     fontFamily:'Inter',
     color:'#1b4965',
     textAlign:'center',
-    //fontWeight:'bold'
   },
   cim2:{
     fontSize:25,
     color:'#1b4965'
   }
-  
 });

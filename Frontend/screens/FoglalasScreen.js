@@ -1,35 +1,23 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { View, Text, Button, FlatList, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import IpCim from './IpCim';
-
 export default function FoglalasScreen({navigation}) {
   const [adatok,setAdatok]=useState([])
-
   const letoltes=async ()=>{
     const x=await fetch(IpCim.Ipcim +"szakteruletek")
     const y=await x.json()
     setAdatok(y)
-    //alert(JSON.stringify(y))
   }
-
     useEffect(()=>{
       letoltes()
   },[])
-
   const reszletekFv=(id,nev)=>{
-    //alert(id)
     navigation.navigate("Foglalas2Screen",{id:id,nev:nev})
-
   }
-
-  
-
-
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'#f0f8ff', }}>
       <Text style={styles.cim}>Konzultációk</Text>
-
       <FlatList
           data={adatok}
           renderItem={({item}) => (
@@ -54,23 +42,17 @@ export default function FoglalasScreen({navigation}) {
           keyExtractor={item => item.szak_nev}
           showsVerticalScrollIndicator={false}
       />
-
-
-      
-
     </View>
   );
 }
 const styles = StyleSheet.create({
 
   rendeles_logo:{
-    width: 200, // Állítsd be megfelelő méretre
+    width: 200,
     height: 200,
     padding: 10,
     alignSelf:'center',
     marginBottom: 10,
-    //backgroundColor:"red"
-    
   },
   card: {
     width: 300,
@@ -86,7 +68,6 @@ const styles = StyleSheet.create({
     shadowRadius: 7,
     marginHorizontal:30,
     marginVertical:20,
-    
     alignItems: 'center',
   },
   rendeles_felirat:{
@@ -98,8 +79,6 @@ const styles = StyleSheet.create({
     fontWeight:'400',
     padding:10,
     marginBottom:0
-    
-    
   },
   feliratHatter:{
     backgroundColor:'#4da8dd',
@@ -112,8 +91,7 @@ const styles = StyleSheet.create({
     shadowColor:'#113F67',
     shadowOffset:{width:0,height:5},
     shadowOpacity:0.4,
-    shadowRadius:7,
-    
+    shadowRadius:7,   
   },
   szakLeiras:{
     alignSelf:'center',
@@ -123,28 +101,18 @@ const styles = StyleSheet.create({
     fontFamily:'inter',
     fontWeight:'400',
     padding:10,
-    marginBottom:0,
-    
-    
+    marginBottom:0, 
   },
   feliratLeirasHatter:{
-    //backgroundColor:'#fff',
     height:200,
-    //borderRadius:20,
     textAlign: "justify",
-    //alignContent:'center',
-    //justifyContent:'center',
     width:'81%',
     marginLeft:35,
     marginTop:10,
-    
-    
   },
   cim:{
     fontSize:24,
     color:'#1b4965',
     backgroundColor:'#f0f8ff',
-    
-    
   }
 })
