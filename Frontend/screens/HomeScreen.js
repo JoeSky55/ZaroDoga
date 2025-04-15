@@ -1,13 +1,11 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
-
 export default function HomeScreen({navigation}) {
   return (
     <View
       style={[
         styles.container,
         {
-          // Try setting `flexDirection` to `"row"`.
           flexDirection: 'column',
         },
       ]}>
@@ -16,31 +14,20 @@ export default function HomeScreen({navigation}) {
       </View>
       <View style={{flex: 2.5}}>
         <View >
-
-          
             <TouchableOpacity style={styles.gombok} onPress={() => navigation.navigate("Időpontfoglalás")}>
               <Text style={styles.gombokSzoveg}>Időpontfoglalás</Text>
             </TouchableOpacity >
-
             <TouchableOpacity style={styles.gombok} onPress={() => navigation.navigate("Rendelőnk")}>
               <Text style={styles.gombokSzoveg}>Rendelőnk</Text>
             </TouchableOpacity >
-
             <TouchableOpacity style={styles.gombok} onPress={() => navigation.navigate("Orvosaink")}>
               <Text style={styles.gombokSzoveg}>Orvosaink</Text>
             </TouchableOpacity >
-
             <TouchableOpacity style={styles.gombok} onPress={() => navigation.navigate("Kapcsolat")}>
               <Text style={styles.gombokSzoveg}>Kapcsolat</Text>
             </TouchableOpacity >
-            
-          
-           
-          
-           
         </View>
      </View>
-      
     </View>
   );
 }
@@ -55,9 +42,6 @@ const styles = StyleSheet.create({
     width:'80%',
     height:'80%',
     resizeMode: 'contain',
-    
-    
-    
   },
   logo_box:{
     width:'100%',
@@ -78,10 +62,6 @@ const styles = StyleSheet.create({
     shadowOffset:{width:0,height:5},
     shadowOpacity:0.4,
     shadowRadius:7,
-    
-    
-    
-    
   },
   gombokSzoveg:{
     alignSelf:'center',
@@ -89,6 +69,5 @@ const styles = StyleSheet.create({
     fontFamily:'inter',
     fontWeight:'400',
     fontSize:24,
-    
   }
 });

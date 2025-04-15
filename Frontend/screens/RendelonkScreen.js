@@ -1,16 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Modal, FlatList } from 'react-native';
-//import OrvosainkScreen from './OrvosainkScreen';
-//import FoglalasScreen from './FoglalasScreen';
-//import GaleriaScreen from './GaleriaScreen';
 import { useState } from 'react';
 import { BlurView } from '@react-native-community/blur';
-
-
-
-
 export default function RendelonkScreen({navigation}) {
-
   const helyiKepek = [
     { id: 1, source: require('../kepek/201.jpg') },
     { id: 2, source: require('../kepek/202.jpg') },
@@ -20,11 +12,9 @@ export default function RendelonkScreen({navigation}) {
     { id: 6, source: require('../kepek/rendelokivul.jpg') },
   ];
   const toggleModal = () => {
-   
     setModalVisible(!modalVisible);
   };
   const [modalVisible, setModalVisible] = useState(false);
-  
   return (
     <View style={styles.container}>
       <View style={styles.card}>
@@ -43,23 +33,14 @@ export default function RendelonkScreen({navigation}) {
           transparent={true}
           visible={modalVisible}
           onRequestClose={() => toggleModal(null)}
-          //scrollEnabled={true}
         >
           <View style={styles.modalOverlay}>
-
           <BlurView
             style={styles.absolute}
-            blurType="extralight"   // You can choose "light", "dark", or "extraLight"
-            blurAmount={70}    // Adjust the blur intensity
-            //reducedTransparencyFallbackColor="white"  // Fallback color for Android
+            blurType="extralight"   
+            blurAmount={70}    
           />
-
-
-
             <View style={styles.modalContent}>
-              
-              
-            {/*<ScrollView contentContainerStyle={styles.centeredContainer}>*/}
             <FlatList
           data={helyiKepek}
           renderItem={({ item }) => (
@@ -68,32 +49,16 @@ export default function RendelonkScreen({navigation}) {
                 <Image
                   style={styles.rendelo_kepek}
                   source={item.source || require('../kepek/rendeles_ikon.png')}
-
-                  
                 />
               </View>
-
               <View style={styles.nevHatter}>
-                
                   <Text style={styles.rendeles_felirat}>{item.nev}</Text>
-                
               </View>
-              
             </View>
           )}
           keyExtractor={(item) => item.id.toString()}
           showsVerticalScrollIndicator={false}
-          
         />
-              
-              
-              
-              
-              
-              
-              
-              
-              
               <TouchableOpacity style={styles.closeButton} onPress={() => toggleModal(null)}>
                 <Text style={styles.buttonText}>Bezár</Text>
               </TouchableOpacity>
@@ -107,7 +72,6 @@ export default function RendelonkScreen({navigation}) {
             <Text style={styles.gombSzoveg}>Orvosaink</Text>
           </TouchableOpacity>
         </View>
-        
         <View style={styles.gombok1}>
           <TouchableOpacity onPress={() => navigation.navigate("Időpontfoglalás")}>
           <Text style={styles.gombSzoveg}>Időpontfoglalás</Text>
@@ -123,7 +87,6 @@ fogászatról vagy fogpótlásokról. Célunk, hogy minden látogatás stresszme
 pácienseink magabiztosan és mosolyogva távozhassanak. 
         </Text>
       </View>
-
       <View style={styles.copySzoveg}>
       <Text style={styles.copyright}>Copyright © 2024 Sunshine Dental</Text>
       </View>
@@ -139,7 +102,6 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingTop: 50,
     backgroundColor: '#f0f8ff',
-    
   },
   card: {
     height:900,
@@ -154,36 +116,23 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 7,
     marginHorizontal:30,
-    
     alignContent: 'center',
-    //flexdirection:'row',
     flex:8,
-    
   },
   cards: {
     width: 350,
     alignSelf: 'center',
-    //marginBottom: 50,
     backgroundColor: '#fff',
     padding: 20,
     borderRadius: 20,
-    //shadowColor: '#113F67',
-    //shadowOffset: { width: 0, height: 5 },
-    //shadowOpacity: 0.4,
-    //shadowRadius: 7,
-    //marginHorizontal:30,
     marginVertical:0,
     alignContent: 'center',
-    //flexdirection:'row',
     flex:8,
-    
   },
   rendelo_kep:{
     width:'100%',
     height:250,
     borderRadius:30,
-    
-    
   },
   galeriaGomb:{
     fontSize:20,
@@ -205,9 +154,6 @@ const styles = StyleSheet.create({
   rendelo_doboz:{
     flex:1,
     width:400,
-    
-  
-    
   },
   modalTitle: {
     alignSelf: 'center',
@@ -221,7 +167,6 @@ const styles = StyleSheet.create({
   modalTitleSzakterulet: {
     alignSelf: 'center',
     backgroundColor: 'white',
-    //width: '80%',
     flexWrap: 'wrap',
     height: 50,
     textAlign: 'center',
@@ -237,16 +182,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
-    //borderColor: '#4da8dd',
-    //borderWidth: 5,
     width:350,
     shadowColor: '#113F67',
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.4,
     shadowRadius: 7,
     maxHeight:'80%',
-    
-    
   },
   closeButton: {
     backgroundColor: '#4da8dd',
@@ -264,23 +205,15 @@ const styles = StyleSheet.create({
   },
   modalOverlay: {
     flex:1,
-    
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    //borderColor: '#4da8dd',
-    //borderWidth: 5,
     borderRadius: 10,
     width: 400,
-    
-    
-    
-    
   },
   orvosLeiras_felirat: {
     fontSize: 15,
     color:'black',
-    
   },
   copyright:{
     fontSize:10,
@@ -288,8 +221,6 @@ const styles = StyleSheet.create({
   },
   gombok:{
     flexDirection:'row',
-    
-    
     alignContent:'center',
     justifyContent:'center',
   },
@@ -298,18 +229,14 @@ const styles = StyleSheet.create({
     padding:5,
     margin:10,
     borderRadius:10,
-    
   },
   gombSzoveg:{
     fontSize:20,
     color:'white'
   },
-  
   copySzoveg:{
     flex:0.7,
     alignItems:'center',
     marginBottom:10,
-    //backgroundColor:'blue'
   }
-  
 });

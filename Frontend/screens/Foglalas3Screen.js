@@ -12,13 +12,11 @@ export default function Foglalas3Screen({ navigation, route }) {
     const y = await x.json();
     setAdatok(y);
   }
-
   const letoltes_2 = async () => {
     const x = await fetch(IpCim.Ipcim +"idopontok");
     const y = await x.json();
     setAdatok_2(y);
   }
-
   const feltoltes = async () => {
     const betegAdatok = {
       "bevitel1": id,
@@ -29,38 +27,29 @@ export default function Foglalas3Screen({ navigation, route }) {
       "bevitel6": email,
       "bevitel7": telefon
     };
-
-  
       const response = await fetch(IpCim.Ipcim +"betegFelvitel", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(betegAdatok),
-      });
-
+      })
       if (response.ok) {
         const data = await response.json();
       } else {
         alert("Hiba történt a feltöltés során: " + response.status);
       }
-     
   };
-
   useEffect(() => {
     letoltes();
     letoltes_2();
   }, []);
-
   const [adatok, setAdatok] = useState([]);
   const [adatok_2, setAdatok_2] = useState([]);
   const { id, nev, orvosId, idopont, datumMentese, orvosNeve } = route.params;
-
   const [felhasznaloNev, onChangeFelhasznaloNev] = useState('');
-
   const [email, onChangeEmail] = useState('');
   const [telefon, onChangeTelefon] = useState('');
-
   const TovabbGomb = () => {
     if (!isChecked) {
       alert("Kérlek fogadd el a foglalási szabályzatot!");
@@ -75,11 +64,9 @@ export default function Foglalas3Screen({ navigation, route }) {
       navigation.replace("SikeresFoglalas", { id: id, nev: nev, orvosId: orvosId, idopont: idopont, datumMentese: datumMentese, orvosNeve: orvosNeve });
     }
   }
-
   const [isChecked, setIsChecked] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const toggleModal = () => {
-    
     setModalVisible(!modalVisible);
   };
   return (
@@ -93,12 +80,8 @@ export default function Foglalas3Screen({ navigation, route }) {
         <Text style={styles.foglalasiSzoveg}>Dátum: {datumMentese.replaceAll('-', '.')}  {idopont}</Text>
         <Text style={styles.adatbevitelCim}>Adja meg az adatait:</Text>
       </View>
-
       <View style={styles.adatbevitel}>
-        
-
-        <KeyboardAwareScrollView
-          
+        <KeyboardAwareScrollView 
           resetScrollToCoords={{ x: 0, y: 0 }}
           contentContainerStyle={styles.container2}
           scrollEnabled={false}
@@ -117,7 +100,6 @@ export default function Foglalas3Screen({ navigation, route }) {
           </View>
           </KeyboardAwareScrollView>
           <KeyboardAwareScrollView
-          
           resetScrollToCoords={{ x: 0, y: 0 }}
           contentContainerStyle={styles.container2}
           scrollEnabled={false}
@@ -127,7 +109,6 @@ export default function Foglalas3Screen({ navigation, route }) {
               style={styles.email_input}
               value={email}
               onChangeText={(text) => {
-                
                 const filteredText = text.replace(/[^a-zA-Z0-9@._-]/g, ''); 
                 onChangeEmail(filteredText);
               }}
@@ -138,7 +119,6 @@ export default function Foglalas3Screen({ navigation, route }) {
           </View>
           </KeyboardAwareScrollView>
           <KeyboardAwareScrollView
-          
           resetScrollToCoords={{ x: 0, y: 0 }}
           contentContainerStyle={styles.container2}
           scrollEnabled={false}
@@ -153,7 +133,6 @@ export default function Foglalas3Screen({ navigation, route }) {
             />
           </View>
           </KeyboardAwareScrollView>
-
           <TouchableOpacity
   style={styles.checkboxContainer}
   onPress={() => setIsChecked(!isChecked)}
@@ -184,15 +163,12 @@ export default function Foglalas3Screen({ navigation, route }) {
           transparent={true}
           visible={modalVisible}
           onRequestClose={() => toggleModal(null)}
-          //scrollEnabled={true}
         >
           <View style={styles.modalOverlay}>
-
           <BlurView
             style={styles.absolute}
-            blurType="extralight"   // You can choose "light", "dark", or "extraLight"
-            blurAmount={70}    // Adjust the blur intensity
-            //reducedTransparencyFallbackColor="white"  // Fallback color for Android
+            blurType="extralight"
+            blurAmount={70}   
           />
             <View style={styles.modalContent}>            
               <Text style={styles.modalTitle}>Foglalási szabályzat</Text>
@@ -211,12 +187,10 @@ Amennyiben az időpont lemondása a foglalást megelőző 24 órán belül tört
     </Text>
 </TouchableOpacity>
       </View>
-
       <View style={styles.container3}>
         <TouchableOpacity style={styles.gombok} onPress={() => navigation.goBack()}>
           <Text style={styles.gombszoveg}>Vissza</Text>
         </TouchableOpacity>
-
         <TouchableOpacity style={styles.gombokFoglalas} onPress={() => TovabbGomb()}>
           <Text style={styles.gombszoveg}>Foglalás</Text>
         </TouchableOpacity>
@@ -224,7 +198,6 @@ Amennyiben az időpont lemondása a foglalást megelőző 24 órán belül tört
     </KeyboardAvoidingView>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -239,7 +212,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop:0,
-    //backgroundColor: 'white'
   },
   inner: {
     padding: 24,
@@ -264,7 +236,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'left',
     flexDirection: 'column',
-    
     width: '100%',
   },
   adatbevitelCim: {
@@ -275,11 +246,9 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 6,
     alignSelf:'center',
-    
   },
   nev_input_view: {
-    flex: 0.2,
-   
+    flex: 0.2,  
     backgroundColor: '#f0f8ff'
   },
   nev_input: {
@@ -306,7 +275,6 @@ const styles = StyleSheet.create({
   telefon_input_view: {
     flex: 0.1,
     backgroundColor: '#f0f8ff',
-    
     alignContent: 'center',
     justifyContent: 'center'
   },
@@ -337,11 +305,11 @@ const styles = StyleSheet.create({
   },
   checkboxContainer:{
     flexDirection: 'row',
-  alignItems: 'center',
-  marginVertical: 10,
-  paddingHorizontal: 10,
-  backgroundColor: '#f0f8ff',
-  borderRadius: 8,
+    alignItems: 'center',
+    marginVertical: 10,
+    paddingHorizontal: 10,
+    backgroundColor: '#f0f8ff',
+    borderRadius: 8,
   },
   gombszoveg: {
     color: 'white',
@@ -382,7 +350,6 @@ const styles = StyleSheet.create({
   modalTitleSzakterulet: {
     alignSelf: 'center',
     backgroundColor: 'white',
-    //width: '80%',
     flexWrap: 'wrap',
     height: 50,
     textAlign: 'center',
@@ -398,16 +365,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
-    //borderColor: '#4da8dd',
-    //borderWidth: 5,
     width:350,
     shadowColor: '#113F67',
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.4,
     shadowRadius: 7,
     maxHeight:'80%',
-    
-    
   },
   closeButton: {
     backgroundColor: '#4da8dd',
@@ -429,14 +392,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    //borderColor: '#4da8dd',
-    //borderWidth: 5,
     borderRadius: 10,
     width: 400,
-    
-    
-    
-    
   },
   absolute: {
     backgroundColor:'rgba(0,255,255,0.5)',
@@ -445,7 +402,6 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0,
-    
   },
   szoveg3:{
     fontFamily:'Inter',
@@ -453,7 +409,5 @@ const styles = StyleSheet.create({
   },
   szoveg4:{
     fontFamily:'Inter',
-    
   }
-
 });
